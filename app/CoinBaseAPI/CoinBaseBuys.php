@@ -29,6 +29,8 @@ class CoinBaseBuys
         $buy->setBitcoinAmount($amount);
 
         $client->createAccountBuy($account, $buy, [Param::COMMIT => false]);
+        //Commit a buy
+        //You only need to do this if you pass commit=false when you create the buy.
         $client->commitBuy($buy);
     }
 
