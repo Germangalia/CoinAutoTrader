@@ -33,7 +33,7 @@ class CoinBaseAccounts
         $accounts = $client->getAccounts();
         return $accounts;
     }
-    
+
 
     //List account details
     public function getAccountDetails($client, $accountId)

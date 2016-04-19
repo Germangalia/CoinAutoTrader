@@ -5,33 +5,35 @@ use Coinbase\Wallet\Resource\Address;
 class CoinBaseAddresses
 {
 
-    //Client authenticated
-    protected $client;
-
-    //Account
-    protected $account;
-
-    //Address
-    protected $address;
-
-    /**
-     * CoinBaseAddresses constructor.
-     * @param $client
-     * @param $account
-     * @param $address
-     */
-    public function __construct($client, $account)
+    // Generate a new bitcoin address for your account:
+    public function createAddress($client, $account)
     {
-        $this->client = $client;
-        $this->account = $account;
-    }
-
-    public function createAddress()
-    {
-        // Generate a new bitcoin address for your account:
         $address = new Address();
-        $this->client->createAccountAddress($this->account, $this->address);
+        $address->setName('New Address');
+        $client->createAccountAddress($account, $address);
     }
 
+    //List receive addresses for account
+    public function getAddressForAccount($client, $account)
+    {
+        $addresses = $client->getAccountAddresses($account);
+        return $addresses;
+    }
+
+
+    //Get receive address info
+    public function getAddressInfo($client, $account, $addressId)
+    {
+        $address = $client->getAccountAddress($account, $addressId);
+        return $address;
+    }
+
+
+    //List transactiona for address
+    public function getAddressTransactions($client, $address)
+    {
+        $transactions = $client->getAddressTransactions($address);
+        return $transactions;
+    }
 
 }
