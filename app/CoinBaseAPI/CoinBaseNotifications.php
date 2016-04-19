@@ -1,5 +1,5 @@
 <?php
-
+namespace App\CoinBaseAPI;
 /**
  * Created by PhpStorm.
  * User: ggalia84

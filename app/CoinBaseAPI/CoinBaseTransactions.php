@@ -1,4 +1,5 @@
 <?php
+namespace App\CoinBaseAPI;
 
 use Coinbase\Wallet\Enum\CurrencyCode;
 use Coinbase\Wallet\Resource\Transaction;

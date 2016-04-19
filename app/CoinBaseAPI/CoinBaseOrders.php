@@ -1,4 +1,5 @@
 <?php
+namespace App\CoinBaseAPI;
 
 use Coinbase\Wallet\Resource\Order;
 use Coinbase\Wallet\Value\Money;

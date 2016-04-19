@@ -1,5 +1,5 @@
 <?php
-
+namespace App\CoinBaseAPI;
 use Coinbase\Wallet\Resource\Account;
 
 class CoinBaseAccounts
@@ -16,7 +16,7 @@ class CoinBaseAccounts
 
 
     //Get balance of acount
-    public function balanceAcount($client, $account)
+    public function balanceAccount($client, $account)
     {
         // After some time, the transaction should complete and your balance should update
         $client->refreshAccount($account);

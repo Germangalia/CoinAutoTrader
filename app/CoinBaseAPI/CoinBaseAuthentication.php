@@ -1,4 +1,5 @@
 <?php
+namespace App\CoinBaseAPI;
 
 use Coinbase\Wallet\Client;
 use Coinbase\Wallet\Configuration;
@@ -8,42 +9,36 @@ use Coinbase\Wallet\Resource\Transaction;
 
 class CoinBaseAuthentication
 {
-    //Client
-    protected $client;
 
-    //Configuration of Authentication
-    private $configuration;
-
-
-    public function ApiKeyAuthentication($apiKey, $apiSecret)
+    public function apiKeyAuthentication($apiKey, $apiSecret)
     {
         //Authentication with API key and API Secret
-        $this->configuration = Configuration::apiKey($apiKey, $apiSecret);
+        $configuration = Configuration::apiKey($apiKey, $apiSecret);
         //Using sandbox CoinBase
-        $this->configuration->setApiUrl(Configuration::SANDBOX_API_URL);
-        $this->client = Client::create($this->configuration);
-        return $this->client;
+        $configuration->setApiUrl(Configuration::SANDBOX_API_URL);
+        $client = Client::create($configuration);
+        return $client;
     }
 
 
-    public function OAuth2Authentication($accessToken, $refreshToken)
+    public function oAuth2Authentication($accessToken, $refreshToken)
     {
         //Authentication with OAuth2 Token
         if($refreshToken != null)
         {
             // with a refresh token
-            $this->configuration = Configuration::oauth($accessToken, $refreshToken);
+            $configuration = Configuration::oauth($accessToken, $refreshToken);
         } else{
             // without a refresh token
-            $this->configuration = Configuration::oauth($accessToken);
+            $configuration = Configuration::oauth($accessToken);
         }
 
-        $this->client = Client::create($this->configuration);
-        return $this->client;
+        $client = Client::create($configuration);
+        return $client;
     }
 
 
-    public function TwoFactorAuthentication()
+    public function twoFactorAuthentication()
     {
         //Authentication in tho factors
         $transaction = Transaction::send([
@@ -51,17 +46,17 @@ class CoinBaseAuthentication
             'bitcoinAmount' => 1
         ]);
 
-        $account = $this->client->getPrimaryAccount();
+        $account = $client->getPrimaryAccount();
         try {
-            $this->client->createAccountTransaction($account, $transaction);
+            $client->createAccountTransaction($account, $transaction);
         } catch (TwoFactorRequiredException $e) {
             // show 2FA dialog to user and collect 2FA token
 
             // retry call with token
-            $this->client->createAccountTransaction($account, $transaction, [
+            $client->createAccountTransaction($account, $transaction, [
                 Param::TWO_FACTOR_TOKEN => '123456',
             ]);
         }
-        return $this->client;
+        return $client;
     }
 }

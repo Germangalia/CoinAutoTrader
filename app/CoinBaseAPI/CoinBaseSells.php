@@ -1,4 +1,5 @@
 <?php
+namespace App\CoinBaseAPI;
 
 use Coinbase\Wallet\Resource\Sell;
 use Coinbase\Wallet\Enum\Param;
