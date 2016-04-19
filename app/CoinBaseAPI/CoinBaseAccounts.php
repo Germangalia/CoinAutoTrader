@@ -10,6 +10,9 @@ class CoinBaseAccounts
     //Account
     protected $account;
 
+    //Balance of the account
+    protected $balance;
+
     /**
      * CoinBaseAccounts constructor.
      * @param $client
@@ -26,6 +29,16 @@ class CoinBaseAccounts
         $account = new Account();
         $account->setName('New Wallet');
         $this->client->createAccount($this->account);
+
+    }
+
+    public function balanceAcount()
+    {
+        // After some time, the transaction should complete and your balance should update
+        $this->client->refreshAccount($this->account);
+
+        $this->balance = $this->account->getBalance();
+        //echo $this->account->getName() . ": " . $this->balance->getAmount() . $this->balance->getCurrency() .  "\r\n";
 
     }
 
