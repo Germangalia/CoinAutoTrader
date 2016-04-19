@@ -7,6 +7,7 @@ class CoinBaseUsers
     public function getAuthorizationInfo($client)
     {
         $auth = $client->getCurrentAuthorization();
+        return $auth;
     }
 
 
@@ -14,6 +15,7 @@ class CoinBaseUsers
     public function lookupUserInfo($client, $userId)
     {
         $user = $client->getUser($userId);
+        return $user;
     }
 
 
@@ -21,6 +23,7 @@ class CoinBaseUsers
     public function getCurrentUser($client)
     {
         $user = $client->getCurrentUser();
+        return $user;
     }
 
 

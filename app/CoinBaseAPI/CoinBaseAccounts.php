@@ -4,42 +4,73 @@ use Coinbase\Wallet\Resource\Account;
 
 class CoinBaseAccounts
 {
-    //Client authenticated
-    protected $client;
-
-    //Account
-    protected $account;
-
-    //Balance of the account
-    protected $balance;
-
-    /**
-     * CoinBaseAccounts constructor.
-     * @param $client
-     */
-    public function __construct($client)
-    {
-        $this->client = $client;
-    }
-
-
-    public function createAccount()
+    //Create a new account
+    public function createAccount($client)
     {
         // Generate a new bitcoin account for your client:
         $account = new Account();
         $account->setName('New Wallet');
-        $this->client->createAccount($this->account);
-
+        $client->createAccount($account);
+        return $account;
     }
 
-    public function balanceAcount()
+
+    //Get balance of acount
+    public function balanceAcount($client, $account)
     {
         // After some time, the transaction should complete and your balance should update
-        $this->client->refreshAccount($this->account);
+        $client->refreshAccount($account);
 
-        $this->balance = $this->account->getBalance();
+        $balance = $account->getBalance();
         //echo $this->account->getName() . ": " . $this->balance->getAmount() . $this->balance->getCurrency() .  "\r\n";
-
+        return $balance;
     }
+
+
+    //List all accounts
+    public function getAllAccounts($client)
+    {
+        $accounts = $client->getAccounts();
+        return $accounts;
+    }
+    
+
+    //List account details
+    public function getAccountDetails($client, $accountId)
+    {
+        $account = $client->getAccount($accountId);
+        return $account;
+    }
+
+
+    //List primary account details
+    public function getPrimaryAccountDetails($client)
+    {
+        $account = $client->getPrimaryAccount();
+        return $account;
+    }
+
+
+    //Set account as primary
+    public function setAccountAsPrimary($client, $account)
+    {
+        $client->setPrimaryAccount($account);
+    }
+
+
+    //Update an account
+    public function updateAccount($client, $account)
+    {
+        $account->setName('New Account Name');
+        $client->updateAccount($account);
+    }
+
+
+    //Delete an account
+    public function deleteAccount($client, $account)
+    {
+        $client->deleteAccount($account);
+    }
+
 
 }
