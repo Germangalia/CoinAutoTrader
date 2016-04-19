@@ -1,12 +1,23 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: ggalia84
- * Date: 18/04/16
- * Time: 20:54
- */
+
 class CoinBasePaymentMethods
 {
+
+    //List payment methods
+    public function getPaymentMethods($client)
+    {
+        $paymentMethods = $client->getPaymentMethods();
+        return $paymentMethods;
+    }
+
+
+    //Get payment method
+    public function getPaymentMethodById($client, $paymentMethodId)
+    {
+        $paymentMethod = $client->getPaymentMethod($paymentMethodId);
+        return $paymentMethod;
+    }
+
 
 }
