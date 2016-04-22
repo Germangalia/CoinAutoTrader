@@ -38,7 +38,7 @@ class CoinBaseAuthentication
     }
 
 
-    public function twoFactorAuthentication()
+    public function twoFactorAuthentication($client)
     {
         //Authentication in tho factors
         $transaction = Transaction::send([
