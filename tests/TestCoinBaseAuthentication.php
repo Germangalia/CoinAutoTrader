@@ -1,5 +1,6 @@
 <?php
 
+use App\CoinBaseAPI\CoinBaseAuthentication;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -7,12 +8,15 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class TestCoinBaseAuthentication extends TestCase
 {
     /**
-     * A basic test example.
+     * Test to check if the $client is ok
      *
      * @return void
      */
-    public function testExample()
+    public function testAuthenticationCreateClient()
     {
-        $this->assertTrue(true);
+        $auth = new CoinBaseAuthentication();
+        $client = $auth->apiKeyAuthentication(env('COINBASE_API_KEY'), env('COINBASE_API_SECRET'));
+
+
     }
 }

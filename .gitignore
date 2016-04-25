@@ -6,7 +6,8 @@ Homestead.json
 .gitignore~
 vendor/
 node_modules/
-
+Trader/AutoTrader.php
+Trader/
 # Laravel 4 specific
 bootstrap/compiled.php
 app/storage/

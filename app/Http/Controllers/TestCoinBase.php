@@ -15,17 +15,17 @@ class TestCoinBase extends Controller
         //Authentication works well
         $auth = new CoinBaseAuthentication();
         $client = $auth->apiKeyAuthentication(env('COINBASE_API_KEY'), env('COINBASE_API_SECRET'));
-        //dd($client);
+        dd($client);
 
-        //Create Acount works well
-        $acco = new CoinBaseAccounts();
-        $account = $acco->createAccount($client);
-        //dd($account);
-
-        //Create Address works well
-        $addr = new CoinBaseAddresses();
-        $addr->createAddress($client, $account);
-        $allAddress = $addr->getAddressForAccount($client, $account);
-        dd($allAddress);
+//        //Create Acount works well
+//        $acco = new CoinBaseAccounts();
+//        $account = $acco->createAccount($client);
+//        //dd($account);
+//
+//        //Create Address works well
+//        $addr = new CoinBaseAddresses();
+//        $addr->createAddress($client, $account);
+//        $allAddress = $addr->getAddressForAccount($client, $account);
+//        dd($allAddress);
     }
 }
