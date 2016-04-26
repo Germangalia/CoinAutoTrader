@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateAccountsCoinBasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('accounts_coin_bases', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->bcrypt(string('password'));
-            $table->bcrypt(string('coinbase_api_key'));
-            $table->bcrypt(string('coinbase_api_secret'));
-            $table->rememberToken();
+            $table->string('user_id');
+            $table->bcrypt(string('wallet_address'));
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('accounts_coin_bases');
     }
 }
