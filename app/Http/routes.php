@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('test/coinbase', 'TestCoinBase@testing');
+
+Route::post('register', array('uses'=>'RegisterController@createUser'));

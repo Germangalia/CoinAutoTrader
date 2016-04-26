@@ -9,7 +9,7 @@
     <body class="hold-transition register-page">
     <div class="register-box">
         <div class="register-logo">
-            <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+            <a href="{{ url('/home') }}"><b>Coin</b>AutoTrader</a>
         </div>
 
         @if (count($errors) > 0)
@@ -42,6 +42,15 @@
                 <div class="form-group has-feedback">
                     <input type="password" class="form-control" placeholder="Retype password" name="password_confirmation"/>
                     <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                </div>
+                <div><h4>Coin Base</h4></div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Coin Base API Key" name="key"/>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Coin Base API Sectret" name="secret"/>
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
