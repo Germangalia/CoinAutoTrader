@@ -16,7 +16,7 @@ class CreateAccountsCoinBasesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('user_id');
-            $table->bcrypt(string('wallet_address'));
+            $table->string('wallet_address')->bcrypt();
             $table->timestamps();
         });
     }
