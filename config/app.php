@@ -172,6 +172,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         #llum_providers
 
+        Collective\Html\HtmlServiceProvider::class,
+
     ],
 
     /*
@@ -228,6 +230,9 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         #llum_aliases
+
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

@@ -5,11 +5,11 @@ use Coinbase\Wallet\Resource\Account;
 class CoinBaseAccounts
 {
     //Create a new account
-    public function createAccount($client)
+    public function createAccount($client, $title)
     {
         // Generate a new bitcoin account for your client:
         $account = new Account();
-        $account->setName('New Wallet');
+        $account->setName($title);
         $client->createAccount($account);
         return $account;
     }

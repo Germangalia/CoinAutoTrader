@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 //Accounts
 Route::get('accounts', 'AccountsController@index');
+Route::post('accounts', 'AccountsController@createAccount');
 
 
 //Test
