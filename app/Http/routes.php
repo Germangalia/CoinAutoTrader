@@ -15,4 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
+
+//Accounts
+Route::get('accounts', 'AccountsController@index');
+
+
+//Test
 Route::get('test/coinbase', 'TestCoinBase@testing');
+
+
