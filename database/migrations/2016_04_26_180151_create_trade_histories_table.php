@@ -14,8 +14,10 @@ class CreateTradeHistoriesTable extends Migration
     {
         Schema::create('trade_histories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id');
-            $table->string('account_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('account_id')->unsigned();
+            $table->foreign('account_id')->references('id')->on('accounts_coin_bases')->onDelete('cascade')->onUpdate('cascade');
             $table->float('initial_capital');
             $table->float('coin_price');
             $table->float('coins');
@@ -42,6 +44,11 @@ class CreateTradeHistoriesTable extends Migration
      */
     public function down()
     {
+        Schema::table('trade_histories', function(Blueprint $table) {
+            $table->dropForeign('trade_histories_user_id_foreign');
+            $table->dropForeign('trade_histories_account_id_foreign');
+        });
+
         Schema::drop('trade_histories');
     }
 }

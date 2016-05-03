@@ -13,9 +13,10 @@ class CreateAccountsCoinBasesTable extends Migration
     public function up()
     {
         Schema::create('accounts_coin_bases', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();;
             $table->string('name');
-            $table->string('user_id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('account_id');
             $table->string('wallet_address');
             $table->float('balance');
@@ -32,6 +33,9 @@ class CreateAccountsCoinBasesTable extends Migration
      */
     public function down()
     {
+        Schema::table('accounts_coin_bases', function(Blueprint $table) {
+            $table->dropForeign('accounts_coin_bases_user_id_foreign');
+        });
         Schema::drop('accounts_coin_bases');
     }
 }

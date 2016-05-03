@@ -55,7 +55,7 @@ class AccountsController extends Controller
         $dataAccount = new AccountsCoinBase();
 
         $dataAccount->name = $requests->title;
-        $dataAccount->user_id = $user->id;
+        //$dataAccount->user_id = $user->id;
         $dataAccount->account_id = $account->getId();
         $dataAccount->wallet_address = $address->getAddress();
         $dataAccount->balance = $account->getBalance()->getAmount();
