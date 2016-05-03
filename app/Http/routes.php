@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
 //Accounts
 Route::get('accounts', 'AccountsController@index');
-Route::post('postAccount', 'AccountsController@createAccount');
+Route::post('accounts', 'AccountsController@createAccount');
 
 
 //Test

@@ -11,6 +11,7 @@ class CoinBaseAddresses
         $address = new Address();
         $address->setName('New Address');
         $client->createAccountAddress($account, $address);
+        return $address;
     }
 
     //List receive addresses for account

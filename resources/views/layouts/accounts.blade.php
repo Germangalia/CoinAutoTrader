@@ -11,12 +11,12 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
 
-                {!! Form::open(array('url' => 'postAccount')) !!}
+                {!! Form::open(array('url' => 'accounts', 'method' => 'post', 'class' => 'form', 'novalidate' => 'novalidate')) !!}
                 <div class="form-group">
                     <label for="usr">Title :</label>
-                    <input type="text" class="form-control" id="title">
+                    <input type="text" class="form-control" id="title" name="title">
                     <label for="usr">Initial capital ($):</label>
-                    <input type="text" class="form-control" id="initial-capital">
+                    <input type="text" class="form-control" id="initialCapital" name="initialCapital">
                     <label for="usr"></label>
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Create Account</button>
 
@@ -24,7 +24,7 @@
                 {!! Form::close() !!}
 
                 <div class="panel panel-default">
-                    <div class="panel-heading">Coin Base Acounts</div>
+                    <div class="panel-heading">Coin Base Accounts</div>
 
                     <div class="panel-body">
 

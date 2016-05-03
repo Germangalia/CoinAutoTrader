@@ -69,8 +69,8 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'coinbase_api_key' => bcrypt($data['key']),
-            'coinbase_api_secret' => bcrypt($data['secret']),
+            'coinbase_api_key' => $data['key'],
+            'coinbase_api_secret' => $data['secret'],
         ]);
     }
 }

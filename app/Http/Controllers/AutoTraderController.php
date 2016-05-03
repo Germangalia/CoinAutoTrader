@@ -14,10 +14,16 @@ class AutoTraderController extends Controller
 
         //Get all active accounts from database.
 
+        $accountsClass = new \GetActiveAccounts();
+        $activeAccounts = $accountsClass->getAccounts();
 
 
         //Get user from account.
 
+        foreach($activeAccounts as $activeAccount)
+        {
+
+        }
 
 
         //Get last history record from account.
