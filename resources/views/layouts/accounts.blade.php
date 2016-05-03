@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
 
-                {!! Form::open(array('action' => 'AccountsController@createAccount')) !!}
+                {!! Form::open(array('url' => 'postAccount')) !!}
                 <div class="form-group">
                     <label for="usr">Title :</label>
                     <input type="text" class="form-control" id="title">

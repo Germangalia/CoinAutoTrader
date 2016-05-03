@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Requests;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -18,13 +19,13 @@ Route::get('/', function () {
 
 
 
-
+Route::group(['middleware' => ['web']], function () {
 //Accounts
 Route::get('accounts', 'AccountsController@index');
-Route::post('accounts', 'AccountsController@createAccount');
+Route::post('postAccount', 'AccountsController@createAccount');
 
 
 //Test
 Route::get('test/coinbase', 'TestCoinBase@testing');
-
+});
 

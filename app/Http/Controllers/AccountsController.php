@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\AccountsCoinBase;
 use Auth;
+use Crypt;
 use Illuminate\Http\Request;
-use App\CoinBaseAPI\CoinBaseAuthentication;
-use App\CoinBaseAPI\CoinBaseAccounts;
-use App\Http\Requests;
+
 
 class AccountsController extends Controller
 {
@@ -27,7 +26,7 @@ class AccountsController extends Controller
      * Create new account
      */
 
-    public function createAccount(Requests $requests)
+    public function createAccount( Request $requests)
     {
 
         //Select Authenticated user
@@ -36,20 +35,22 @@ class AccountsController extends Controller
         $apiKey = $user->coinbase_api_key;
         $apiSecret = $user->coinbase_api_secret;
 
+        dd($apiKey);
+
         //Create client
-        $client = apiKeyAuthentication($apiKey, $apiSecret);
-
-        //Create account
-        $account = createAccount($client, $requests->title);
-
-        //Save to database
-        $dataAccount = new AccountsCoinBase();
-
-        $dataAccount->name = $requests->title;
-        $dataAccount->user_id = $user->id;
-        $dataAccount->user_id = $account;
-
-        $dataAccount->save;
+//        $client = \App\CoinBaseAPI\CoinBaseAuthentication::class->apiKeyAuthentication($apiKey, $apiSecret);
+//
+//        //Create account
+//        $account = \App\CoinBaseAPI\CoinBaseAccounts::class->createAccount($client, $requests->title);
+//
+//        //Save to database
+//        $dataAccount = new AccountsCoinBase();
+//
+//        $dataAccount->name = $requests->title;
+//        $dataAccount->user_id = $user->id;
+//        $dataAccount->user_id = $account;
+//
+//        $dataAccount->save;
 
     }
 
