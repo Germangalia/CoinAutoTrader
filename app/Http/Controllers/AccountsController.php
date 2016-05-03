@@ -60,7 +60,8 @@ class AccountsController extends Controller
         $dataAccount->wallet_address = $address->getAddress();
         $dataAccount->balance = $account->getBalance()->getAmount();
         $dataAccount->initial_capital = $requests->initialCapital;
-        $dataAccount->active = false;
+        //TODO put active to false.
+        $dataAccount->active = true;
 
         $dataAccount->save();
 

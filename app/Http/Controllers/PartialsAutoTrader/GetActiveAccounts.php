@@ -1,20 +1,16 @@
 <?php
+namespace App\Http\Controllers\PartialsAutoTrader;
 
 
-class GetActiveAccounts
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
+
+class GetActiveAccounts extends Controller
 {
-    
+
     //Active Accounts Collection
     private $activeAccounts;
 
-
-    /**
-     * GetActiveAccounts constructor.
-     */
-    public function __construct()
-    {
-        
-    }
 
     /**
      * @return mixed
@@ -38,8 +34,7 @@ class GetActiveAccounts
      */
     public function getAccounts()
     {
-        $this->activeAccounts = DB::table('accounts_coin_bases')->where('active' == true)->get();
+        $this->activeAccounts = DB::table('accounts_coin_bases')->where('active', true)->get();
         return $this->activeAccounts;
     }
-
 }

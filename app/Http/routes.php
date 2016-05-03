@@ -20,12 +20,13 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => ['web']], function () {
-//Accounts
-Route::get('accounts', 'AccountsController@index');
-Route::post('accounts', 'AccountsController@createAccount');
+    //Accounts
+    Route::get('accounts', 'AccountsController@index');
+    Route::post('accounts', 'AccountsController@createAccount');
 
 
-//Test
-Route::get('test/coinbase', 'TestCoinBase@testing');
+    //Test
+    Route::get('test/coinbase', 'TestCoinBase@testing');
+    Route::get('test/trader', 'AutoTraderController@execute');
 });
 
