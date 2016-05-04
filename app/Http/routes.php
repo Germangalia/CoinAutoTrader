@@ -33,3 +33,5 @@ Route::group(['middleware' => ['web']], function () {
 
 //API
 Route::get('/api/user-accounts', 'AccountsController@getUserAccounts');
+Route::get('/api/accounts/{id}', 'AccountsController@activateAccounts');
+Route::delete('/api/accounts/{id}', 'AccountsController@deleteAccounts');

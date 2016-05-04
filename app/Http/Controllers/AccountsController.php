@@ -9,6 +9,7 @@ use Auth;
 use Crypt;
 use Illuminate\Http\Request;
 use App\CoinBaseAPI\CoinBaseAuthentication;
+use Illuminate\Support\Facades\DB;
 
 
 class AccountsController extends Controller
@@ -77,6 +78,34 @@ class AccountsController extends Controller
         //Get accounts from database
         $userAccounts = DB::table('accounts_coin_bases')->where('user_id', $userId)->get();
         return $userAccounts;
+    }
+
+    public function activateAccounts(Request $request)
+    {
+        //TODO
+        //Get data from user
+
+        //Get account details
+
+        //Coin Base authentication
+
+        //Get balance
+
+        //Activate account
+
+        //Save to database
+
+        //Return accounts view
+    }
+
+    public function deleteAccounts(Request $request)
+    {
+        //TODO
+        //Get id of Account
+
+        //Delete from database
+
+        //Return accounts view
     }
 
 }
