@@ -35,14 +35,14 @@ class AutoTraderController extends Controller
 
 
             //Get last history record from account and keep atributes.
-            $lastHistoryRecord = DB::table('trade_histories')->where('account_id', $accountId)->last();
+            $lastHistoryRecord = DB::table('trade_histories')->where('account_id', $accountId)->orderBy('updated_at', 'desc')->take(1)->get();
 
             $capital = $lastHistoryRecord->capital_amount;
             $lastPortafolioControl = $lastHistoryRecord->portfolio_control;
             $lastMarketOrder = $lastHistoryRecord->market_order;
 
             //Extract data from user
-            $userAtributes = DB::table('users')->where('id', $DBuserId)->last();
+            $userAtributes = DB::table('users')->where('id', $DBuserId)->orderBy('updated_at', 'desc')->take(1)->get();
 
             $apiKey = $userAtributes->coinbase_api_key;
             $apiSecret = $userAtributes->coinbase_api_secret;
@@ -53,7 +53,7 @@ class AutoTraderController extends Controller
             $accounter = new AccountsCoinBase();
             $accountCoinBase = $accounter->getAccountDetails($clientCoinBase, $accountId);
 
-            $dd($accountCoinBase);
+            dd($accountCoinBase);
 
             //Create object AutoTrader
 

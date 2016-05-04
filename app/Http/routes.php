@@ -30,3 +30,6 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('test/trader', 'AutoTraderController@execute');
 });
 
+
+//API
+Route::get('/api/user-accounts', 'AccountsController@getUserAccounts');

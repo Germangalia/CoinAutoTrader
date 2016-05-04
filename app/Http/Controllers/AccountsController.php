@@ -55,7 +55,7 @@ class AccountsController extends Controller
         $dataAccount = new AccountsCoinBase();
 
         $dataAccount->name = $requests->title;
-        //$dataAccount->user_id = $user->id;
+        $dataAccount->user_id = $user->id;
         $dataAccount->account_id = $account->getId();
         $dataAccount->wallet_address = $address->getAddress();
         $dataAccount->balance = $account->getBalance()->getAmount();
@@ -66,6 +66,17 @@ class AccountsController extends Controller
         $dataAccount->save();
 
         return view('layouts/accounts');
+    }
+
+    public function getUserAccounts()
+    {
+        //Select Authenticated user
+        $user = Auth::user();
+        $userId = $user->id;
+
+        //Get accounts from database
+        $userAccounts = DB::table('accounts_coin_bases')->where('user_id', $userId)->get();
+        return $userAccounts;
     }
 
 }
