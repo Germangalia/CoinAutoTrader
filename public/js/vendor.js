@@ -32,15 +32,18 @@ var vm = new Vue({
         },
 
         activateAccount: function(id) {
-            //TODO video min. 20.
-            //this.
+            this.$http.get('/api/accounts-active/' + id)
+
+            this.fetchAccounts()
         },
 
         removeAccount: function(id) {
 
             var ConfirmBox = confirm("Are you sure, you want to delete this Account?")
 
-            if(ConfirmBox) this.$http.delete('/api/users/' + id)
+            if(ConfirmBox) this.$http.get('/api/accounts-delete/' + id)
+
+            this.fetchAccounts()
         }
 
     },
@@ -49,8 +52,8 @@ var vm = new Vue({
     computed: {
         validation: function () {
             return {
-                title: !!this.newAccount.title.trim(),
-                capital: this.newAccount.capital.isNumber()
+                title: !!this.title.trim(),
+                capital: this.capital.isNumber()
             }
         },
         isValid: function () {
@@ -59,6 +62,7 @@ var vm = new Vue({
                 return validation[key]
             })
         }
+
     },
 
     ready: function() {

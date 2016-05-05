@@ -28,10 +28,11 @@ Route::group(['middleware' => ['web']], function () {
     //Test
     Route::get('test/coinbase', 'TestCoinBase@testing');
     Route::get('test/trader', 'AutoTraderController@execute');
+
+    //API
+    Route::get('api/user-accounts', 'AccountsController@getUserAccounts');
+    Route::get('api/accounts-active/{id}', 'AccountsController@activateAccounts');
+    Route::get('/api/accounts-delete/{id}', 'AccountsController@deleteAccounts');
 });
 
 
-//API
-Route::get('/api/user-accounts', 'AccountsController@getUserAccounts');
-Route::get('/api/accounts/{id}', 'AccountsController@activateAccounts');
-Route::delete('/api/accounts/{id}', 'AccountsController@deleteAccounts');

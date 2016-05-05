@@ -74,42 +74,52 @@ class AccountsController extends Controller
         //Select Authenticated user
         $user = Auth::user();
         $userId = $user->id;
-
         //Get accounts from database
         $userAccounts = DB::table('accounts_coin_bases')->where('user_id', $userId)->get();
         return $userAccounts;
     }
 
-    public function activateAccounts(Request $request)
+    public function activateAccounts($id)
     {
+
         //Get data from user
         $user = Auth::user();
+
         $apiKey = $user->coinbase_api_key;
         $apiSecret =  $user->coinbase_api_secret;
 
         //Get account details
-        $accountRecord =  DB::table('accounts_coin_bases')->where('id', $request)->get();
+        $accountRecord =  AccountsCoinBase::findOrFail($id);
+
         $accountActive = $accountRecord->active;
         $accountId = $accountRecord->account_id;
         $accountCapital = $accountRecord->initial_capital;
 
-
         if(!$accountActive){
             //Coin Base authentication
-            $client = \App\CoinBaseAPI\CoinBaseAuthentication::class->apiKeyAuthentication($apiKey, $apiSecret);
-            $account = \App\CoinBaseAPI\CoinBaseAccounts::class->getAccountDetails($client, $accountId);
+            $authentication = new CoinBaseAuthentication();
+            $client = $authentication->apiKeyAuthentication($apiKey, $apiSecret);
+
+            $accounter = new CoinBaseAccounts();
+            $account = $accounter->getAccountDetails($client, $accountId);
 
             //Get balance
-            $balance = \App\CoinBaseAPI\CoinBaseAccounts::class->balanceAccount($client, $account);
+            $balance = $accounter->balanceAccount($client, $account);
+            $balanceAmount = $balance->getAmount();
 
-            if(($balance >= ($accountCapital*0.5) && ($balance <= ($accountCapital*0.8)))){
+            if(($balanceAmount >= ($accountCapital*0.5) && ($balanceAmount <= ($accountCapital*0.8)))){
                 //Activate account
-                DB::table('accounts_coin_bases')->where('id', $request)->update(array('active' => true));
+                $accountRecord->balance = $balanceAmount;
+                $accountRecord->active = true;
+                $accountRecord->save();
+                //DB::table('accounts_coin_bases')->where('id', $id)->update(array('active' => true));
             }
 
         }else{
             //Activate to false
-            DB::table('accounts_coin_bases')->where('id', $request)->update(array('active' => false));
+            $accountRecord->active = false;
+            $accountRecord->save();
+            //DB::table('accounts_coin_bases')->where('id', $id)->update(array('active' => false));
         }
 
         //Return accounts view
@@ -117,10 +127,11 @@ class AccountsController extends Controller
 
     }
 
-    public function deleteAccounts(Request $request)
+    public function deleteAccounts($id)
     {
+
         //Delete from database
-        DB::table('accounts_coin_bases')->where('id', $request)->delete();
+        AccountsCoinBase::destroy($id);
 
         //Return accounts view
         return view('layouts/accounts');

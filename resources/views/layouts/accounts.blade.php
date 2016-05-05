@@ -52,9 +52,9 @@
                                     <td>@{{ account.wallet_address }}</td>
                                     <td>@{{ account.initial_capital }}</td>
                                     <td>@{{ account.balance }}</td>
-                                    <td>@{{ !!account.active }}</td>
+                                    <td>@{{ account.active }}</td>
                                     <td>
-                                        <button class="btn btn-success btn-sm" @click="activateAccount(account.id)">Activate</button>
+                                        <button v-show="!isActive" class="btn btn-success btn-sm" @click="activateAccount(account.id)">Activate/Disable</button>
                                         <button class="btn btn-danger btn-sm" @click="removeAccount(account.id)">Remove</button>
                                     </td>
                                 </tr>
