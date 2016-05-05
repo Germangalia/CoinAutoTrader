@@ -82,30 +82,48 @@ class AccountsController extends Controller
 
     public function activateAccounts(Request $request)
     {
-        //TODO
         //Get data from user
+        $user = Auth::user();
+        $apiKey = $user->coinbase_api_key;
+        $apiSecret =  $user->coinbase_api_secret;
 
         //Get account details
+        $accountRecord =  DB::table('accounts_coin_bases')->where('id', $request)->get();
+        $accountActive = $accountRecord->active;
+        $accountId = $accountRecord->account_id;
+        $accountCapital = $accountRecord->initial_capital;
 
-        //Coin Base authentication
 
-        //Get balance
+        if(!$accountActive){
+            //Coin Base authentication
+            $client = \App\CoinBaseAPI\CoinBaseAuthentication::class->apiKeyAuthentication($apiKey, $apiSecret);
+            $account = \App\CoinBaseAPI\CoinBaseAccounts::class->getAccountDetails($client, $accountId);
 
-        //Activate account
+            //Get balance
+            $balance = \App\CoinBaseAPI\CoinBaseAccounts::class->balanceAccount($client, $account);
 
-        //Save to database
+            if(($balance >= ($accountCapital*0.5) && ($balance <= ($accountCapital*0.8)))){
+                //Activate account
+                DB::table('accounts_coin_bases')->where('id', $request)->update(array('active' => true));
+            }
+
+        }else{
+            //Activate to false
+            DB::table('accounts_coin_bases')->where('id', $request)->update(array('active' => false));
+        }
 
         //Return accounts view
+        return view('layouts/accounts');
+
     }
 
     public function deleteAccounts(Request $request)
     {
-        //TODO
-        //Get id of Account
-
         //Delete from database
+        DB::table('accounts_coin_bases')->where('id', $request)->delete();
 
         //Return accounts view
+        return view('layouts/accounts');
     }
 
 }
