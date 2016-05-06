@@ -17,14 +17,22 @@ elixir(function(mix) {
     mix.less('bootstrap/bootstrap.less');
 
     var npmDir = 'node_modules/',
-        jsDir = 'resources/assets/js/';
+        jsDir = 'resources/assets/js/',
+        cssDir = 'resources/assets/css/';
 
     mix.copy(npmDir + 'vue/dist/vue.min.js', jsDir);
     mix.copy(npmDir + 'vue-resource/dist/vue-resource.min.js', jsDir);
 
+    // Compile scripts
     mix.scripts([
         'vue.min.js',
         'vue-resource.min.js',
-        'accounts-vue.js'
+        'accounts-vue.js',
+        'home-vue.js'
     ], 'public/js/vendor.js');
+
+    // Compile styles
+    mix.styles([
+        'home-vue.css',
+    ], 'public/css/app.css');
 });
