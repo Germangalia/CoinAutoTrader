@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\AccountsCoinBase;
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAddresses;
+use App\Http\Controllers\PartialsAutoTrader\FirstHistoryRecord;
+use App\TradeHistory;
 use Auth;
 use Crypt;
 use Illuminate\Http\Request;
@@ -113,6 +115,15 @@ class AccountsController extends Controller
                 $accountRecord->active = true;
                 $accountRecord->save();
                 //DB::table('accounts_coin_bases')->where('id', $id)->update(array('active' => true));
+
+                //Make first record in history table
+                $historyRecord =  TradeHistory::find($id);
+                if($historyRecord != null){
+
+                    $history = new FirstHistoryRecord();
+                    $history->makeFirstRecord($user, $accountId, $client, $account, $accountCapital, $balanceAmount);
+
+                }
             }
 
         }else{

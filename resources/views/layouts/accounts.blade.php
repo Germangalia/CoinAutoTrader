@@ -10,6 +10,7 @@
     <div class="container spark-screen">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
+
                 {!! Form::open(array('url' => 'accounts', 'method' => 'post', 'class' => 'form', 'novalidate' => 'novalidate')) !!}
                 <div class="form-group">
                     <label for="usr">Title :</label>
@@ -27,8 +28,32 @@
                 </div>
                 <div class="alert alert-success" transition="success" v-if="success">The Account is ready to activate.</div>
                 {!! Form::close() !!}
+
+                <!--
+                <div class="alert alert-danger" v-if="!isValid">
+                    <ul>
+                        <li v-show="!validation.name">Title cannot be empty.</li>
+                        <li v-show="!validation.initial_capital">Please provide a valid capital amount.</li>
+                    </ul>
+                </div>
+
+                <form action="#" @submit.prevent="AddNewAccount" method="POST">
+                    <div class="form-group">
+                        <label for="name">Account Title</label>
+                        <input v-model="newAccount.name" type="text" id="name" name="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="initial_capital">Account Initial Capital</label>
+                        <input v-model="newAccount.initial_capital" type="text" id="initial_capital" name="initial_capital" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button :disabled="!isValid" class="btn btn-primary" type="submit">Add New Account</button>
+                    </div>
+                </form>
+                -->
+
                 <div class="panel panel-default">
-                    <div class="panel-heading">Coin Base Accounts</div>
+                    <div class="panel-heading"><h3>Coin Base Accounts</h3></div>
                     <div class="panel-body">
                         <div id="AccountsController">
 

@@ -20,7 +20,13 @@ var vm = new Vue({
     el: '#AccountsController',
 
     data: {
-      success: false
+
+        newAccount: {
+            name: 'hola',
+            initial_capital: '1256'
+        },
+
+        success: false
     },
 
     methods: {
@@ -29,6 +35,12 @@ var vm = new Vue({
             this.$http.get('/api/user-accounts', function(data) {
                 this.$set('accounts', data)
             })
+        },
+
+        AddNewAccount: function () {
+
+
+
         },
 
         activateAccount: function(id) {
@@ -52,8 +64,8 @@ var vm = new Vue({
     computed: {
         validation: function () {
             return {
-                title: !!this.title.trim(),
-                capital: this.capital.isNumber()
+                name: !!this.newAccount.name.trim(),
+                initial_capital: this.newAccount.initial_capital.isNumber()
             }
         },
         isValid: function () {
