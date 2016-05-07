@@ -45,7 +45,7 @@ class AutoTraderController extends Controller
             //Extract data from user
             $userAtributes = DB::table('users')->where('id', $DBuserId)->orderBy('updated_at', 'desc')->take(1)->get();
 
-            dd($userAtributes);
+            //dd($userAtributes);
 
             $apiKey = $userAtributes->coinbase_api_key;
             $apiSecret = $userAtributes->coinbase_api_secret;
@@ -56,7 +56,7 @@ class AutoTraderController extends Controller
             $accounter = new AccountsCoinBase();
             $account = $accounter->getAccountDetails($client, $accountId);
 
-            dd($account);
+            //dd($account);
 
             //Create object AutoTrader
             $autoTrader = new \AutoTrader($client, $account, $lastHistoryRecord);
@@ -113,6 +113,8 @@ class AutoTraderController extends Controller
             $calculatorData = TradeCalculator::find($calculatorRecord->id);
             $amount = $calculatorData->coin_market_order;
 
+            //dd($amount);
+
             $operation = false;
             if($amount > 0)
             {
@@ -128,7 +130,9 @@ class AutoTraderController extends Controller
                 $seller = new CoinBaseSells();
                 $operation = $seller->sellBitcoins($client, $account, $amount);
             }
-            
+
+            //dd($operation);
+
 
             if($operation){
                 //Actualize account balance

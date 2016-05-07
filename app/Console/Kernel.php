@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Http\Controllers\AutoTraderController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Commands\Inspire::class,
+        \App\Console\Commands\Inspire::class,
     ];
 
     /**
@@ -26,5 +28,12 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        $schedule->call(function () {
+            $autoTraderExecutor = new AutoTraderController();
+            $autoTraderExecutor->execute();
+        })
+            //->daily();
+            ->everyTenMinutes();
     }
 }
