@@ -28,7 +28,8 @@ elixir(function(mix) {
         'vue.min.js',
         'vue-resource.min.js',
         'accounts-vue.js',
-        'home-vue.js'
+        'home-vue.js',
+        'history-angular.js'
     ], 'public/js/vendor.js');
 
     // Compile styles

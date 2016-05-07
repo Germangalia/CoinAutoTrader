@@ -23,16 +23,20 @@ Route::group(['middleware' => ['web']], function () {
     //Accounts
     Route::get('accounts', 'AccountsController@index');
     Route::post('accounts', 'AccountsController@createAccount');
-
+    //History
+    Route::get('history', 'HistoryController@index');
 
     //Test
     Route::get('test/coinbase', 'TestCoinBase@testing');
     Route::get('test/trader', 'AutoTraderController@execute');
 
-    //API
+    //API Accounts
     Route::get('api/user-accounts', 'AccountsController@getUserAccounts');
     Route::get('api/accounts-active/{id}', 'AccountsController@activateAccounts');
     Route::get('/api/accounts-delete/{id}', 'AccountsController@deleteAccounts');
+
+    //API History
+    Route::get('api/user-history', 'HistoryController@getUserHistory');
 });
 
 
