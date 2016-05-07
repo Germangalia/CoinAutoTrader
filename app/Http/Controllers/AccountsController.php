@@ -105,11 +105,13 @@ class AccountsController extends Controller
             $accounter = new CoinBaseAccounts();
             $account = $accounter->getAccountDetails($client, $accountId);
 
-            //Get balance
-            $balance = $accounter->balanceAccount($client, $account);
-            $balanceAmount = $balance->getAmount();
+            //TODO PRODUCTION -> Get $balanceAmount
+            //$balance = $accounter->balanceAccount($client, $account);
+            //$balanceAmount = $balance->getAmount();
+            //TEST
+            $balanceAmount = ($accountCapital/2) + 1;
 
-            if(($balanceAmount >= ($accountCapital*0.5) && ($balanceAmount <= ($accountCapital*0.8)))){
+            if(($balanceAmount >= ($accountCapital*0.50) && ($balanceAmount <= ($accountCapital*0.8)))){
                 //Activate account
                 $accountRecord->balance = $balanceAmount;
                 $accountRecord->active = true;

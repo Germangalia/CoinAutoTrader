@@ -38,7 +38,7 @@ class FirstHistoryRecord
         $capital = $accountCapital - $coinsValue;
 
         //Get prortfolio_control
-        $portafolioControl = 0;
+        $portafolioControl = $coinsValue;
         //Get buy_sell_advice
         $buySellAdvice = 0;
         //Get market_order
@@ -47,7 +47,6 @@ class FirstHistoryRecord
         $coinMarketOrder = 0;
         //Get commission
         $commission = 0;
-        //TODO
 
          //Get coins amount
         $coinsAmount = $coinsValue;
@@ -84,6 +83,9 @@ class FirstHistoryRecord
         $dataHistory->benefit = $benefit;
 
         $dataHistory->save();
+
+        //Update DB Accounts record
+        DB::table('accounts_coin_bases')->where('id', $accountId)->update(array('balance' => $totalAmount));
     }
 
 }

@@ -26,6 +26,7 @@ class CoinBaseSells
     //Sell bitcoins
     public function sellBitcoins($client, $account, $amount)
     {
+        //TODO IN PRODUCTION (Try-Catch and control the exceptions)
         $sell = new Sell();
         $sell->setBitcoinAmount($amount);
 
@@ -33,6 +34,8 @@ class CoinBaseSells
         //Commit a sell
         //You only need to do this if you pass commit=false when you create the sell.
         $client->commitSell($sell);
+
+        return true;
     }
 
 }
