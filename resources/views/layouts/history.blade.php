@@ -28,9 +28,9 @@
 
                             <div class="bs-component" ng-controller="listdata">
                                 <table class="table table-striped table-hover">
-                                    <thead>
+                                  <thead>
                                     <tr>
-                                        <th>Account Id</th>
+                                       <!--   <th>Account Id</th>
                                         <th>Initial Capital ($)</th>
                                         <th>Coin Price ($)</th>
                                         <th>Coins Before Trade (B)</th>
@@ -41,12 +41,48 @@
                                         <th>Capital Amount ($)</th>
                                         <th>Total Amount ($)</th>
                                         <th>Benefit (%)</th>
-                                        <th>Time</th>
+                                        <th>Time</th>-->
+                                        <th ng-click="sort('account_id')">Account Id
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='account_id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('initial_capital')">Initial Capital ($)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='initial_capital'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('coin_price')">Coin Price ($)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='coin_price'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('coins')">Coins Before Trade (B)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='coins'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('coins_value')">Coins Value Before Trade ($)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='coins_value'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('coin_market_order')">Market Order ($)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='coin_market_order'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('commission')">Commission (%)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='commission'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('coins_amount')">Coins Amount ($)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='coins_amount'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('capital_amount')">Capital Amount ($)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='capital_amount'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('total_amount')">Total Amount ($)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='total_amount'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('benefit')">Benefit (%)
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='benefit'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
+                                        <th ng-click="sort('created_at')">Time
+                                            <span class="glyphicon sort-icon" ng-show="sortKey=='created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat="history in historyData|filter:search">
-                                        <td>@{{history.account_id}}</td>
+                                    <tr ng-repeat="history in historyData|orderBy:sortKey:reverse|filter:search">
+                                       <td>@{{history.account_id}}</td>
                                         <td>@{{history.initial_capital}}</td>
                                         <td>@{{history.coin_price}}</td>
                                         <td>@{{history.coins}}</td>
