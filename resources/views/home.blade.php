@@ -42,7 +42,7 @@
 									<!-- A compact view smaller photos and titles -->
 									<li v-for="a in articles">
 										<a v-bind:href="a.url" target="_blank"><img v-bind:src="a.image.small" /></a>
-										<p>@{{a.title}}</p>
+										<h4>@{{a.title}}</h4>
 									</li>
 								</ul>
 

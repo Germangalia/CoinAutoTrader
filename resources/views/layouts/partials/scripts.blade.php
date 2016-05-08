@@ -8,8 +8,8 @@
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
 <!-- VUE.js -->
 <script src="{{ asset('/js/vendor.js') }}" type="text/javascript"></script>
-<!-- Angular.js -->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
