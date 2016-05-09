@@ -17,11 +17,13 @@ elixir(function(mix) {
     mix.less('bootstrap/bootstrap.less');
 
     var npmDir = 'node_modules/',
+        bowDir = 'bower_components/',
         jsDir = 'resources/assets/js/',
         cssDir = 'resources/assets/css/';
 
     mix.copy(npmDir + 'vue/dist/vue.min.js', jsDir);
     mix.copy(npmDir + 'vue-resource/dist/vue-resource.min.js', jsDir);
+    mix.copy(bowDir + 'angularUtils-pagination/dirPagination.js', jsDir);
 
     // Compile scripts
     mix.scripts([
@@ -29,7 +31,8 @@ elixir(function(mix) {
         'vue-resource.min.js',
         'accounts-vue.js',
         'home-vue.js',
-        'history-angular.js'
+        'history-angular.js',
+        'dirPagination.js'
     ], 'public/js/vendor.js');
 
     // Compile styles
