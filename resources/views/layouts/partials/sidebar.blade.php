@@ -36,9 +36,8 @@
             <li class="treeview"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>Home</span></a></li>
             <li class="treeview"><a href="accounts"><i class='fa fa-bank'></i> <span>Accounts</span></a></li>
             <li class="treeview"><a href="history"><i class='fa fa-history'></i> <span>History</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="statistics"><i class='fa fa-bar-chart'></i> <span>Statistics</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="#">Link in level 2</a></li>
                     <li><a href="#">Link in level 2</a></li>

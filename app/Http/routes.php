@@ -25,6 +25,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('accounts', 'AccountsController@createAccount');
     //History
     Route::get('history', 'HistoryController@index');
+    //Statistics
+    Route::get('statistics', 'StatitsticsController@index');
 
     //Test
     Route::get('test/coinbase', 'TestCoinBase@testing');

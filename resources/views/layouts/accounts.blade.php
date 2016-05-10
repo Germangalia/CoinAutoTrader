@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('htmlheader_title')
-    Coin Base Acounts
+    Coin Base Accounts
 @endsection
 
 @yield('scripts')
