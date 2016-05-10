@@ -31,6 +31,7 @@ Route::group(['middleware' => ['web']], function () {
     //Test
     Route::get('test/coinbase', 'TestCoinBase@testing');
     Route::get('test/trader', 'AutoTraderController@execute');
+    Route::get('test/chart', 'StatitsticsController@index');
 
     //API Accounts
     Route::get('api/user-accounts', 'AccountsController@getUserAccounts');
