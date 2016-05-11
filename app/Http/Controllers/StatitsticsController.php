@@ -19,7 +19,6 @@ class StatitsticsController extends Controller
         return view('layouts/statistics');
     }
 
-
     /**
      * Get accounts for user
      *

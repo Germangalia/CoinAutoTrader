@@ -34,12 +34,12 @@
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>Home</span></a></li>
-            <li class="treeview"><a href="accounts"><i class='fa fa-bank'></i> <span>Accounts</span></a></li>
-            <li class="treeview"><a href="history"><i class='fa fa-history'></i> <span>History</span></a></li>
+            <li class="treeview"><a href="{{ url('accounts') }}"><i class='fa fa-bank'></i> <span>Accounts</span></a></li>
+            <li class="treeview"><a href="{{ url('history') }}"><i class='fa fa-history'></i> <span>History</span></a></li>
             <li class="treeview">
-                <a href="statistics"><i class='fa fa-bar-chart'></i> <span>Statistics</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="{{ url('statistics') }}"><i class='fa fa-bar-chart'></i> <span>Statistics</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
+                    <li ><a class='fa fa-star' href="{{ url('statistics/index') }}">Index</a></li>
                     <li><a href="#">Link in level 2</a></li>
                 </ul>
             </li>

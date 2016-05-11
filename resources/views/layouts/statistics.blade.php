@@ -4,7 +4,7 @@
     Coin Base Statistics
 @endsection
 
-@yield('scripts')
+<link rel=stylesheet href="{{asset('css/app.css')}}" type="text/css">
 
 @section('main-content')
     <div class="container spark-screen">
@@ -15,9 +15,27 @@
                     <div class="panel-body">
                         <div id="StatisticsController">
 
+                            <form id="main" v-cloak>
 
-                            
+                                <div class="bar">
+                                    <!-- Create a binding between the searchString model and the text field -->
 
+                                    <input type="text" v-model="searchString" placeholder="Enter your search terms" />
+                                </div>
+
+                                <ul class="list">
+                                    <!-- Render a li element for every entry in the items array. Notice
+                                         the custom search filter "searchFor". It takes the value of the
+                                         searchString model as an argument. -->
+
+                                    <li v-for="i in articles | searchFor searchString">
+                                        <a v-bind:href="i.url"><img v-bind:src="i.image" /></a>
+                                        <p>@{{i.title}}</p>
+                                        <h3>@{{i.value}}</h3>
+                                    </li>
+                                </ul>
+
+                            </form>
 
                         </div>
                     </div>
@@ -25,6 +43,10 @@
             </div>
         </div>
     </div>
+
+    <!-- VUE.js -->
+    <script src="{{ asset('/js/vue.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/statistics-vue.js') }}" type="text/javascript"></script>
 
 @endsection
 

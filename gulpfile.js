@@ -45,8 +45,25 @@ elixir(function(mix) {
         'color-string.js'
     ], 'public/js/vendor.js');
 
+    // Compile scripts
+    mix.scripts([
+        'vue.min.js',
+        'vue-resource.min.js'
+    ], 'public/js/vue.js');
+
+    // Compile scripts
+    mix.scripts([
+        'statistics-vue.js'
+    ], 'public/js/statistics-vue.js');
+
     // Compile styles
     mix.styles([
         'home-vue.css',
+        'statistics-vue.css'
     ], 'public/css/app.css');
+
+    // Compile styles
+    mix.styles([
+        'statistics-vue.css'
+    ], 'public/css/statistics-vue.css');
 });
