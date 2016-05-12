@@ -14,10 +14,27 @@ use App\Http\Requests;
 class StatitsticsController extends Controller
 {
 
+    /**
+     * Return Statistics Index view
+     *
+     * @return mixed
+     */
     public function index()
     {
         return view('layouts/statistics');
     }
+
+    /**
+     * Return Statistics Index view
+     *
+     * @return mixed
+     */
+    public function benefitEvolution()
+    {
+        return view('layouts/benefit_evolution');
+    }
+
+
 
     /**
      * Get accounts for user

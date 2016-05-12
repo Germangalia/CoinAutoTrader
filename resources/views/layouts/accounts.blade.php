@@ -93,5 +93,9 @@
         </div>
     </div>
 
+    <!-- VUE.js -->
+    <script src="{{ asset('/js/vue.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/statistics-vue.js') }}" type="text/javascript"></script>
+
 @endsection
 

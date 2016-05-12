@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h3>Coin Base Statistics</h3></div>
+                    <div class="panel-heading"><h3>Statistics Index</h3></div>
                     <div class="panel-body">
                         <div id="StatisticsController">
 
@@ -31,7 +31,7 @@
                                     <li v-for="i in articles | searchFor searchString">
                                         <a v-bind:href="i.url"><img v-bind:src="i.image" /></a>
                                         <p>@{{i.title}}</p>
-                                        <h3>@{{i.value}}</h3>
+                                        <div>@{{i.value}}</div>
                                     </li>
                                 </ul>
 
@@ -46,7 +46,7 @@
 
     <!-- VUE.js -->
     <script src="{{ asset('/js/vue.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/statistics-vue.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/accounts-vue.js') }}" type="text/javascript"></script>
 
 @endsection
 

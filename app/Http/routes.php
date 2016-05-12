@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => 'auth'], function () {
     //Accounts
     Route::get('accounts', 'AccountsController@index');
     Route::post('accounts', 'AccountsController@createAccount');
@@ -27,6 +27,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('history', 'HistoryController@index');
     //Statistics
     Route::get('statistics/index', 'StatitsticsController@index');
+    Route::get('statistics/benefit-evolution', 'StatitsticsController@benefitEvolution');
+
 
     //Test
     Route::get('test/coinbase', 'TestCoinBase@testing');
@@ -38,11 +40,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('api/accounts-active/{id}', 'AccountsController@activateAccounts');
     Route::get('api/accounts-delete/{id}', 'AccountsController@deleteAccounts');
 
-    //API Statistics
-    Route::get('api/statistics/totalInitialCapital', 'StatitsticsController@getSumInitialCapital');
-
     //API History
     Route::get('api/user-history', 'HistoryController@getUserHistory');
+
+    //API Statistics
+    Route::get('api/statistics/totalInitialCapital', 'StatitsticsController@getSumInitialCapital');
+    Route::get('api/statistics/benefitEvolution', 'StatitsticsController@getHistory');
+
+
 });
 
 

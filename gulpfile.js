@@ -34,16 +34,23 @@ elixir(function(mix) {
 
     // Compile scripts
     mix.scripts([
-        'vue.min.js',
-        'vue-resource.min.js',
-        'accounts-vue.js',
-        'home-vue.js',
-        'history-angular.js',
-        'dirPagination.js',
-        'Chart.min.js',
-        'color.min.js',
-        'color-string.js'
+        'dirPagination.js'
     ], 'public/js/vendor.js');
+
+    // Compile scripts
+    mix.scripts([
+        'home-vue.js'
+    ], 'public/js/home-vue.js');
+
+    // Compile scripts
+    mix.scripts([
+        'accounts-vue.js'
+    ], 'public/js/accounts-vue.js');
+
+    // Compile scripts
+    mix.scripts([
+        'history-angular.js'
+    ], 'public/js/history-angular.js');
 
     // Compile scripts
     mix.scripts([
@@ -55,6 +62,17 @@ elixir(function(mix) {
     mix.scripts([
         'statistics-vue.js'
     ], 'public/js/statistics-vue.js');
+
+    // Compile scripts
+    mix.scripts([
+        'Chart.min.js',
+        'color.min.js'
+    ], 'public/js/char.js');
+
+    // Compile scripts
+    mix.scripts([
+        'statistics-benefit-evolution.js'
+    ], 'public/js/statistics-benefit-evolution.js');
 
     // Compile styles
     mix.styles([

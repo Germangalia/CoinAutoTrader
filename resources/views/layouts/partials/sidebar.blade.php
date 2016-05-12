@@ -40,7 +40,7 @@
                 <a href="{{ url('statistics') }}"><i class='fa fa-bar-chart'></i> <span>Statistics</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li ><a class='fa fa-star' href="{{ url('statistics/index') }}">Index</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                    <li ><a class='fa fa-area-chart' href="{{ url('statistics/benefit-evolution') }}">Benefit Evolution</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->
