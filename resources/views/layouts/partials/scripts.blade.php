@@ -6,8 +6,8 @@
 <script src="{{ asset('/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('/js/app.min.js') }}" type="text/javascript"></script>
-<!-- VUE.js -->
-<script src="{{ asset('/js/vendor.js') }}" type="text/javascript"></script>
+
+
 
 
 

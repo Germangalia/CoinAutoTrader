@@ -67,7 +67,7 @@ elixir(function(mix) {
     mix.scripts([
         'Chart.min.js',
         'color.min.js'
-    ], 'public/js/char.js');
+    ], 'public/js/Chart.min.js');
 
     // Compile scripts
     mix.scripts([

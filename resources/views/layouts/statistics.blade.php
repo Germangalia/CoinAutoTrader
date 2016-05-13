@@ -6,6 +6,8 @@
 
 <link rel=stylesheet href="{{asset('css/app.css')}}" type="text/css">
 
+@yield('scripts')
+
 @section('main-content')
     <div class="container spark-screen">
         <div class="row">

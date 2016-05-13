@@ -6,6 +6,8 @@
 
 <link rel=stylesheet href="{{asset('css/app.css')}}" type="text/css">
 
+@yield('scripts')
+
 @section('main-content')
     <div class="container spark-screen">
         <div class="row">
@@ -24,7 +26,8 @@
         </div>
     </div>
     <!-- Chart.js -->
-    <script src="{{ asset('/js/char.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/Chart.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/statistics-benefit-evolution.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/plugins/jQuery/jQuery-2.1.4.min.js') }}" type="text/javascript"></script>
 
 @endsection
