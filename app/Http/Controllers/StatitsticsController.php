@@ -85,6 +85,19 @@ class StatitsticsController extends Controller
         return $result;
     }
 
+    /**
+     * Get history records for account
+     *
+     * @return mixed
+     */
+    public function getHistoryByID($id)
+    {
+        //Get result
+        $result = DB::table('trade_histories')->where('account_id', $id)->get();
+
+        return $result;
+    }
+
 
     /**
      * Get Actual Bitcoin Price in $

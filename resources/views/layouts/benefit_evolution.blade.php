@@ -15,6 +15,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Benefit Evolution</h3></div>
                     <div class="panel-body">
+                        <div>
+                            <form id="myForm">
+                                <lavel>Select Account: </lavel>
+                                    <select id="selectNumber"></select>
+                                    <div class="panel-body">
+                                        <button id="loadgraphic" class="btn btn-primary btn-block btn-flat">Load Graphic</button>
+                                    </div>
+
+                            </form>
+                        </div>
                         <div id="BenefitEvolutionController">
 
                             <canvas id="myLineChart" width="100%" height="100%"></canvas>
