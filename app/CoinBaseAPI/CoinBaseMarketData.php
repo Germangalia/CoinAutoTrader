@@ -21,7 +21,8 @@ class CoinBaseMarketData
     //Buy price
     public function getBuyPrice($client)
     {
-        $buyPrice = $client->getBuyPrice();
+        $buyPrice = $client->getBuyPrice()->getAmount();
+        $buyPrice = floatval($buyPrice);
         return $buyPrice;
     }
 
@@ -30,6 +31,7 @@ class CoinBaseMarketData
     public function getSellPrice($client)
     {
         $sellPrice = $client->getSellPrice();
+        $sellPrice = floatval($sellPrice);
         return $sellPrice;
     }
 
@@ -38,6 +40,7 @@ class CoinBaseMarketData
     public function getSpotPrice($client)
     {
         $spotPrice = $client->getSpotPrice();
+        $spotPrice = floatval($spotPrice);
         return $spotPrice;
     }
 

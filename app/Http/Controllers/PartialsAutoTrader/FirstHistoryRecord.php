@@ -11,6 +11,9 @@ namespace App\Http\Controllers\PartialsAutoTrader;
 
 use App\CoinBaseAPI\CoinBaseMarketData;
 use App\TradeHistory;
+use Config;
+use DB;
+use Exception;
 
 class FirstHistoryRecord
 {
@@ -21,6 +24,11 @@ class FirstHistoryRecord
         //initial_capital = $accountCapital
         //coins = $balanceAmount
 
+        //Convert values
+        $accountId = intval($accountId);
+        $accountCapital = floatval($accountCapital);
+        $balanceAmount = floatval($balanceAmount);
+
         //Get user_id
         $userId = $user->id;
 
@@ -29,30 +37,36 @@ class FirstHistoryRecord
         $coinPrice = $marketData->getBuyPrice($client);
 
         //Get coins_value
-        $coinsValue = $balanceAmount * $coinPrice;
+        $coins = $balanceAmount / $coinPrice;
 
         //Get CFAV
-        $cfav = $coinsValue * Config::get('constants.CFAV_PERCENT');
+        $cfav = $balanceAmount * Config::get('constants.CFAV_PERCENT');
 
         //Get Capital
-        $capital = $accountCapital - $coinsValue;
+        $capital = $accountCapital - $balanceAmount;
+
+        //dd($capital);
 
         //Get prortfolio_control
-        $portafolioControl = $coinsValue;
+        $portafolioControl = $balanceAmount;
+
         //Get buy_sell_advice
-        $buySellAdvice = 0;
+        $buySellAdvice = 0.0;
+
         //Get market_order
-        $marketOrder = 0;
+        $marketOrder = 0.0;
+
         //Get coin_market_order
-        $coinMarketOrder = 0;
+        $coinMarketOrder = 0.0;
+
         //Get commission
-        $commission = 0;
+        $commission = 0.0;
 
          //Get coins amount
-        $coinsAmount = $coinsValue;
+        $coinsAmount = $balanceAmount;
 
         //Get capital_amount
-        $capitalAmount = $accountCapital - $coinsValue;
+        $capitalAmount = $accountCapital - $balanceAmount;
 
         //Get total_amount
         $totalAmount = $coinsAmount + $capitalAmount;
@@ -68,8 +82,8 @@ class FirstHistoryRecord
         $dataHistory->account_id = $accountId;
         $dataHistory->initial_capital = $accountCapital;
         $dataHistory->coin_price = $coinPrice;
-        $dataHistory->coins = $balanceAmount;
-        $dataHistory->coins_value = $coinsValue;
+        $dataHistory->coins = $coins;
+        $dataHistory->coins_value = $balanceAmount;
         $dataHistory->cfav = $cfav;
         $dataHistory->capital = $capital;
         $dataHistory->portfolio_control = $portafolioControl;
@@ -82,7 +96,10 @@ class FirstHistoryRecord
         $dataHistory->total_amount = $totalAmount;
         $dataHistory->benefit = $benefit;
 
+        //dd($dataHistory);
+
         $dataHistory->save();
+
 
         //Update DB Accounts record
         DB::table('accounts_coin_bases')->where('id', $accountId)->update(array('balance' => $totalAmount));

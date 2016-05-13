@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\PartialsAutoTrader\GetActiveAccounts;
 use Illuminate\Support\Facades\DB;
+use League\Flysystem\Exception;
 
 
 class AutoTraderController extends Controller
@@ -24,6 +25,7 @@ class AutoTraderController extends Controller
         $accountsClass = new GetActiveAccounts();
         $activeAccounts = $accountsClass->getAccounts();
 
+        //dd($activeAccounts);   //OK
 
         foreach($activeAccounts as $activeAccount)
         {
@@ -33,9 +35,14 @@ class AutoTraderController extends Controller
             $accountId = $activeAccount->account_id;
             $wallet_address = $activeAccount->wallet_address;
 
-            //Get last history record from account and keep atributes.
-            $lastHistoryRecord = DB::table('trade_histories')->where('account_id', $accountId)->orderBy('updated_at', 'desc')->take(1)->get();
+            //dd($accountId);     //OK
 
+            //Get last history record from account and keep atributes.
+            try{
+            $lastHistoryRecord = DB::table('trade_histories')->where('account_id', $accountId)->orderBy('updated_at', 'desc')->take(1)->get();
+            } catch (Exception $e){
+                echo 'Error: Get last history record from account and keep atributes -> AutoTraderController';
+            }
             dd($lastHistoryRecord);
 
             $capital = $lastHistoryRecord->capital_amount;
@@ -43,7 +50,12 @@ class AutoTraderController extends Controller
             $lastMarketOrder = $lastHistoryRecord->market_order;
 
             //Extract data from user
-            $userAtributes = DB::table('users')->where('id', $DBuserId)->orderBy('updated_at', 'desc')->take(1)->get();
+            try{
+                $userAtributes = DB::table('users')->where('id', $DBuserId)->orderBy('updated_at', 'desc')->take(1)->get();
+            } catch (Exception $e){
+                echo 'Error: Extract data from user -> AutoTraderController';
+            }
+
 
             //dd($userAtributes);
 
@@ -59,44 +71,54 @@ class AutoTraderController extends Controller
             //dd($account);
 
             //Create object AutoTrader
-            $autoTrader = new \AutoTrader($client, $account, $lastHistoryRecord);
-            $autoTrader->setCoinPrice();
-            $autoTrader->setCoinsValue();
-            $autoTrader->setCfav();
-            $autoTrader->setPortfolioControl();
-            $autoTrader->setBuyOrSellAdvice();
-            $autoTrader->setMarketOrder();
-            $autoTrader->setCoinMarketOrder();
-            $autoTrader->setCommission();
-            $autoTrader->setCoinsAmount();
-            $autoTrader->setCapitalAmount();
-            $autoTrader->setTotalAmount();
-            $autoTrader->setBenefit();
+            try{
+                $autoTrader = new \AutoTrader($client, $account, $lastHistoryRecord);
+                $autoTrader->setCoinPrice();
+                $autoTrader->setCoinsValue();
+                $autoTrader->setCfav();
+                $autoTrader->setPortfolioControl();
+                $autoTrader->setBuyOrSellAdvice();
+                $autoTrader->setMarketOrder();
+                $autoTrader->setCoinMarketOrder();
+                $autoTrader->setCommission();
+                $autoTrader->setCoinsAmount();
+                $autoTrader->setCapitalAmount();
+                $autoTrader->setTotalAmount();
+                $autoTrader->setBenefit();
+            } catch (Exception $e){
+                echo 'Error: Create object AutoTrader -> AutoTraderController';
+            }
+
 
 
 
             //Keep object to Calculator table
-            $calculatorRecord = new TradeCalculator();
+            try{
+                $calculatorRecord = new TradeCalculator();
 
-            $calculatorRecord->user_id = $DBuserId;
-            $calculatorRecord->account_id = $DBaccountId;
-            $calculatorRecord->initial_capital = $lastHistoryRecord->initial_capital;
-            $calculatorRecord->coin_price = $autoTrader->getCoinPrice();
-            $calculatorRecord->coins = $autoTrader->getCoins();
-            $calculatorRecord->coins_value = $autoTrader->getCoinsValue();
-            $calculatorRecord->cfav = $autoTrader->getCfav();
-            $calculatorRecord->capital = $autoTrader->getCapital();
-            $calculatorRecord->portfolio_control = $autoTrader->getPortfolioControl();
-            $calculatorRecord->buy_sell_advice = $autoTrader->getBuyOrSellAdvice();
-            $calculatorRecord->market_order = $autoTrader->getMarketOrder();
-            $calculatorRecord->coin_market_order = $autoTrader->getCoinMarketOrder();
-            $calculatorRecord->commission = $autoTrader->getCommission();
-            $calculatorRecord->coins_amount = $autoTrader->getCoinsAmount();
-            $calculatorRecord->capital_amount = $autoTrader->getCapitalAmount();
-            $calculatorRecord->total_amount = $autoTrader->getTotalAmount();
-            $calculatorRecord->benefit = $autoTrader->getBenefit();
+                $calculatorRecord->user_id = $DBuserId;
+                $calculatorRecord->account_id = $DBaccountId;
+                $calculatorRecord->initial_capital = $lastHistoryRecord->initial_capital;
+                $calculatorRecord->coin_price = $autoTrader->getCoinPrice();
+                $calculatorRecord->coins = $autoTrader->getCoins();
+                $calculatorRecord->coins_value = $autoTrader->getCoinsValue();
+                $calculatorRecord->cfav = $autoTrader->getCfav();
+                $calculatorRecord->capital = $autoTrader->getCapital();
+                $calculatorRecord->portfolio_control = $autoTrader->getPortfolioControl();
+                $calculatorRecord->buy_sell_advice = $autoTrader->getBuyOrSellAdvice();
+                $calculatorRecord->market_order = $autoTrader->getMarketOrder();
+                $calculatorRecord->coin_market_order = $autoTrader->getCoinMarketOrder();
+                $calculatorRecord->commission = $autoTrader->getCommission();
+                $calculatorRecord->coins_amount = $autoTrader->getCoinsAmount();
+                $calculatorRecord->capital_amount = $autoTrader->getCapitalAmount();
+                $calculatorRecord->total_amount = $autoTrader->getTotalAmount();
+                $calculatorRecord->benefit = $autoTrader->getBenefit();
 
-            $calculatorRecord->save();
+                $calculatorRecord->save();
+            } catch (Exception $e){
+                echo 'Error: Keep object to Calculator table -> AutoTraderController';
+            }
+
 
 
             //Create new $autoTrader and $calculatorRecord for another API markets for trade
@@ -136,38 +158,51 @@ class AutoTraderController extends Controller
 
             if($operation){
                 //Actualize account balance
-                $accountData = AccountsCoinBase::find($DBaccountId);
-                $accountData->balance = $calculatorRecord->total_amount;
-                $accountData->save();
+                try{
+                    $accountData = AccountsCoinBase::find($DBaccountId);
+                    $accountData->balance = $calculatorRecord->total_amount;
+                    $accountData->save();
+                } catch (Exception $e){
+                    echo 'Error: Actualize account balance -> AutoTraderController';
+                }
 
                 //Keep to history table
-                $histoyRecord = new TradeCalculator();
+                try{
+                    $histoyRecord = new TradeCalculator();
 
-                $histoyRecord->user_id = $DBuserId;
-                $histoyRecord->account_id = $DBaccountId;
-                $histoyRecord->initial_capital = $lastHistoryRecord->initial_capital;
-                $histoyRecord->coin_price = $calculatorData->coin_price;
-                $histoyRecord->coins = $calculatorData->coins;
-                $histoyRecord->coins_value = $calculatorData->coins_value;
-                $histoyRecord->cfav = $calculatorData->cfav;
-                $histoyRecord->capital = $calculatorData->capital;
-                $histoyRecord->portfolio_control = $calculatorData->portfolio_control;
-                $histoyRecord->buy_sell_advice = $calculatorData->buy_sell_advice;
-                $histoyRecord->market_order = $calculatorData->market_order;
-                $histoyRecord->coin_market_order = $calculatorData->coin_market_order;
-                $histoyRecord->commission = $calculatorData->commission;
-                $histoyRecord->coins_amount = $calculatorData->coins_amount;
-                $histoyRecord->capital_amount = $calculatorData->capital_amount;
-                $histoyRecord->total_amount = $calculatorData->total_amount;
-                $histoyRecord->benefit = $calculatorData->benefit;
+                    $histoyRecord->user_id = $DBuserId;
+                    $histoyRecord->account_id = $DBaccountId;
+                    $histoyRecord->initial_capital = $lastHistoryRecord->initial_capital;
+                    $histoyRecord->coin_price = $calculatorData->coin_price;
+                    $histoyRecord->coins = $calculatorData->coins;
+                    $histoyRecord->coins_value = $calculatorData->coins_value;
+                    $histoyRecord->cfav = $calculatorData->cfav;
+                    $histoyRecord->capital = $calculatorData->capital;
+                    $histoyRecord->portfolio_control = $calculatorData->portfolio_control;
+                    $histoyRecord->buy_sell_advice = $calculatorData->buy_sell_advice;
+                    $histoyRecord->market_order = $calculatorData->market_order;
+                    $histoyRecord->coin_market_order = $calculatorData->coin_market_order;
+                    $histoyRecord->commission = $calculatorData->commission;
+                    $histoyRecord->coins_amount = $calculatorData->coins_amount;
+                    $histoyRecord->capital_amount = $calculatorData->capital_amount;
+                    $histoyRecord->total_amount = $calculatorData->total_amount;
+                    $histoyRecord->benefit = $calculatorData->benefit;
 
-                $histoyRecord->save();
+                    $histoyRecord->save();
+                } catch (Exception $e){
+                    echo 'Error; Keep to history table -> AutoTraderController';
+                }
+
+
             }
 
-
-
             //Erase Record from Calculator table
-            TradeCalculator::destroy($calculatorRecord->id);
+            try{
+                TradeCalculator::destroy($calculatorRecord->id);
+            } catch (Exception $e){
+                echo 'Error: Erase Record from Calculator table -> AutoTraderController';
+            }
+
         }
 
     }

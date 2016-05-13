@@ -97,7 +97,9 @@ class AccountsController extends Controller
         $accountId = $accountRecord->account_id;
         $accountCapital = $accountRecord->initial_capital;
 
-        if(!$accountActive){
+        //dd($accountRecord);   //OK
+
+        if($accountActive == 0){
             //Coin Base authentication
             $authentication = new CoinBaseAuthentication();
             $client = $authentication->apiKeyAuthentication($apiKey, $apiSecret);
@@ -111,6 +113,8 @@ class AccountsController extends Controller
             //TEST
             $balanceAmount = ($accountCapital/2) + 1;
 
+            //dd($balanceAmount); //OK
+
             if(($balanceAmount >= ($accountCapital*0.50) && ($balanceAmount <= ($accountCapital*0.8)))){
                 //Activate account
                 $accountRecord->balance = $balanceAmount;
@@ -120,13 +124,20 @@ class AccountsController extends Controller
 
                 //Make first record in history table
                 $historyRecord =  TradeHistory::find($id);
-                if($historyRecord != null){
+
+                //dd($historyRecord); //OK
+
+                if(is_null($historyRecord) || empty($historyRecord) ){
 
                     $history = new FirstHistoryRecord();
-                    $history->makeFirstRecord($user, $accountId, $client, $account, $accountCapital, $balanceAmount);
+                    $history->makeFirstRecord($user, $id, $client, $account, $accountCapital, $balanceAmount);
 
                 }
             }
+
+            //Activate to false
+            $accountRecord->active = true;
+            $accountRecord->save();
 
         }else{
             //Activate to false

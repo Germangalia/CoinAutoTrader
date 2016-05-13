@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
     //Test
     Route::get('test/coinbase', 'TestCoinBase@testing');
     Route::get('test/trader', 'AutoTraderController@execute');
+    Route::get('test/activate/{id}', 'AccountsController@activateAccounts');
     Route::get('test/chart', 'StatitsticsController@index');
 
     //API Accounts
@@ -47,7 +48,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('api/statistics/totalInitialCapital', 'StatitsticsController@getSumInitialCapital');
     Route::get('api/statistics/getUserHistory', 'StatitsticsController@getHistory');
     Route::get('api/statistics/getAccountHistory/{id}', 'StatitsticsController@getHistoryByID');
-
 
 });
 
