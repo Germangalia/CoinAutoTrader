@@ -7,6 +7,7 @@ use App\CoinBaseAPI\CoinBaseAuthentication;
 use App\CoinBaseAPI\CoinBaseBuys;
 use App\CoinBaseAPI\CoinBaseSells;
 use App\TradeCalculator;
+use App\Trader\AutoTrader;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\PartialsAutoTrader\GetActiveAccounts;
@@ -38,26 +39,18 @@ class AutoTraderController extends Controller
             //dd($accountId);     //OK
 
             //Get last history record from account and keep atributes.
-            try{
-            $lastHistoryRecord = DB::table('trade_histories')->where('account_id', $accountId)->orderBy('updated_at', 'desc')->take(1)->get();
-            } catch (Exception $e){
-                echo 'Error: Get last history record from account and keep atributes -> AutoTraderController';
-            }
-            dd($lastHistoryRecord);
+            $lastHistoryRecord = DB::table('trade_histories')->where('account_id', $DBaccountId)->orderBy('updated_at', 'desc')->take(1)->get();
 
-            $capital = $lastHistoryRecord->capital_amount;
-            $lastPortafolioControl = $lastHistoryRecord->portfolio_control;
-            $lastMarketOrder = $lastHistoryRecord->market_order;
+            dd($lastHistoryRecord); //OK
+
+//            $capital = $lastHistoryRecord->capital_amount;
+//            $lastPortafolioControl = $lastHistoryRecord->portfolio_control;
+//            $lastMarketOrder = $lastHistoryRecord->market_order;
 
             //Extract data from user
-            try{
-                $userAtributes = DB::table('users')->where('id', $DBuserId)->orderBy('updated_at', 'desc')->take(1)->get();
-            } catch (Exception $e){
-                echo 'Error: Extract data from user -> AutoTraderController';
-            }
+            $userAtributes = DB::table('users')->where('id', $DBuserId)->get();
 
-
-            //dd($userAtributes);
+            //dd($userAtributes); //OK
 
             $apiKey = $userAtributes->coinbase_api_key;
             $apiSecret = $userAtributes->coinbase_api_secret;
@@ -68,11 +61,10 @@ class AutoTraderController extends Controller
             $accounter = new AccountsCoinBase();
             $account = $accounter->getAccountDetails($client, $accountId);
 
-            //dd($account);
+            //dd($account); //ok
 
             //Create object AutoTrader
-            try{
-                $autoTrader = new \AutoTrader($client, $account, $lastHistoryRecord);
+                $autoTrader = new AutoTrader($client, $account, $lastHistoryRecord);
                 $autoTrader->setCoinPrice();
                 $autoTrader->setCoinsValue();
                 $autoTrader->setCfav();
@@ -85,15 +77,13 @@ class AutoTraderController extends Controller
                 $autoTrader->setCapitalAmount();
                 $autoTrader->setTotalAmount();
                 $autoTrader->setBenefit();
-            } catch (Exception $e){
-                echo 'Error: Create object AutoTrader -> AutoTraderController';
-            }
 
 
+            dd($autoTrader);
 
 
             //Keep object to Calculator table
-            try{
+
                 $calculatorRecord = new TradeCalculator();
 
                 $calculatorRecord->user_id = $DBuserId;
@@ -115,10 +105,6 @@ class AutoTraderController extends Controller
                 $calculatorRecord->benefit = $autoTrader->getBenefit();
 
                 $calculatorRecord->save();
-            } catch (Exception $e){
-                echo 'Error: Keep object to Calculator table -> AutoTraderController';
-            }
-
 
 
             //Create new $autoTrader and $calculatorRecord for another API markets for trade

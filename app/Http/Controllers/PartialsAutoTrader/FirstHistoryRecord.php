@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers\PartialsAutoTrader;
 
-
 use App\CoinBaseAPI\CoinBaseMarketData;
 use App\TradeHistory;
 use Config;
