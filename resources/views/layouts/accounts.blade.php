@@ -20,13 +20,13 @@
                     <label for="usr"></label>
                     <button :disabled="!isValid" type="submit" class="btn btn-primary btn-block btn-flat">Create Account</button>
                 </div>
-                <div class="alert alert-danger" v-if="!isValid">
-                    <ul>
-                        <li v-show="!validation.title">Title cannot be empty.</li>
-                        <li >Please provide a valid capital amount.</li>
-                    </ul>
-                </div>
-                <div class="alert alert-success" transition="success" v-if="success">The Account is ready to activate.</div>
+                {{--<div class="alert alert-danger" v-if="!isValid">--}}
+                    {{--<ul>--}}
+                        {{--<li v-show="!validation.title">Title cannot be empty.</li>--}}
+                        {{--<li >Please provide a valid capital amount.</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+                {{--<div class="alert alert-success" transition="success" v-if="success">The Account is ready to activate.</div>--}}
                 {!! Form::close() !!}
 
                 <!--

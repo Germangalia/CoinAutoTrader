@@ -17,11 +17,13 @@
                     <div class="panel-body">
                         <div>
                             <form id="myForm">
-                                <lavel>Select Account: </lavel>
-                                    <select id="selectNumber"></select>
-                                    <div class="panel-body">
-                                        <button id="loadgraphic" class="btn btn-primary btn-block btn-flat">Load Graphic</button>
-                                    </div>
+                                <lavel>Select a account: </lavel>
+                                <select id="selectNumber"></select>
+
+
+                                <div class="panel-body">
+                                    <button id="loadgraphic" class="btn btn-success btn-block btn-flat">Load Graphic</button>
+                                </div>
 
                             </form>
                         </div>

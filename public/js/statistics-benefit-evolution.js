@@ -1,4 +1,20 @@
 /**
+ * Charge on load the page
+ */
+function chargeOnLoad(){
+    //Initial listener from buttom
+        var menu = document.getElementById("selectNumber");
+        var hasOptions = !!menu.filter(function() { return !this.disabled; }).length;
+        if(!hasOptions) {
+            // empty selector
+            document.getElementById("loadgraphic").addEventListener("click", loadGraphic);
+            chargeDropList();
+        }
+
+
+}
+
+/**
  * Get History record from User
  */
 function getHistory() {
@@ -162,10 +178,6 @@ function loadGraphic(){
     drawLineChart(id);
 }
 
-//Initial listener from buttom
-document.getElementById("loadgraphic").addEventListener("click", loadGraphic);
-//Charge the drop list to select the account
-chargeDropList();
 
-
+chargeOnLoad();
 //# sourceMappingURL=statistics-benefit-evolution.js.map

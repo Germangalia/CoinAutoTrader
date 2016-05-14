@@ -31,7 +31,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">HEADER</li>
+            <li class="header">MENU</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>Home</span></a></li>
             <li class="treeview"><a href="{{ url('accounts') }}"><i class='fa fa-bank'></i> <span>Accounts</span></a></li>

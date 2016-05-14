@@ -9,7 +9,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <meta name="description" content="Pratt - Free Bootstrap 3 Theme">
     <meta name="author" content="Alvarez.is - BlackTie.co">
 
-    <title>Acacha AdminLTE Laravel package template Landing page - Using Pratt</title>
+    <title>CoinAutoTrader Wellcome Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
@@ -37,12 +37,12 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><b>adminlte-laravel</b></a>
+            <a class="navbar-brand" href="#"><b>CoinAutoTrader</b></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#home" class="smoothScroll">Home</a></li>
-                <li><a href="#desc" class="smoothScroll">Description</a></li>
+                <li><a href="#desc" class="smoothScroll">Features</a></li>
                 <li><a href="#showcase" class="smoothScroll">Showcase</a></li>
                 <li><a href="#contact" class="smoothScroll">Contact</a></li>
             </ul>
@@ -64,14 +64,13 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <div class="container">
         <div class="row centered">
             <div class="col-lg-12">
-                <h1>Acacha <b><a href="https://github.com/acacha/adminlte-laravel">adminlte-laravel</a></b></h1>
-                <h3>A <a href="https://laravel.com/">Laravel</a> 5 package that switchs default Laravel
-                    scaffolding/boilerplate to <a href="https://almsaeedstudio.com/preview">AdminLTE</a> template with
-                    <a href="http://getbootstrap.com/">Bootstrap</a> 3.0 and <a href="http://blacktie.co/demo/pratt/">Pratt</a> Landing page</h3>
+                <h1>Powerfull Bitcoin Automatic Trader: <b><a href="https://github.com/Germangalia/CoinAutoTrader">CoinAutoTrader</a></b></h1>
+                <h3>A <a href="https://laravel.com/">Laravel</a> Application for grow up your bitcoin's wallet from
+                    <a href="https://www.coinbase.com/">CoinBase</a> bitcoins market.</h3>
                 <h3><a href="{{ url('/register') }}" class="btn btn-lg btn-success">Get Started!</a></h3>
             </div>
             <div class="col-lg-2">
-                <h5>Amazing admin template</h5>
+                <h5>Amazing Admin Panel</h5>
                 <p>Based on adminlte bootstrap theme</p>
                 <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow1.png') }}">
             </div>
@@ -82,7 +81,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 <br>
                 <img class="hidden-xs hidden-sm hidden-md" src="{{ asset('/img/arrow2.png') }}">
                 <h5>Awesome packaged...</h5>
-                <p>... by <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a> at <a href="http://acacha.org">acacha.org</a> ready to use with Laravel!</p>
+                <p>... by <a href="https://github.com/Germangalia">German Galià Beltran</a> ready to use with your CoinBase account!</p>
             </div>
         </div>
     </div> <!--/ .container -->
@@ -100,17 +99,17 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             <div class="col-lg-4">
                 <img src="{{ asset('/img/intro01.png') }}" alt="">
                 <h3>Community</h3>
-                <p>See <a href="https://github.com/acacha/adminlte-laravel">Github project</a>, post <a href="https://github.com/acacha/adminlte-laravel/issues">issues</a> and <a href="https://github.com/acacha/adminlte-laravel/pulls">Pull requests</a></p>
+                <p>See <a href="https://github.com/Germangalia/CoinAutoTrader">Github project</a>, post <a href="https://github.com/Germangalia/CoinAutoTrader/issues">issues</a> and <a href="https://github.com/Germangalia/CoinAutoTrader/pulls">Pull requests</a></p>
             </div>
             <div class="col-lg-4">
                 <img src="{{ asset('/img/intro02.png') }}" alt="">
-                <h3>Schedule</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <h3>Automatic</h3>
+                <p>Your CoinAutoTrader accounts work handless for excelent trade results.</p>
             </div>
             <div class="col-lg-4">
                 <img src="{{ asset('/img/intro03.png') }}" alt="">
                 <h3>Monitoring</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p>Awesome admin panel for manage your acounts and see your history records and statistics with graphics.</p>
             </div>
         </div>
         <br>
@@ -142,7 +141,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                         </div><!-- /accordion-heading -->
                         <div id="collapseOne" class="accordion-body collapse in">
                             <div class="accordion-inner">
-                                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                <p>Make your trade simple with a new Admin Panel.</p>
                             </div><!-- /accordion-inner -->
                         </div><!-- /collapse -->
                     </div><!-- /accordion-group -->
@@ -151,12 +150,12 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                     <div class="accordion-group">
                         <div class="accordion-heading">
                             <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                                Retina Ready Theme
+                                Automatic Trader
                             </a>
                         </div>
                         <div id="collapseTwo" class="accordion-body collapse">
                             <div class="accordion-inner">
-                                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                <p>Register now your CoinBase account in your CoinAutoTrader's admin panel and do nothing else...the trade is automatic and handless.</p>
                             </div><!-- /accordion-inner -->
                         </div><!-- /collapse -->
                     </div><!-- /accordion-group -->
@@ -170,7 +169,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                         </div>
                         <div id="collapseThree" class="accordion-body collapse">
                             <div class="accordion-inner">
-                                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                <p>You need some help? Don't worry, contact with us and improve your experience.</p>
                             </div><!-- /accordion-inner -->
                         </div><!-- /collapse -->
                     </div><!-- /accordion-group -->
@@ -184,7 +183,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                         </div>
                         <div id="collapseFour" class="accordion-body collapse">
                             <div class="accordion-inner">
-                                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                <p>See your statistics and trading graphics for all your devices.</p>
                             </div><!-- /accordion-inner -->
                         </div><!-- /collapse -->
                     </div><!-- /accordion-group -->
@@ -267,12 +266,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 <div id="c">
     <div class="container">
         <p>
-            <a href="https://github.com/acacha/adminlte-laravel"></a><b>admin-lte-laravel</b></a>. A Laravel 5 package that switchs default Laravel scaffolding/boilerplate to AdminLTE template.<br/>
-            <strong>Copyright &copy; 2015 <a href="http://acacha.org">Acacha.org</a>.</strong> Created by <a href="http://acacha.org/sergitur">Sergi Tur Badenas</a>. See code at <a href="https://github.com/acacha/adminlte-laravel">Github</a>
-            <br/>
-            AdminLTE created by Abdullah Almsaeed <a href="https://almsaeedstudio.com/">almsaeedstudio.com</a>
-            <br/>
-             Pratt Landing Page Created by <a href="http://www.blacktie.co">BLACKTIE.CO</a>
+            <a href="https://github.com/Germangalia/CoinAutoTrader"></a><b>CoinAutoTrader</b></a>. Application for grow up your bitcoin's wallet from CoinBase bitcoins market.<br/>
+            <strong>Copyright &copy; 2016 <a href="https://github.com/Germangalia/CoinAutoTrader">CoinAutoTrader</a>.</strong> Created by <a href="https://github.com/Germangalia">German Galià Beltran</a>. See code at <a href="https://github.com/Germangalia/CoinAutoTrader">Github</a>
         </p>
 
     </div>
