@@ -60,9 +60,9 @@
                                         <th ng-click="sort('coin_market_order')">Market Order ($)
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='coin_market_order'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </th>
-                                        <th ng-click="sort('commission')">Commission (%)
+                                        <!--<th ng-click="sort('commission')">Commission (%)
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='commission'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-                                        </th>
+                                        </th>-->
                                         <th ng-click="sort('coins_amount')">Coins Amount ($)
                                             <span class="glyphicon sort-icon" ng-show="sortKey=='coins_amount'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                                         </th>
@@ -88,7 +88,7 @@
                                         <td>@{{history.coins}}</td>
                                         <td>@{{history.coins_value}}</td>
                                         <td>@{{history.coin_market_order}}</td>
-                                        <td>@{{history.commission}}</td>
+                                        <!--<td>@{{history.commission}}</td>-->
                                         <td>@{{history.coins_amount}}</td>
                                         <td>@{{history.capital_amount}}</td>
                                         <td>@{{history.total_amount}}</td>

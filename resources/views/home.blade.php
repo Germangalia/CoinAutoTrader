@@ -53,4 +53,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- VUE.js -->
+	<script src="{{ asset('/js/vue.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('/js/home-vue.js') }}" type="text/javascript"></script>
 @endsection

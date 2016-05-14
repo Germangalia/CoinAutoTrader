@@ -34,7 +34,10 @@ elixir(function(mix) {
 
     // Compile scripts
     mix.scripts([
-        'dirPagination.js'
+        'vue.min.js',
+        'vue-resource.min.js',
+        'Chart.min.js',
+        'color.min.js'
     ], 'public/js/vendor.js');
 
     // Compile scripts
@@ -57,11 +60,6 @@ elixir(function(mix) {
         'vue.min.js',
         'vue-resource.min.js'
     ], 'public/js/vue.js');
-
-    // Compile scripts
-    mix.scripts([
-        'statistics-vue.js'
-    ], 'public/js/statistics-vue.js');
 
     // Compile scripts
     mix.scripts([
