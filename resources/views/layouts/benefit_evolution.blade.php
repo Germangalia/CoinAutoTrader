@@ -15,18 +15,19 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Benefit Evolution</h3></div>
                     <div class="panel-body">
+                        <button id="loadgraphic" onclick="chargeDropList()" class="btn btn-primary">Update Accounts</button>
+                        <br>
                         <div>
+
                             <form id="myForm">
                                 <lavel>Select a account: </lavel>
                                 <select id="selectNumber"></select>
 
-
-                                <div class="panel-body">
-                                    <button id="loadgraphic" class="btn btn-success btn-block btn-flat">Load Graphic</button>
-                                </div>
-
                             </form>
+                            <br>
+                            <button id="loadgraphic" onclick="chargeOnLoad()" class="btn btn-success btn-block btn-flat">Load Graphic</button>
                         </div>
+
                         <div id="BenefitEvolutionController">
 
                             <canvas id="myLineChart" width="100%" height="100%"></canvas>
