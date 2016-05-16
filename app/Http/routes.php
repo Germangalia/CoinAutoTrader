@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => 'auth'], function () {
+    //Landing page
+    Route::post('send-email', 'SendEmailController@sendEmail');
     //Accounts
     Route::get('accounts', 'AccountsController@index');
     Route::post('accounts', 'AccountsController@createAccount');

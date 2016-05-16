@@ -187,6 +187,7 @@ return [
         #llum_providers
 
         Collective\Html\HtmlServiceProvider::class,
+        Vinkla\Alert\AlertServiceProvider::class
 
     ],
 
@@ -233,6 +234,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Alert' => Vinkla\Alert\Facades\Alert::class,
 
         /*
          * Acacha Llum Aliases...
@@ -240,15 +242,6 @@ return [
          * See: https://github.com/acacha/llum
          */
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         #llum_aliases
 

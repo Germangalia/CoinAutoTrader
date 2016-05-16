@@ -26,6 +26,8 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 
 </head>
 
+@include('alert::alert')
+
 <body data-spy="scroll" data-offset="0" data-target="#navigation">
 
 <!-- Fixed navbar -->
@@ -244,22 +246,26 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div class="col-lg-7">
             <h3>Drop Us A Line</h3>
             <br>
-            <form role="form" action="#" method="post" enctype="plain">
+            {!! Form::open(array('url' => 'send-email', 'method' => 'post', 'class' => 'form', 'novalidate' => 'novalidate')) !!}
                 <div class="form-group">
-                    <label for="name1">Your Name</label>
-                    <input type="name" name="Name" class="form-control" id="name1" placeholder="Your Name">
+                    <label for="name">Your Name</label>
+                    <input type="name" name="name" class="form-control" id="name" placeholder="Your Name">
                 </div>
                 <div class="form-group">
-                    <label for="email1">Email address</label>
-                    <input type="email" name="Mail" class="form-control" id="email1" placeholder="Enter email">
+                    <label for="email">Email address</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                    <label>Your Text</label>
-                    <textarea class="form-control" name="Message" rows="3"></textarea>
+                    <label for="message">Your Text</label>
+                    <textarea class="form-control" name="message" id="message" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="human">*What is 2+2? (Anti-spam)</label>
+                    <input name="human" id="human" class="form-control" placeholder="Type Here">
                 </div>
                 <br>
-                <button type="submit" class="btn btn-large btn-success">SUBMIT</button>
-            </form>
+                <button type="submit" name ="submit" id="submit" class="btn btn-large btn-success">SUBMIT</button>
+            {!! Form::close() !!}
         </div>
     </div>
 </div>
