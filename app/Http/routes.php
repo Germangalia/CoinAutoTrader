@@ -49,6 +49,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('api/statistics/getUserHistory', 'StatitsticsController@getHistory');
     Route::get('api/statistics/getAccountHistory/{id}', 'StatitsticsController@getHistoryByID');
 
+    Route::get('api/statistics/getSumInitialCapital', 'StatitsticsController@getSumInitialCapital');
+    Route::get('api/statistics/getCapital', 'StatitsticsController@getCapital');
+    Route::get('api/statistics/getBitcoins', 'StatitsticsController@getBitcoins');
+    Route::get('api/statistics/getTotal', 'StatitsticsController@getTotal');
+    Route::get('api/statistics/getAvgInitialCapital', 'StatitsticsController@getAvgInitialCapital');
+    Route::get('api/statistics/getAvgCapital', 'StatitsticsController@getAvgCapital');
+    Route::get('api/statistics/getAvgBitcoins', 'StatitsticsController@getAvgBitcoins');
+    Route::get('api/statistics/getAvgBenefit', 'StatitsticsController@getAvgBenefit');
+    Route::get('api/statistics/getAvgTotal', 'StatitsticsController@getAvgTotal');
+    Route::get('api/statistics/getBitcoinPrice', 'StatitsticsController@getBitcoinPrice');
+
 });
 
 

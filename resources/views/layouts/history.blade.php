@@ -7,6 +7,8 @@
         <!-- Angular Material CSS now available via Google CDN; version 1.0.7 used here -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
 
+    <link rel=stylesheet href="{{asset('css/style-table-responsive.css')}}" type="text/css">
+
 
 @yield('scripts')
 

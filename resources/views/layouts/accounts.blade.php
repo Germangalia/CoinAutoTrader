@@ -4,6 +4,8 @@
     Coin Base Accounts
 @endsection
 
+<link rel=stylesheet href="{{asset('css/style-table-responsive.css')}}" type="text/css">
+
 @yield('scripts')
 
 @section('main-content')
@@ -62,7 +64,6 @@
                                     <th>ID</th>
                                     <th>NAME</th>
                                     <th>ACCOUNT</th>
-                                    <th>WALLET ADDRESS</th>
                                     <th>INITIAL CAPITAL</th>
                                     <th>BALANCE</th>
                                     <th>ACTIVE</th>
@@ -74,13 +75,12 @@
                                     <td>@{{ account.id }}</td>
                                     <td>@{{ account.name }}</td>
                                     <td>@{{ account.account_id }}</td>
-                                    <td>@{{ account.wallet_address }}</td>
                                     <td>@{{ account.initial_capital }}</td>
                                     <td>@{{ account.balance }}</td>
                                    <td>@{{ account.active }}</td>
                                     <td>
-                                        <button v-show="!isActive" class="btn btn-success btn-sm" @click="activateAccount(account.id)">Activate/Disable</button>
-                                        <button class="btn btn-danger btn-sm" @click="removeAccount(account.id)">Remove</button>
+                                        <button v-show="!isActive" class="btn btn-primary btn-block btn-flat" @click="activateAccount(account.id)">Activate/Disable</button>
+                                        <button class="btn btn-danger btn-block btn-flat" @click="removeAccount(account.id)">Remove</button>
                                     </td>
                                 </tr>
                                 </tbody>

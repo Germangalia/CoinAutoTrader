@@ -80,18 +80,14 @@ var demo = new Vue({
                 }
             ]
         },
-
-        totalInitialCapital: function(){
-            this.$http.get('/api/statistics/totalInitialCapital', function(data) {
-                this.$set('totalInitialCapital', data)
-            })
-        },
-
-    },
-
-    ready: function() {
-        this.totalInitialCapital();
-        this.createData()
-
-    }
+       totalInitialCapital: function(){
+           this.$http.get('/api/statistics/totalInitialCapital', function(data) {
+               this.$set('totalInitialCapital', data)
+           })
+       }
+   },
+   ready: function() {
+      this.totalInitialCapital();
+       this.createData()
+   }
 });

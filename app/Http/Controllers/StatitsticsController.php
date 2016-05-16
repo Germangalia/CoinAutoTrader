@@ -117,7 +117,7 @@ class StatitsticsController extends Controller
 
         //Get result
         $market = new CoinBaseMarketData();
-        $result = $market->getBuyPrice($client)->getAmount();
+        $result = $market->getBuyPrice($client);
 
         return $result;
     }
@@ -322,8 +322,8 @@ class StatitsticsController extends Controller
         $count = $this->countAccounts();
 
         //Get data
-        $total = $this->getTotal();
-        $initial = $this->getSumInitialCapital();
+        $total = $this->getTotal() / $count;
+        $initial = $this->getSumInitialCapital() / $count;
 
         //Get result
         $result = ($total - $initial) / $initial * 100;

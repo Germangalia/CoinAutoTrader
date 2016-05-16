@@ -72,14 +72,34 @@ elixir(function(mix) {
         'statistics-benefit-evolution.js'
     ], 'public/js/statistics-benefit-evolution.js');
 
+    // Compile scripts
+    mix.scripts([
+        'statistics-react.js'
+    ], 'public/js/statistics-react.js');
+
+    // Compile scripts
+    mix.scripts([
+        'statistics-javascript.js'
+    ], 'public/js/statistics-javascript.js');
+
+    // Compile scripts
+    mix.scripts([
+        'statistics-vue.js'
+    ], 'public/js/statistics-vue.js');
+
     // Compile styles
     mix.styles([
-        'home-vue.css',
-        'statistics-vue.css'
+        'home-vue.css'
     ], 'public/css/app.css');
 
     // Compile styles
     mix.styles([
         'statistics-vue.css'
     ], 'public/css/statistics-vue.css');
+
+    // Compile styles
+    mix.styles([
+        'style-table-responsive.css'
+    ], 'public/css/style-table-responsive.css');
+
 });
