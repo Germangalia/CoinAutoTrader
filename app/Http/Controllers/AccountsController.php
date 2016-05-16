@@ -64,7 +64,7 @@ class AccountsController extends Controller
         $dataAccount->balance = $account->getBalance()->getAmount();
         $dataAccount->initial_capital = $requests->initialCapital;
         //TODO put active to false.
-        $dataAccount->active = true;
+        $dataAccount->active = false;
 
         $dataAccount->save();
 

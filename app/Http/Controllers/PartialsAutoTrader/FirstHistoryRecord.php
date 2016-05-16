@@ -95,10 +95,26 @@ class FirstHistoryRecord
         $dataHistory->total_amount = $totalAmount;
         $dataHistory->benefit = $benefit;
 
-        //dd($dataHistory);
-
         $dataHistory->save();
 
+//        DB::table('trade_histories')->insert(array
+//            ('user_id' => $userId,
+//            'account_id' => $accountId,
+//            'initial_capital' => $accountCapital,
+//            'coin_price' => $coinPrice,
+//            'coins' => $coins,
+//            'coins_value' => $balanceAmount,
+//            'cfav' => $cfav,
+//            'capital' => $capital,
+//            'portfolio_control' => $portafolioControl,
+//            'buy_sell_advice' => $buySellAdvice,
+//            'market_order' => $marketOrder,
+//            'coin_market_order' => $coinMarketOrder,
+//            'commission' => $commission,
+//            'coins_amount' => $coinsAmount,
+//            'capital_amount' => $capitalAmount,
+//            'total_amount' => $totalAmount,
+//            'benefit' => $benefit));
 
         //Update DB Accounts record
         DB::table('accounts_coin_bases')->where('id', $accountId)->update(array('balance' => $totalAmount));
