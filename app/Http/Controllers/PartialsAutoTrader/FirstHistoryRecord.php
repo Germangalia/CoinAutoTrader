@@ -17,6 +17,19 @@ use Exception;
 class FirstHistoryRecord
 {
 
+    /**
+     * @var CoinBaseMarketData
+     */
+    private $marketData;
+
+    /**
+     * FirstHistoryRecord constructor.
+     */
+    public function __construct(CoinBaseMarketData $marketData)
+    {
+        $this->marketData = $marketData;
+    }
+
     public function makeFirstRecord($user, $accountId, $client, $account, $accountCapital, $balanceAmount)
     {
         //account_id = $accountId
@@ -32,8 +45,8 @@ class FirstHistoryRecord
         $userId = $user->id;
 
         //Get coins
-        $marketData = new CoinBaseMarketData();
-        $coinPrice = $marketData->getBuyPrice($client);
+        //$marketData = new CoinBaseMarketData();
+        $coinPrice = $this->marketData->getBuyPrice($client);
 
         //Get coins_value
         $coins = $balanceAmount / $coinPrice;
