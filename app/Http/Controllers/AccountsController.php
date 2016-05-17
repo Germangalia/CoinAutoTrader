@@ -14,13 +14,18 @@ use App\CoinBaseAPI\CoinBaseAuthentication;
 use Illuminate\Support\Facades\DB;
 
 
+/**
+ * CoinAutotrader accounts controller
+ * Class AccountsController
+ * @package App\Http\Controllers
+ */
 class AccountsController extends Controller
 {
 
-    /*
+    /**
      * View the acounts blade
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
     public function index()
     {
 
@@ -28,11 +33,12 @@ class AccountsController extends Controller
     }
 
 
-    /*
+    /**
      * Create new account
+     * @param Request $requests
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
-    public function createAccount( Request $requests)
+    public function createAccount(Request $requests)
     {
 
         //Select Authenticated user
@@ -71,6 +77,10 @@ class AccountsController extends Controller
         return view('layouts/accounts');
     }
 
+    /**
+     * Get all user accounts
+     * @return mixed
+     */
     public function getUserAccounts()
     {
         //Select Authenticated user
@@ -81,6 +91,11 @@ class AccountsController extends Controller
         return $userAccounts;
     }
 
+    /**
+     * Get the active accounts of the user
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function activateAccounts($id)
     {
 
@@ -151,6 +166,11 @@ class AccountsController extends Controller
 
     }
 
+    /**
+     * Delete account by id
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function deleteAccounts($id)
     {
 

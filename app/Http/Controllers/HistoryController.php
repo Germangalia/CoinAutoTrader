@@ -8,15 +8,27 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+/**
+ * Class HistoryController
+ * @package App\Http\Controllers
+ */
 class HistoryController extends Controller
 {
 
+    /**
+     * Return the history view
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('layouts/history');
     }
 
 
+    /**
+     * Get the history records from user
+     * @return array|static[]
+     */
     public function getUserHistory()
     {
         //Select Authenticated user

@@ -42,7 +42,7 @@ class SendEmailController extends Controller
 
                 Mail::send('layouts/landing', ['from' => $from, 'to' => $to, 'subject' => $subject, 'body' => $body] , function ($message) use ($to){
                     $message->subject('subject');
-                   
+
                 });
 
                 Alert::success('Your message has been sent!');
