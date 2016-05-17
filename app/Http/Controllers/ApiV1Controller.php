@@ -31,6 +31,8 @@ class ApiV1Controller extends ApiGuardController
     private $apiValueTransformer;
 
 
+    private $statistics;
+
     /**
      * @var array
      */
@@ -54,11 +56,12 @@ class ApiV1Controller extends ApiGuardController
     /**
      * @param Response
      */
-    public function __construct(ApiHistoryTransformer $apiHistoryTransformer, ApiValueTransformer $apiValueTransformer)
+    public function __construct(ApiHistoryTransformer $apiHistoryTransformer, ApiValueTransformer $apiValueTransformer, StatitsticsController $statitstics)
     {
         parent::__construct();
         $this->apiHistoryTransformer = $apiHistoryTransformer;
         $this->apiValueTransformer = $apiValueTransformer;
+        $this->statistics = $statitstics;
     }
 
 
@@ -71,7 +74,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getSumInitialCapital()
     {
-        $result = getSumInitialCapital();
+        $result = $this->statistics->getSumInitialCapital();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
@@ -81,7 +84,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getHistory()
     {
-        $result = getHistory();
+        $result = $this->statistics->getHistory();
         return $this->response->withCollection($result, $this->apiHistoryTransformer);
     }
 
@@ -91,7 +94,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getHistoryByID($id)
     {
-        $result = getHistoryByID($id);
+        $result = $this->statistics->getHistoryByID($id);
         return $this->response->withCollection($result, $this->apiHistoryTransformer);
     }
 
@@ -102,7 +105,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getCapital()
     {
-        $result = getCapital();
+        $result = $this->statistics->getCapital();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
@@ -113,7 +116,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getBitcoins()
     {
-        $result = getBitcoins();
+        $result = $this->statistics->getBitcoins();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
@@ -124,7 +127,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getTotal()
     {
-        $result = getTotal();
+        $result = $this->statistics->getTotal();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
@@ -135,7 +138,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getAvgInitialCapital()
     {
-        $result = getAvgInitialCapital();
+        $result = $this->statistics->getAvgInitialCapital();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
@@ -146,7 +149,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getAvgCapital()
     {
-        $result = getAvgCapital();
+        $result = $this->statistics->getAvgCapital();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
@@ -157,7 +160,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getAvgBitcoins()
     {
-        $result = getAvgBitcoins();
+        $result = $this->statistics->getAvgBitcoins();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
@@ -168,7 +171,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getAvgBenefit()
     {
-        $result = getAvgBenefit();
+        $result = $this->statistics->getAvgBenefit();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
@@ -178,7 +181,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getAvgTotal()
     {
-        $result = getAvgTotal();
+        $result = $this->statistics->getAvgTotal();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
@@ -189,7 +192,7 @@ class ApiV1Controller extends ApiGuardController
      */
     public function getBitcoinPrice()
     {
-        $result = getBitcoinPrice();
+        $result = $this->statistics->getBitcoinPrice();
         return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
