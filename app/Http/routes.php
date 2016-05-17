@@ -16,14 +16,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('accounts', 'AccountsController@index');
 
 
 Route::group(['middleware' => 'auth'], function () {
     //Landing page
     Route::post('send-email', 'SendEmailController@sendEmail');
     //Accounts
-    Route::get('accounts', 'AccountsController@index');
+//    Route::get('accounts', 'AccountsController@index');
     Route::post('accounts', 'AccountsController@createAccount');
     //History
     Route::get('history', 'HistoryController@index');

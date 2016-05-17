@@ -143,7 +143,7 @@ class AccountsController extends Controller
                 //dd($historyRecord); //OK
 
                 if(is_null($historyRecord) || empty($historyRecord) ){
-
+//                    dd("prova50");
                     $history = new FirstHistoryRecord();
                     $history->makeFirstRecord($user, $id, $client, $account, $accountCapital, $balanceAmount);
 

@@ -187,7 +187,8 @@ return [
         #llum_providers
 
         Collective\Html\HtmlServiceProvider::class,
-        Vinkla\Alert\AlertServiceProvider::class
+        Vinkla\Alert\AlertServiceProvider::class,
+        Chrisbjr\ApiGuard\Providers\ApiGuardServiceProvider::class,
 
     ],
 
@@ -247,6 +248,7 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'ApiGuardAuth' => \Chrisbjr\ApiGuard\Facades\ApiGuardAuth::class,
 
     ],
 

@@ -33,7 +33,7 @@ class CreateTradeHistoriesTable extends Migration
             $table->float('capital_amount');
             $table->float('total_amount');
             $table->float('benefit');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 

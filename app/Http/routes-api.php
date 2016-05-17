@@ -15,31 +15,19 @@ use App\Http\Requests;
 
 // The default throttle limits it to 60 attempts per minute, and disables their access for a single minute if they hit the limit.
 Route::group(['prefix' => 'api/v1/', 'middleware' => 'throttle'], function () {
-    //Landing page
-    Route::post('send-email', 'SendEmailController@sendEmail');
-    //Accounts
-    Route::post('accounts', 'AccountsController@createAccount');
-
-    //API Accounts
-    Route::get('user-accounts', 'AccountsController@getUserAccounts');
-    Route::get('accounts-active/{id}', 'AccountsController@activateAccounts');
-    Route::get('accounts-delete/{id}', 'AccountsController@deleteAccounts');
-
-    //API History
-    Route::get('user-history', 'HistoryController@getUserHistory');
 
     //API Statistics
-    Route::get('statistics/totalInitialCapital', 'StatitsticsController@getSumInitialCapital');
-    Route::get('statistics/getUserHistory', 'StatitsticsController@getHistory');
-    Route::get('statistics/getAccountHistory/{id}', 'StatitsticsController@getHistoryByID');
-    Route::get('statistics/getSumInitialCapital', 'StatitsticsController@getSumInitialCapital');
-    Route::get('statistics/getCapital', 'StatitsticsController@getCapital');
-    Route::get('statistics/getBitcoins', 'StatitsticsController@getBitcoins');
-    Route::get('statistics/getTotal', 'StatitsticsController@getTotal');
-    Route::get('statistics/getAvgInitialCapital', 'StatitsticsController@getAvgInitialCapital');
-    Route::get('statistics/getAvgCapital', 'StatitsticsController@getAvgCapital');
-    Route::get('statistics/getAvgBitcoins', 'StatitsticsController@getAvgBitcoins');
-    Route::get('statistics/getAvgBenefit', 'StatitsticsController@getAvgBenefit');
-    Route::get('statistics/getAvgTotal', 'StatitsticsController@getAvgTotal');
-    Route::get('statistics/getBitcoinPrice', 'StatitsticsController@getBitcoinPrice');
+    Route::get('statistics/totalInitialCapital', 'ApiV1Controller@getSumInitialCapital');
+    Route::get('statistics/getUserHistory', 'ApiV1Controller@getHistory');
+    Route::get('statistics/getAccountHistory/{id}', 'ApiV1Controller@getHistoryByID');
+    Route::get('statistics/getSumInitialCapital', 'ApiV1Controller@getSumInitialCapital');
+    Route::get('statistics/getCapital', 'ApiV1Controller@getCapital');
+    Route::get('statistics/getBitcoins', 'ApiV1Controller@getBitcoins');
+    Route::get('statistics/getTotal', 'ApiV1Controller@getTotal');
+    Route::get('statistics/getAvgInitialCapital', 'ApiV1Controller@getAvgInitialCapital');
+    Route::get('statistics/getAvgCapital', 'ApiV1Controller@getAvgCapital');
+    Route::get('statistics/getAvgBitcoins', 'ApiV1Controller@getAvgBitcoins');
+    Route::get('statistics/getAvgBenefit', 'ApiV1Controller@getAvgBenefit');
+    Route::get('statistics/getAvgTotal', 'ApiV1Controller@getAvgTotal');
+    Route::get('statistics/getBitcoinPrice', 'ApiV1Controller@getBitcoinPrice');
 });

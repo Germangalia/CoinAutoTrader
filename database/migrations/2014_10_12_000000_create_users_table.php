@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->bcrypt();
             $table->string('coinbase_api_key');
             $table->string('coinbase_api_secret');
+            $table->string('api_token')->unique();
             $table->rememberToken();
             $table->timestamps();
         });

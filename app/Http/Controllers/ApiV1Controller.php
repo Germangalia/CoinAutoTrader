@@ -2,90 +2,63 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Http\Controllers\Transformers\ApiHistoryTransformer;
+use App\Http\Controllers\Transformers\ApiValueTransformer;
+use Auth;
+use DB;
 use App\Http\Requests;
-use App\Http\Controllers\SendEmailController;
+
+use Chrisbjr\ApiGuard\Http\Controllers\ApiGuardController;
+use EllipseSynergie\ApiResponse\Contracts\Response;
 
 /**
  * Versión 1 of the API. Return JSON.
  * Class ApiV1Controller
  * @package App\Http\Controllers
  */
-class ApiV1Controller extends Controller
+class ApiV1Controller extends ApiGuardController
 {
-    //Landing page
+
+    /**
+     * @var ApiHistoryTransformer
+     */
+    private $apiHistoryTransformer;
 
 
     /**
-     * Send email from form data.
-     * @return string
+     * @var ApiValueTransformer
      */
-    public function sendEmail()
-    {
-        $result = \App\Http\Controllers\SendEmailController::class->sendEmail();
-        return json_encode($result);
-    }
-
-    //Accounts
-
-    /**
-     * Create new account
-     * @return string
-     */
-    public function createAccount()
-    {
-        $result = \App\Http\Controllers\AccountsController::class->createAccount();
-        return json_encode($result);
-    }
-
-    //API Accounts
+    private $apiValueTransformer;
 
 
     /**
-     * Get all user accounts
-     * @return string
+     * @var array
      */
-    public function getUserAccounts()
-    {
-        $result = \App\Http\Controllers\AccountsController::class->getUserAccounts();
-        return json_encode($result);
-    }
+    protected $apiMethods = [
+//        'getSumInitialCapital' => ['keyAuthentication' => false],
+//        'getHistory' => ['keyAuthentication' => false],
+//        'getHistoryByID' => ['keyAuthentication' => false],
+//        'getCapital' => ['keyAuthentication' => false],
+//        'getBitcoins' => ['keyAuthentication' => false],
+//        'getTotal' => ['keyAuthentication' => false],
+//        'getAvgInitialCapital' => ['keyAuthentication' => false],
+//        'getAvgCapital' => ['keyAuthentication' => false],
+//        'getAvgBitcoins' => ['keyAuthentication' => false],
+//        'getAvgBenefit' => ['keyAuthentication' => false],
+//        'getAvgTotal' => ['keyAuthentication' => false],
+//        'getSumInitialCapital' => ['keyAuthentication' => false],
+//        'getBitcoinPrice' => ['keyAuthentication' => false],
+    ];
 
 
     /**
-     * Get the active accounts of the user
-     * Get the active accounts of the user
-     * @return string
+     * @param Response
      */
-    public function activateAccounts()
+    public function __construct(ApiHistoryTransformer $apiHistoryTransformer, ApiValueTransformer $apiValueTransformer)
     {
-        $result = \App\Http\Controllers\AccountsController::class->activateAccounts();
-        return json_encode($result);
-    }
-
-
-    /**
-     * Delete account by id
-     * @return string
-     */
-    public function deleteAccounts()
-    {
-        $result = \App\Http\Controllers\AccountsController::class->deleteAccounts();
-        return json_encode($result);
-    }
-
-
-    //API History
-
-    /**
-     * Get the history records from user
-     * @return string
-     */
-    public function getUserHistory()
-    {
-        $result = \App\Http\Controllers\HistoryController::class->getUserHistory();
-        return json_encode($result);
+        parent::__construct();
+        $this->apiHistoryTransformer = $apiHistoryTransformer;
+        $this->apiValueTransformer = $apiValueTransformer;
     }
 
 
@@ -98,8 +71,8 @@ class ApiV1Controller extends Controller
      */
     public function getSumInitialCapital()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getSumInitialCapital();
-        return json_encode($result);
+        $result = getSumInitialCapital();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
     /**
@@ -108,18 +81,18 @@ class ApiV1Controller extends Controller
      */
     public function getHistory()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getHistory();
-        return json_encode($result);
+        $result = getHistory();
+        return $this->response->withCollection($result, $this->apiHistoryTransformer);
     }
 
     /**
      * Get history records for account
      * @return string
      */
-    public function getHistoryByID()
+    public function getHistoryByID($id)
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getHistoryByID();
-        return json_encode($result);
+        $result = getHistoryByID($id);
+        return $this->response->withCollection($result, $this->apiHistoryTransformer);
     }
 
 
@@ -129,8 +102,8 @@ class ApiV1Controller extends Controller
      */
     public function getCapital()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getCapital();
-        return json_encode($result);
+        $result = getCapital();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
 
@@ -140,8 +113,8 @@ class ApiV1Controller extends Controller
      */
     public function getBitcoins()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getBitcoins();
-        return json_encode($result);
+        $result = getBitcoins();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
 
@@ -151,8 +124,8 @@ class ApiV1Controller extends Controller
      */
     public function getTotal()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getTotal();
-        return json_encode($result);
+        $result = getTotal();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
 
@@ -162,8 +135,8 @@ class ApiV1Controller extends Controller
      */
     public function getAvgInitialCapital()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getAvgInitialCapital();
-        return json_encode($result);
+        $result = getAvgInitialCapital();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
 
@@ -173,8 +146,8 @@ class ApiV1Controller extends Controller
      */
     public function getAvgCapital()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getAvgCapital();
-        return json_encode($result);
+        $result = getAvgCapital();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
 
@@ -184,8 +157,8 @@ class ApiV1Controller extends Controller
      */
     public function getAvgBitcoins()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getAvgBitcoins();
-        return json_encode($result);
+        $result = getAvgBitcoins();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
 
@@ -195,8 +168,8 @@ class ApiV1Controller extends Controller
      */
     public function getAvgBenefit()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getAvgBenefit();
-        return json_encode($result);
+        $result = getAvgBenefit();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
 
@@ -205,8 +178,8 @@ class ApiV1Controller extends Controller
      */
     public function getAvgTotal()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getAvgTotal();
-        return json_encode($result);
+        $result = getAvgTotal();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
 
@@ -216,8 +189,8 @@ class ApiV1Controller extends Controller
      */
     public function getBitcoinPrice()
     {
-        $result = \App\Http\Controllers\StatitsticsController::class->getBitcoinPrice();
-        return json_encode($result);
+        $result = getBitcoinPrice();
+        return $this->response->withItem($result, $this->apiValueTransformer);
     }
 
 }
