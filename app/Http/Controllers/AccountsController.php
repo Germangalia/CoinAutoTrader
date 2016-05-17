@@ -12,7 +12,7 @@ use Crypt;
 use Illuminate\Http\Request;
 use App\CoinBaseAPI\CoinBaseAuthentication;
 use Illuminate\Support\Facades\DB;
-
+use Vinkla\Alert\Facades\Alert;
 
 /**
  * CoinAutotrader accounts controller
@@ -41,38 +41,47 @@ class AccountsController extends Controller
     public function createAccount(Request $requests)
     {
 
-        //Select Authenticated user
-        $user = Auth::user();
+        if($requests->title != '' && is_numeric($requests->initialCapital)){
+            //Select Authenticated user
+            $user = Auth::user();
 
-        $apiKey = $user->coinbase_api_key;
-        $apiSecret = $user->coinbase_api_secret;
+            $apiKey = $user->coinbase_api_key;
+            $apiSecret = $user->coinbase_api_secret;
 
 
-        //Create client
-        $authentication = new CoinBaseAuthentication();
-        $client = $authentication->apiKeyAuthentication($apiKey, $apiSecret);
+            //Create client
+            $authentication = new CoinBaseAuthentication();
+            $client = $authentication->apiKeyAuthentication($apiKey, $apiSecret);
 
-        //Create account
-        $accounter = new CoinBaseAccounts();
-        $account = $accounter->createAccount($client, $requests->title);
+            //Create account
+            $accounter = new CoinBaseAccounts();
+            $account = $accounter->createAccount($client, $requests->title);
 
-        //Get Primary Address from account
-        $addresser = new CoinBaseAddresses();
-        $address = $addresser->createAddress($client, $account);
+            //Get Primary Address from account
+            $addresser = new CoinBaseAddresses();
+            $address = $addresser->createAddress($client, $account);
 
-        //Save to database
-        $dataAccount = new AccountsCoinBase();
+            //Save to database
+            $dataAccount = new AccountsCoinBase();
 
-        $dataAccount->name = $requests->title;
-        $dataAccount->user_id = $user->id;
-        $dataAccount->account_id = $account->getId();
-        $dataAccount->wallet_address = $address->getAddress();
-        $dataAccount->balance = $account->getBalance()->getAmount();
-        $dataAccount->initial_capital = $requests->initialCapital;
-        //TODO put active to false.
-        $dataAccount->active = false;
+            $dataAccount->name = $requests->title;
+            $dataAccount->user_id = $user->id;
+            $dataAccount->account_id = $account->getId();
+            $dataAccount->wallet_address = $address->getAddress();
+            $dataAccount->balance = $account->getBalance()->getAmount();
+            $dataAccount->initial_capital = $requests->initialCapital;
 
-        $dataAccount->save();
+            $dataAccount->active = false;
+
+            $dataAccount->save();
+
+            //
+            Alert::info('Congratulations! Your new account is ready to activate.');
+
+
+        } else {
+            Alert::danger('Please, insert correct values in the form fields.');
+        }
 
         return view('layouts/accounts');
     }
@@ -150,15 +159,18 @@ class AccountsController extends Controller
                 }
             }
 
-            //Activate to false
+            //Activate to true
             $accountRecord->active = true;
             $accountRecord->save();
+            Alert::success('The account is activate to trade.');
+
 
         }else{
             //Activate to false
             $accountRecord->active = false;
             $accountRecord->save();
             //DB::table('accounts_coin_bases')->where('id', $id)->update(array('active' => false));
+            Alert::warming('The account is disable to trade.');
         }
 
         //Return accounts view
@@ -173,9 +185,9 @@ class AccountsController extends Controller
      */
     public function deleteAccounts($id)
     {
-
         //Delete from database
         AccountsCoinBase::destroy($id);
+        Alert::warming('The account is delete.');
 
         //Return accounts view
         return view('layouts/accounts');
