@@ -1,50 +1,364 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+	<title>reveal.js</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<!--TODO-->
+		<section data-markdown data-background="img/image.png">
+			<script type="text/template">
+				# COINAUTOTRADER
+			</script>
+		</section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+		<section data-markdown data-background="#ff0000">
+			<script type="text/template">
+				## Introducció
 
-		<script>
-			// More info https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				history: true,
+				- CoinAutoTrader és un projecte per a la gestió de comptes de bitcoins que incorpora un trader virtual automatitzat per tal de incrementar-ne el capital.
+				- Aquest projecte web està basat en Laravel tot i que incorpora en algun dels seus apartats altres frameworks com Vue.js, Angular.js o Chart.js per tal de millorar la experiència de l’usuari.
+			</script>
+		</section>
 
-				// More info https://github.com/hakimel/reveal.js#dependencies
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+		<section>
+			<section data-markdown data-background="#F4FA58">
+				<script type="text/template">
+					## Funcionalitats Principals
+
+					- La aplicació conta amb una interfície gràfica d'usuari on es podrà registrar per mitjà d'un formulari .
+					- Una vegada tinguem el compte preparat, es comprovarà la capacitat econòmica del mateix i s'iniciaran les funcions de trading, que continuaran de forma automatitzada mitjançant controladors, bases de dades i disparadors temporals amb schedule.
+					- El mètode de trading es basa en una sèrie de càlculs matemàtics que provenen de consultes a les bases de dades de l'historial del compte i de les entrades de dades procedents de les diferents APIs com el saldo en el moneder i els preus de compra i venta de monedes.
+				</script>
+			</section>
+			<section data-markdown data-background="#F4FA58">
+				<script type="text/template">
+					## Funcionalitats Principals
+
+					- Els usuaris podran veure una taula amb l'historial de trading de cada compte i altres dades estadístiques d'interès.
+					- Una vegada es dona un compte de baixa, mitjançant la interfície gràfica de l'aplicació, s'aturarà l'activitat de trading i la quantitat obtinguda estarà disponible en el moneder de l’usuari .
+				</script>
+			</section>
+		</section>
+
+		<section>
+			<section data-markdown data-background="#2ECCFA">
+				<script type="text/template">
+					## Objectius
+
+					- Extreure informació d'interès de APIs de tercers.
+					- Consultar saldo al moneder virtual.
+					- Utilització de taules en bases de dades amb dades no persistents com a suport per a la realització dels càlculs.
+					- Utilització de taules en bases de dades amb dades persistents per a registrar les dades d'usuari, de compte i l'historial.
+					- Utilització de controladors per la realització dels càlculs matemàtics que tenen que veure amb el trading.
+				</script>
+			</section>
+			<!--TODO-->
+			<section data-markdown data-background="#2ECCFA">
+				<script type="text/template">
+					## Objectius
+
+					- Landing Page amb informació comercial relativa al producte.
+					- Formulari de registre per a l'usuari.
+					- Formulari de registre per a comptes en la zona d'usuari.
+					- Àrea per a donar de baixa un compte.
+					- Pàgina amb una taula de dades amb l'historial del compte i altres dades d'interès.
+				</script>
+			</section>
+		</section>
+
+		<section data-markdown data-background="#FE9A2E">
+			<script type="text/template">
+				## Llenguatges de Programació
+
+				- Framework PHP Laravel
+				- HTML
+				- Javascript
+				- CSS
+				- MySQL
+			</script>
+		</section>
+
+		<section data-markdown data-background="#9A2EFE">
+			<script type="text/template">
+				## Dependències i Llibreries
+
+				Admin-LTE, Llum, Bootstrap, jQuery, ChartJS, Cron / Schedule, SQLite, CoinBase (API), Scrutinizer, Coverall, StyleCI, Vue.js, Angular.js, Elixir, Gulp, Laravel-IDE-Helper, PHPDocumentor, Sweet Alert, Mailgun, ApiGuard, Api-Response...
+			</script>
+		</section>
+
+		<section data-background="#2EFE2E">
+			<section data-markdown>
+				<script type="text/template">
+					## Esquema General de l’Aplicació
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<img data-src="img/image.png">
+			</section>
+		</section>
+
+		<section data-background="#FA5858">
+			<section data-markdown>
+				<script type="text/template">
+					## Model - Bases de Dades
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<img data-src="img/image.png">
+			</section>
+		</section>
+
+		<section data-background="#A4A4A4">
+			<section data-markdown>
+				<script type="text/template">
+					## BackEnd – API Coin Base
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="https://github.com/Germangalia/CoinAutoTrader/tree/master/app/CoinBaseAPI"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#0B6138">
+			<section data-markdown>
+				<script type="text/template">
+					## BackEnd - Controlador Trader
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#F5A9F2">
+			<section data-markdown>
+				<script type="text/template">
+					## BackEnd – Trade Object
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#084B8A">
+			<section data-markdown>
+				<script type="text/template">
+					## FrontEnd - Landing Page
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#F7FE2E">
+			<section data-markdown>
+				<script type="text/template">
+					## FrontEnd - Register i Loggin
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#FF0040">
+			<section data-markdown>
+				<script type="text/template">
+					## FrontEnd - Home Page
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#58ACFA">
+			<section data-markdown>
+				<script type="text/template">
+					## FrontEnd - Accounts Page
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#FA8258">
+			<section data-markdown>
+				<script type="text/template">
+					## FrontEnd - History Page
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section  data-background="#5E610B">
+			<section data-markdown>
+				<script type="text/template">
+					## FrontEnd - Statistics Index Page
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#BE81F7">
+			<section data-markdown>
+				<script type="text/template">
+					## FrontEnd - Statistics Graphic Pages
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#80FF00">
+			<section data-markdown>
+				<script type="text/template">
+					## API
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-background="#424242">
+			<section data-markdown>
+				<script type="text/template">
+					## Tests
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-markdown data-background="#088A85">
+			<script type="text/template">
+				## Explotació
+
+				- Publicar conjunt de carpetes i arxius al servidor mitjançant FTP.
+				- Crear base de dades amb MySQL i vincular-la al projecte.
+				- Test de funcionament a nivell usuari.
+			</script>
+		</section>
+
+		<section data-background="#F2F5A9">
+			<section data-markdown>
+				<script type="text/template">
+					## Documentació PHP i API
+				</script>
+			</section>
+			<section>
+				<!--TODO-->
+				<iframe data-src="http://hakim.se"></iframe>
+			</section>
+		</section>
+
+		<section data-markdown data-background="#BCA9F5">
+			<script type="text/template">
+				## Accions de Millora
+
+				-	Millorar la part de Responsive i adaptació a terminals mòbils.
+				-	Millorar l’aspecte visual amb CSS.
+				-	Interactivitat amb moneda real i comptes bancaris.
+				-	Incloure noves APIs externes de proveïdors de monedes virtuals.
+				-	Incloure noves monedes virtuals com Litcoins, Dogicoins...
+				-	Millorar les estadístiques i gràfics.
+				-	Afegir noves opcions de trading que permetin més interactivitat amb l’usuari.
+				-	Crear una aplicació purament mòbil usant la API que inclogui les especificacions web més notificacions push.
+
+			</script>
+		</section>
+
+		<section data-markdown data-background="#298A08">
+			<script type="text/template">
+				## Conclusió
+
+				A favor:
+				-	Realitzada la gran majoria de les activitats proposades al iniciar el treball.
+				-	Ús del projecte per a millorar les capacitats de estructuració, programació i experimentació amb el codi.
+
+				En contra:
+				-	Falta polir l’aplicació i millorar alguna de les funcionalitats.
+				-	Li falten alguns retocs per a ser un projecte comercial.
+			</script>
+		</section>
+
+		<section data-markdown data-background="#FE9A2E">
+			<script type="text/template">
+				## Enllaços d’Interès
+				<!--TODO-->
+				- Pàgina del projecte: <a href="http://www.coinautotrader.com">http://www.coinautotrader.com</a>
+				- Pàgina del GitHub: <a href="https://github.com/Germangalia/CoinAutoTrader">https://github.com/Germangalia/CoinAutoTrader</a>
+				- Presentació: <a href="">Link</a>https://germangalia.github.io/CoinAutoTrader
+				- Documentació: <a href=""></a>
+				- PHPDocs: <a href=""></a>
+				- Documentació de la API: <a href="http://germangalia.github.io/CoinAutoTrader/build/sami/build/master/">http://germangalia.github.io/CoinAutoTrader/build/sami/build/master/</a>
+
+			</script>
+		</section>
+
+	</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+	// More info https://github.com/hakimel/reveal.js#configuration
+	Reveal.initialize({
+		history: true,
+
+		// More info https://github.com/hakimel/reveal.js#dependencies
+		dependencies: [
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/notes/notes.js', async: true },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+		]
+	});
+</script>
+</body>
 </html>
