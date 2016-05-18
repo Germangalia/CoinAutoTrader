@@ -70,6 +70,20 @@ class CoinBaseManager
 
 
     /**
+     * Create client CoinBase API with api key and api secret.
+     * @param $apiKey
+     * @param $apiSecret
+     * @return \Coinbase\Wallet\Client
+     */
+    public function createClientFromKeys($apiKey, $apiSecret)
+    {
+        $client = $this->authentication->apiKeyAuthentication($apiKey, $apiSecret);
+
+        return $client;
+    }
+
+
+    /**
      * Create account CoinBase API from client.
      * @param $client
      * @return $this

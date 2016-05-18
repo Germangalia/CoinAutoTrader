@@ -9,6 +9,9 @@
 namespace App\Http\Controllers\PartialsAutoTrader;
 
 
+use App\AccountsCoinBase;
+use App\CoinBaseAPI\CoinBaseBuys;
+use App\CoinBaseAPI\CoinBaseSells;
 use App\TradeHistory;
 use Vinkla\Alert\Alert;
 
@@ -32,16 +35,30 @@ class CodeRefactorManager
 
 
     /**
+     * @var CoinBaseBuys
+     */
+    private $coinBaseBuys;
+
+
+    /**
+     * @var CoinBaseSells
+     */
+    private $coinBaseSells;
+
+
+    /**
      * CodeRefactorManager constructor.
      * @param DatabaseManager $databaseManager
      * @param CoinBaseManager $coinBaseManager
      * @param FirstHistoryRecord $firstHistoryRecord
      */
-    public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, FirstHistoryRecord $firstHistoryRecord)
+    public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, FirstHistoryRecord $firstHistoryRecord, CoinBaseBuys $coinBaseBuys, CoinBaseSells $coinBaseSells)
     {
         $this->coinBaseManager = $coinBaseManager;
         $this->databaseManager = $databaseManager;
         $this->firstHistoryRecord = $firstHistoryRecord;
+        $this->coinBaseBuys = $coinBaseBuys;
+        $this->coinBaseSells = $coinBaseSells;
     }
 
 
@@ -125,6 +142,46 @@ class CodeRefactorManager
 
             //Make the first history table record
             $this->firstHistoryRecord->makeFirstRecord($id, $client, $accountCapital, $balanceAmount);
+
+        }
+    }
+
+
+    /**
+     * Execute the trade operation
+     * @param $client
+     * @param $account
+     * @param $amount
+     * @param $DBuserId
+     * @param $DBaccountId
+     * @param $balanceAmount
+     * @param $lastHistoryRecord
+     * @param $autoTrader
+     */
+    public function setTradeOperation($client, $account, $amount, $DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader)
+    {
+        $operation = false;
+        if($amount > 0)
+        {
+            //Buy Coins
+            $operation = $this->coinBaseBuys->buyBitcoins($client, $account, $amount);
+
+        } elseif($amount < 0)
+        {
+            //Sell Coins
+            $amount = abs($amount);
+            $operation = $this->coinBaseSells->sellBitcoins($client, $account, $amount);
+        }
+
+        //dd($operation);
+
+        if($operation){
+            //Actualize account balance
+            $balance = $autoTrader->getTotalAmount();
+            $this->databaseManager->updateBalance($DBaccountId, $balance);
+
+            //Keep to history table
+            $this->databaseManager->insertHistoryByObject($DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader);
 
         }
     }

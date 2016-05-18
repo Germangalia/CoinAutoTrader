@@ -10,6 +10,7 @@ namespace App\Http\Controllers\PartialsAutoTrader;
 
 
 use App\AccountsCoinBase;
+use App\TradeCalculator;
 use App\TradeHistory;
 use Auth;
 use DB;
@@ -27,14 +28,22 @@ class DatabaseManager
     private $accountsCoinBase;
 
     /**
+     * @var TradeCalculator
+     */
+    private $tradeCalculator;
+
+
+    /**
      * DatabaseManager constructor.
      * @param TradeHistory $dataHistory
      * @param AccountsCoinBase $accountsCoinBase
+     * @param TradeCalculator $tradeCalculator
      */
-    public function __construct(TradeHistory $dataHistory, AccountsCoinBase $accountsCoinBase)
+    public function __construct(TradeHistory $dataHistory, AccountsCoinBase $accountsCoinBase, TradeCalculator $tradeCalculator)
     {
         $this->dataHistory = $dataHistory;
         $this->accountsCoinBase = $accountsCoinBase;
+        $this->tradeCalculator = $tradeCalculator;
     }
 
     /**
@@ -100,6 +109,97 @@ class DatabaseManager
 
 
     /**
+     * Insert data to database Calculator table
+     * @param $userId
+     * @param $accountId
+     * @param $accountCapital
+     * @param $coinPrice
+     * @param $coins
+     * @param $balanceAmount
+     * @param $cfav
+     * @param $capital
+     * @param $portafolioControl
+     * @param $buySellAdvice
+     * @param $marketOrder
+     * @param $coinMarketOrder
+     * @param $commission
+     * @param $coinsAmount
+     * @param $capitalAmount
+     * @param $totalAmount
+     * @param $benefit
+     */
+    public function insertCalculator($DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader)
+    {
+        $this->tradeCalculator->user_id = $DBuserId;
+        $this->tradeCalculator->account_id = $DBaccountId;
+        $this->tradeCalculator->initial_capital = $lastHistoryRecord->initial_capital;
+        $this->tradeCalculator->coin_price = $autoTrader->getCoinPrice();
+        $this->tradeCalculator->coins = $autoTrader->getCoins();
+        $this->tradeCalculator->coins_value = $autoTrader->getCoinsValue();
+        $this->tradeCalculator->cfav = $autoTrader->getCfav();
+        $this->tradeCalculator->capital = $autoTrader->getCapital();
+        $this->tradeCalculator->portfolio_control = $autoTrader->getPortfolioControl();
+        $this->tradeCalculator->buy_sell_advice = $autoTrader->getBuyOrSellAdvice();
+        $this->tradeCalculator->market_order = $autoTrader->getMarketOrder();
+        $this->tradeCalculator->coin_market_order = $autoTrader->getCoinMarketOrder();
+        $this->tradeCalculator->commission = $autoTrader->getCommission();
+        $this->tradeCalculator->coins_amount = $autoTrader->getCoinsAmount();
+        $this->tradeCalculator->capital_amount = $autoTrader->getCapitalAmount();
+        $this->tradeCalculator->total_amount = $autoTrader->getTotalAmount();
+        $this->tradeCalculator->benefit = $autoTrader->getBenefit();
+
+        $this->tradeCalculator->save();
+
+    }
+
+
+    /**
+     * Insert data to database Calculator table
+     * @param $userId
+     * @param $accountId
+     * @param $accountCapital
+     * @param $coinPrice
+     * @param $coins
+     * @param $balanceAmount
+     * @param $cfav
+     * @param $capital
+     * @param $portafolioControl
+     * @param $buySellAdvice
+     * @param $marketOrder
+     * @param $coinMarketOrder
+     * @param $commission
+     * @param $coinsAmount
+     * @param $capitalAmount
+     * @param $totalAmount
+     * @param $benefit
+     */
+    public function insertHistoryByObject($DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader)
+    {
+        $this->dataHistory->user_id = $DBuserId;
+        $this->dataHistory->account_id = $DBaccountId;
+        $this->dataHistory->initial_capital = $lastHistoryRecord->initial_capital;
+        $this->dataHistory->coin_price = $autoTrader->getCoinPrice();
+        $this->dataHistory->coins = $autoTrader->getCoins();
+        $this->dataHistory->coins_value = $autoTrader->getCoinsValue();
+        $this->dataHistory->cfav = $autoTrader->getCfav();
+        $this->dataHistory->capital = $autoTrader->getCapital();
+        $this->dataHistory->portfolio_control = $autoTrader->getPortfolioControl();
+        $this->dataHistory->buy_sell_advice = $autoTrader->getBuyOrSellAdvice();
+        $this->dataHistory->market_order = $autoTrader->getMarketOrder();
+        $this->dataHistory->coin_market_order = $autoTrader->getCoinMarketOrder();
+        $this->dataHistory->commission = $autoTrader->getCommission();
+        $this->dataHistory->coins_amount = $autoTrader->getCoinsAmount();
+        $this->dataHistory->capital_amount = $autoTrader->getCapitalAmount();
+        $this->dataHistory->total_amount = $autoTrader->getTotalAmount();
+        $this->dataHistory->benefit = $autoTrader->getBenefit();
+
+        $this->dataHistory->save();
+
+    }
+
+
+
+    /**
      * Insert data to database History table
      * @param $userId
      * @param $accountId
@@ -160,6 +260,32 @@ class DatabaseManager
 //            'capital_amount' => $capitalAmount,
 //            'total_amount' => $totalAmount,
 //            'benefit' => $benefit));
+    }
+
+
+    /**
+     * Get the last history record of the account
+     * @param $DBaccountId
+     * @return array|static[]
+     */
+    public function getLastHistoryRecord($DBaccountId)
+    {
+        $lastHistoryRecord = DB::table('trade_histories')->where('account_id', $DBaccountId)->orderBy('updated_at', 'desc')->take(1)->get();
+
+        return $lastHistoryRecord;
+    }
+
+
+    /**
+     * Get the stored user attributes by user_id
+     * @param $DBuserId
+     * @return array|static[]
+     */
+    public function getuserAttributes($DBuserId)
+    {
+        $userAtributes = DB::table('users')->where('id', $DBuserId)->get();
+
+        return $userAtributes;
     }
 
 
