@@ -9,10 +9,8 @@
 namespace App\Http\Controllers\PartialsAutoTrader;
 
 use App\CoinBaseAPI\CoinBaseMarketData;
-use App\TradeHistory;
 use Config;
 use DB;
-use Exception;
 
 class FirstHistoryRecord
 {
@@ -22,15 +20,18 @@ class FirstHistoryRecord
      */
     private $marketData;
 
+    private $databaseManager;
+
     /**
      * FirstHistoryRecord constructor.
      */
-    public function __construct(CoinBaseMarketData $marketData)
+    public function __construct(CoinBaseMarketData $marketData, DatabaseManager $databaseManager)
     {
         $this->marketData = $marketData;
+        $this->databaseManager = $databaseManager;
     }
 
-    public function makeFirstRecord($user, $accountId, $client, $account, $accountCapital, $balanceAmount)
+    public function makeFirstRecord($user, $accountId, $client, $accountCapital, $balanceAmount)
     {
         //account_id = $accountId
         //initial_capital = $accountCapital
@@ -56,8 +57,6 @@ class FirstHistoryRecord
 
         //Get Capital
         $capital = $accountCapital - $balanceAmount;
-
-        //dd($capital);
 
         //Get prortfolio_control
         $portafolioControl = $balanceAmount;
@@ -88,49 +87,10 @@ class FirstHistoryRecord
 
 
         //Create DB record in trade_histories
-        $dataHistory = new TradeHistory();
-
-        $dataHistory->user_id = $userId;
-        $dataHistory->account_id = $accountId;
-        $dataHistory->initial_capital = $accountCapital;
-        $dataHistory->coin_price = $coinPrice;
-        $dataHistory->coins = $coins;
-        $dataHistory->coins_value = $balanceAmount;
-        $dataHistory->cfav = $cfav;
-        $dataHistory->capital = $capital;
-        $dataHistory->portfolio_control = $portafolioControl;
-        $dataHistory->buy_sell_advice = $buySellAdvice;
-        $dataHistory->market_order = $marketOrder;
-        $dataHistory->coin_market_order = $coinMarketOrder;
-        $dataHistory->commission = $commission;
-        $dataHistory->coins_amount = $coinsAmount;
-        $dataHistory->capital_amount = $capitalAmount;
-        $dataHistory->total_amount = $totalAmount;
-        $dataHistory->benefit = $benefit;
-
-        $dataHistory->save();
-
-//        DB::table('trade_histories')->insert(array
-//            ('user_id' => $userId,
-//            'account_id' => $accountId,
-//            'initial_capital' => $accountCapital,
-//            'coin_price' => $coinPrice,
-//            'coins' => $coins,
-//            'coins_value' => $balanceAmount,
-//            'cfav' => $cfav,
-//            'capital' => $capital,
-//            'portfolio_control' => $portafolioControl,
-//            'buy_sell_advice' => $buySellAdvice,
-//            'market_order' => $marketOrder,
-//            'coin_market_order' => $coinMarketOrder,
-//            'commission' => $commission,
-//            'coins_amount' => $coinsAmount,
-//            'capital_amount' => $capitalAmount,
-//            'total_amount' => $totalAmount,
-//            'benefit' => $benefit));
+        $this->databaseManager->insertHistory($userId, $accountId, $accountCapital, $coinPrice, $coins, $balanceAmount, $cfav, $capital, $portafolioControl, $buySellAdvice, $marketOrder, $coinMarketOrder, $commission, $coinsAmount, $capitalAmount, $totalAmount, $benefit);
 
         //Update DB Accounts record
-        DB::table('accounts_coin_bases')->where('id', $accountId)->update(array('balance' => $totalAmount));
+        $this->databaseManager->ubdateBalance($accountId, $totalAmount);
     }
 
 }
