@@ -9,7 +9,9 @@
 namespace App\Http\Controllers\PartialsAutoTrader;
 
 
+use App\AccountsCoinBase;
 use App\TradeHistory;
+use Auth;
 use DB;
 
 class DatabaseManager
@@ -20,28 +22,89 @@ class DatabaseManager
      */
     private $dataHistory;
 
+
+    /**
+     * @var AccountsCoinBase
+     */
+    private $accountsCoinBase;
+
+
     /**
      * DatabaseManager constructor.
+     * @param TradeHistory $dataHistory
+     * @param AccountsCoinBase $accountsCoinBase
      */
-    public function __construct(TradeHistory $dataHistory)
+    public function __construct(TradeHistory $dataHistory, AccountsCoinBase $accountsCoinBase)
     {
         $this->dataHistory = $dataHistory;
+        $this->accountsCoinBase = $accountsCoinBase;
     }
 
 
     /**
-     * Actualize the balance in accounts database.
+     * Insert new record in Acounts database table
+     * @param $title
+     * @param $id
+     * @param $accountId
+     * @param $address
+     * @param $balance
+     * @param $initialCapital
+     * @param $active
+     */
+    public function insertAccounts($name, $user_id, $account_id, $wallet_address, $balance, $initial_capital, $active)
+    {
+        $this->accountsCoinBase->name = $name;
+        $this->accountsCoinBase->user_id = $user_id;
+        $this->accountsCoinBase->account_id = $account_id;
+        $this->accountsCoinBase->wallet_address = $wallet_address;
+        $this->accountsCoinBase->balance = $balance;
+        $this->accountsCoinBase->initial_capital = $initial_capital;
+        $this->accountsCoinBase->active = $active;
+
+        $this->accountsCoinBase->save();
+    }
+
+
+    /**
+     * Update the balance in accounts database table.
      * @param $accountId
      * @param $totalAmount
      */
-    public function ubdateBalance($accountId, $totalAmount)
+    public function updateBalance($accountId, $totalAmount)
     {
         DB::table('accounts_coin_bases')->where('id', $accountId)->update(array('balance' => $totalAmount));
     }
 
 
     /**
-     * Insert data to database History
+     * Update the active in accounts database table.
+     * @param $accountId
+     * @param $active
+     */
+    public function updateActive($accountId, $active)
+    {
+        DB::table('accounts_coin_bases')->where('id', $accountId)->update(array('active' => $active));
+    }
+
+
+    /**
+     * Get user accounts
+     * @return array|static[]
+     */
+    public function getUserAccounts()
+    {
+        //Select Authenticated user
+        $user = Auth::user();
+        $userId = $user->id;
+        //Get accounts from database
+        $userAccounts = DB::table('accounts_coin_bases')->where('user_id', $userId)->get();
+
+        return $userAccounts;
+    }
+
+
+    /**
+     * Insert data to database History table
      * @param $userId
      * @param $accountId
      * @param $accountCapital

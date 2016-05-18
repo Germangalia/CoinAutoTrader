@@ -9,8 +9,8 @@
 namespace App\Http\Controllers\PartialsAutoTrader;
 
 use App\CoinBaseAPI\CoinBaseMarketData;
+use Auth;
 use Config;
-use DB;
 
 class FirstHistoryRecord
 {
@@ -31,7 +31,7 @@ class FirstHistoryRecord
         $this->databaseManager = $databaseManager;
     }
 
-    public function makeFirstRecord($user, $accountId, $client, $accountCapital, $balanceAmount)
+    public function makeFirstRecord($accountId, $client, $accountCapital, $balanceAmount)
     {
         //account_id = $accountId
         //initial_capital = $accountCapital
@@ -43,7 +43,7 @@ class FirstHistoryRecord
         $balanceAmount = floatval($balanceAmount);
 
         //Get user_id
-        $userId = $user->id;
+        $userId = Auth::user()->id;
 
         //Get coins
         //$marketData = new CoinBaseMarketData();

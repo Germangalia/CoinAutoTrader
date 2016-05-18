@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\AccountsCoinBase;
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAddresses;
+use App\Http\Controllers\PartialsAutoTrader\CodeRefactorManager;
+use App\Http\Controllers\PartialsAutoTrader\CoinBaseManager;
+use App\Http\Controllers\PartialsAutoTrader\DatabaseManager;
 use App\Http\Controllers\PartialsAutoTrader\FirstHistoryRecord;
 use App\TradeHistory;
 use Auth;
@@ -22,13 +25,34 @@ use Vinkla\Alert\Facades\Alert;
 class AccountsController extends Controller
 {
 
+    private $databaseManager;
+
+    /**
+     * @var CoinBaseManager
+     */
+    private $coinBaseManager;
+
+
+    private $codeRefactorManager;
+
+
+    /**
+     * AccountsController constructor.
+     */
+    public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, CodeRefactorManager $codeRefactorManager)
+    {
+        $this->coinBaseManager = $coinBaseManager;
+        $this->databaseManager = $databaseManager;
+        $this->codeRefactorManager = $codeRefactorManager;
+    }
+
+
     /**
      * View the acounts blade
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-
         return view('layouts/accounts');
     }
 
@@ -42,44 +66,32 @@ class AccountsController extends Controller
     {
 
         if($requests->title != '' && is_numeric($requests->initialCapital)){
-            //Select Authenticated user
-            $user = Auth::user();
-
-            $apiKey = $user->coinbase_api_key;
-            $apiSecret = $user->coinbase_api_secret;
-
-
-            //Create client
-            $authentication = new CoinBaseAuthentication();
-            $client = $authentication->apiKeyAuthentication($apiKey, $apiSecret);
+            //Select Authenticated user and create client
+            $client = $this->coinBaseManager->createClientFromUser();
 
             //Create account
-            $accounter = new CoinBaseAccounts();
-            $account = $accounter->createAccount($client, $requests->title);
+            $account = $this->coinBaseManager->createAccount($client, $requests->title);
 
             //Get Primary Address from account
-            $addresser = new CoinBaseAddresses();
-            $address = $addresser->createAddress($client, $account);
+            $address = $this->coinBaseManager->createAddress($client, $account);
 
-            //Save to database
-            $dataAccount = new AccountsCoinBase();
+            //Get values
+            $name = $requests->title;
+            $user_id = Auth::user()->id;
+            $account_id = $account->getId();
+            $wallet_address = $address->getAddress();
+            $balance = $account->getBalance()->getAmount();
+            $initial_capital = $requests->initialCapital;
+            $active = false;
 
-            $dataAccount->name = $requests->title;
-            $dataAccount->user_id = $user->id;
-            $dataAccount->account_id = $account->getId();
-            $dataAccount->wallet_address = $address->getAddress();
-            $dataAccount->balance = $account->getBalance()->getAmount();
-            $dataAccount->initial_capital = $requests->initialCapital;
+            //Save to accounts database
+            $this->databaseManager->insertAccounts($name, $user_id, $account_id, $wallet_address, $balance, $initial_capital, $active);
 
-            $dataAccount->active = false;
-
-            $dataAccount->save();
-
-            //
+            //Send alert to view
             Alert::info('Congratulations! Your new account is ready to activate.');
 
-
         } else {
+            //Send alert to view
             Alert::danger('Please, insert correct values in the form fields.');
         }
 
@@ -92,11 +104,8 @@ class AccountsController extends Controller
      */
     public function getUserAccounts()
     {
-        //Select Authenticated user
-        $user = Auth::user();
-        $userId = $user->id;
         //Get accounts from database
-        $userAccounts = DB::table('accounts_coin_bases')->where('user_id', $userId)->get();
+        $userAccounts = $this->databaseManager->getUserAccounts();
         return $userAccounts;
     }
 
@@ -107,71 +116,11 @@ class AccountsController extends Controller
      */
     public function activateAccounts($id)
     {
-
-        //Get data from user
-        $user = Auth::user();
-
-        $apiKey = $user->coinbase_api_key;
-        $apiSecret =  $user->coinbase_api_secret;
-
         //Get account details
         $accountRecord =  AccountsCoinBase::findOrFail($id);
 
-        $accountActive = $accountRecord->active;
-        $accountId = $accountRecord->account_id;
-        $accountCapital = $accountRecord->initial_capital;
-
-        //dd($accountRecord);   //OK
-
-        if($accountActive == 0){
-            //Coin Base authentication
-            $authentication = new CoinBaseAuthentication();
-            $client = $authentication->apiKeyAuthentication($apiKey, $apiSecret);
-
-            $accounter = new CoinBaseAccounts();
-            $account = $accounter->getAccountDetails($client, $accountId);
-
-            //TODO PRODUCTION -> Get $balanceAmount
-            //$balance = $accounter->balanceAccount($client, $account);
-            //$balanceAmount = $balance->getAmount();
-            //TEST
-            $balanceAmount = ($accountCapital/2) + 1;
-
-            //dd($balanceAmount); //OK
-
-            if(($balanceAmount >= ($accountCapital*0.50) && ($balanceAmount <= ($accountCapital*0.8)))){
-                //Activate account
-                $accountRecord->balance = $balanceAmount;
-                $accountRecord->active = true;
-                $accountRecord->save();
-                //DB::table('accounts_coin_bases')->where('id', $id)->update(array('active' => true));
-
-                //Make first record in history table
-                $historyRecord =  TradeHistory::find($id);
-
-                //dd($historyRecord); //OK
-
-                if(is_null($historyRecord) || empty($historyRecord) ){
-//                    dd("prova50");
-                    $history = new FirstHistoryRecord();
-                    $history->makeFirstRecord($user, $id, $client, $accountCapital, $balanceAmount);
-
-                }
-            }
-
-            //Activate to true
-            $accountRecord->active = true;
-            $accountRecord->save();
-            Alert::success('The account is activate to trade.');
-
-
-        }else{
-            //Activate to false
-            $accountRecord->active = false;
-            $accountRecord->save();
-            //DB::table('accounts_coin_bases')->where('id', $id)->update(array('active' => false));
-            Alert::warming('The account is disable to trade.');
-        }
+        //Check the values
+        $this->codeRefactorManager->checkActiveAccount($id, $accountRecord);
 
         //Return accounts view
         return view('layouts/accounts');
@@ -187,6 +136,8 @@ class AccountsController extends Controller
     {
         //Delete from database
         AccountsCoinBase::destroy($id);
+
+        //Send alert to view
         Alert::warming('The account is delete.');
 
         //Return accounts view
