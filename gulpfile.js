@@ -69,11 +69,6 @@ elixir(function(mix) {
 
     // Compile scripts
     mix.scripts([
-        'statistics-benefit-evolution.js'
-    ], 'public/js/statistics-benefit-evolution.js');
-
-    // Compile scripts
-    mix.scripts([
         'statistics-react.js'
     ], 'public/js/statistics-react.js');
 
@@ -101,5 +96,12 @@ elixir(function(mix) {
     mix.styles([
         'style-table-responsive.css'
     ], 'public/css/style-table-responsive.css');
+
+
+    // Compile scripts
+    mix.scripts([
+        'graphic-functions.js',
+        'statistics-benefit-evolution.js'
+    ], 'public/js/statistics-benefit-evolution.js');
 
 });
