@@ -15,6 +15,9 @@ use Vinkla\Alert\Alert;
 class CodeRefactorManager
 {
 
+    /**
+     * @var DatabaseManager
+     */
     private $databaseManager;
 
     /**
@@ -22,11 +25,17 @@ class CodeRefactorManager
      */
     private $coinBaseManager;
 
-
+    /**
+     * @var FirstHistoryRecord
+     */
     private $firstHistoryRecord;
 
+
     /**
-     * AccountsController constructor.
+     * CodeRefactorManager constructor.
+     * @param DatabaseManager $databaseManager
+     * @param CoinBaseManager $coinBaseManager
+     * @param FirstHistoryRecord $firstHistoryRecord
      */
     public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, FirstHistoryRecord $firstHistoryRecord)
     {
@@ -36,6 +45,11 @@ class CodeRefactorManager
     }
 
 
+    /**
+     * Check if the acount is active
+     * @param $id
+     * @param $accountRecord
+     */
     public function checkActiveAccount($id, $accountRecord)
     {
 
@@ -74,6 +88,12 @@ class CodeRefactorManager
     }
 
 
+    /**
+     * Check if the balance is correct
+     * @param $id
+     * @param $balanceAmount
+     * @param $accountCapital
+     */
     public function checkBalance($id, $balanceAmount, $accountCapital)
     {
         if(($balanceAmount >= ($accountCapital*0.50) && ($balanceAmount <= ($accountCapital*0.8)))){
@@ -89,6 +109,13 @@ class CodeRefactorManager
     }
 
 
+    /**
+     * Check the records history of account
+     * @param $historyRecord
+     * @param $id
+     * @param $accountCapital
+     * @param $balanceAmount
+     */
     public function checkHistoryRecord($historyRecord, $id, $accountCapital, $balanceAmount)
     {
         if(is_null($historyRecord) || empty($historyRecord) ){

@@ -12,8 +12,10 @@ namespace App\Http\Controllers\PartialsAutoTrader;
 class GetApiToken
 {
 
+
     /**
-     * Generate the API token for de user.
+     * Generate the API token of the user
+     * @return static
      */
     public function generateApiToken()
     {

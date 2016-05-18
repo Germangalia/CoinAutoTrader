@@ -35,8 +35,12 @@ class CoinBaseManager
      */
     private $coinBaseAddresses;
 
+
     /**
      * CoinBaseManager constructor.
+     * @param CoinBaseAuthentication $authentication
+     * @param CoinBaseAccounts $coinBaseAccounts
+     * @param CoinBaseAddresses $coinBaseAddresses
      */
     public function __construct(CoinBaseAuthentication $authentication, CoinBaseAccounts $coinBaseAccounts, CoinBaseAddresses $coinBaseAddresses)
     {
@@ -79,6 +83,12 @@ class CoinBaseManager
     }
 
 
+    /**
+     * Get the account by id
+     * @param $client
+     * @param $accountId
+     * @return mixed
+     */
     public function getAccountById($client, $accountId)
     {
         $account = $this->coinBaseAccounts->getAccountDetails($client, $accountId);

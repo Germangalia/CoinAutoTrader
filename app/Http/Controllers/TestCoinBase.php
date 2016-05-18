@@ -10,6 +10,9 @@ use App\CoinBaseAPI\CoinBaseAuthentication;
 
 class TestCoinBase extends Controller
 {
+    /**
+     * Manual test
+     */
     public function testing()
     {
         //Authentication works well

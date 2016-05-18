@@ -16,18 +16,15 @@ use DB;
 
 class DatabaseManager
 {
-
     /**
      * @var TradeHistory
      */
     private $dataHistory;
 
-
     /**
      * @var AccountsCoinBase
      */
     private $accountsCoinBase;
-
 
     /**
      * DatabaseManager constructor.
@@ -39,7 +36,6 @@ class DatabaseManager
         $this->dataHistory = $dataHistory;
         $this->accountsCoinBase = $accountsCoinBase;
     }
-
 
     /**
      * Insert new record in Acounts database table

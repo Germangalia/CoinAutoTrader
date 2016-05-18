@@ -18,19 +18,19 @@ use EllipseSynergie\ApiResponse\Contracts\Response;
  */
 class ApiV1Controller extends ApiGuardController
 {
-
     /**
      * @var ApiHistoryTransformer
      */
     private $apiHistoryTransformer;
-
 
     /**
      * @var ApiValueTransformer
      */
     private $apiValueTransformer;
 
-
+    /**
+     * @var StatitsticsController
+     */
     private $statistics;
 
     /**
@@ -54,7 +54,10 @@ class ApiV1Controller extends ApiGuardController
 
 
     /**
-     * @param Response
+     * ApiV1Controller constructor.
+     * @param ApiHistoryTransformer $apiHistoryTransformer
+     * @param ApiValueTransformer $apiValueTransformer
+     * @param StatitsticsController $statitstics
      */
     public function __construct(ApiHistoryTransformer $apiHistoryTransformer, ApiValueTransformer $apiValueTransformer, StatitsticsController $statitstics)
     {
@@ -63,7 +66,6 @@ class ApiV1Controller extends ApiGuardController
         $this->apiValueTransformer = $apiValueTransformer;
         $this->statistics = $statitstics;
     }
-
 
 
     //API Statistics

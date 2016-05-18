@@ -24,7 +24,9 @@ use Vinkla\Alert\Facades\Alert;
  */
 class AccountsController extends Controller
 {
-
+    /**
+     * @var DatabaseManager
+     */
     private $databaseManager;
 
     /**
@@ -32,12 +34,16 @@ class AccountsController extends Controller
      */
     private $coinBaseManager;
 
-
+    /**
+     * @var CodeRefactorManager
+     */
     private $codeRefactorManager;
-
 
     /**
      * AccountsController constructor.
+     * @param DatabaseManager $databaseManager
+     * @param CoinBaseManager $coinBaseManager
+     * @param CodeRefactorManager $codeRefactorManager
      */
     public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, CodeRefactorManager $codeRefactorManager)
     {
@@ -45,7 +51,6 @@ class AccountsController extends Controller
         $this->databaseManager = $databaseManager;
         $this->codeRefactorManager = $codeRefactorManager;
     }
-
 
     /**
      * View the acounts blade
@@ -55,7 +60,6 @@ class AccountsController extends Controller
     {
         return view('layouts/accounts');
     }
-
 
     /**
      * Create new account

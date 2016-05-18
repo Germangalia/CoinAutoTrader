@@ -14,16 +14,20 @@ use Config;
 
 class FirstHistoryRecord
 {
-
     /**
      * @var CoinBaseMarketData
      */
     private $marketData;
 
+    /**
+     * @var DatabaseManager
+     */
     private $databaseManager;
 
     /**
      * FirstHistoryRecord constructor.
+     * @param CoinBaseMarketData $marketData
+     * @param DatabaseManager $databaseManager
      */
     public function __construct(CoinBaseMarketData $marketData, DatabaseManager $databaseManager)
     {
@@ -31,6 +35,13 @@ class FirstHistoryRecord
         $this->databaseManager = $databaseManager;
     }
 
+    /**
+     * Make the first record of the account to the database history
+     * @param $accountId
+     * @param $client
+     * @param $accountCapital
+     * @param $balanceAmount
+     */
     public function makeFirstRecord($accountId, $client, $accountCapital, $balanceAmount)
     {
         //account_id = $accountId
@@ -85,12 +96,11 @@ class FirstHistoryRecord
         //Get benefit
         $benefit = $totalAmount / $accountCapital * 100;
 
-
         //Create DB record in trade_histories
         $this->databaseManager->insertHistory($userId, $accountId, $accountCapital, $coinPrice, $coins, $balanceAmount, $cfav, $capital, $portafolioControl, $buySellAdvice, $marketOrder, $coinMarketOrder, $commission, $coinsAmount, $capitalAmount, $totalAmount, $benefit);
 
         //Update DB Accounts record
-        $this->databaseManager->ubdateBalance($accountId, $totalAmount);
+        $this->databaseManager->updateBalance($accountId, $totalAmount);
     }
 
 }

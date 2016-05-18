@@ -26,8 +26,8 @@ class User extends Authenticatable
 
 
     /**
- * Get the account record associated with the user. Return a colection
- */
+     * Get the account record associated with the user. Return a colection
+     */
     public function getAccountRecords()
     {
         return $this->hasMany('App\AccountsCoinBase');
