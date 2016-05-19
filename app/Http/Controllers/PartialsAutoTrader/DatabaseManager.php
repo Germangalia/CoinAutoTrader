@@ -132,13 +132,13 @@ class DatabaseManager
     {
         $this->tradeCalculator->user_id = $DBuserId;
         $this->tradeCalculator->account_id = $DBaccountId;
-        $this->tradeCalculator->initial_capital = $lastHistoryRecord->initial_capital;
+        $this->tradeCalculator->initial_capital = $lastHistoryRecord[0]->initial_capital;
         $this->tradeCalculator->coin_price = $autoTrader->getCoinPrice();
         $this->tradeCalculator->coins = $autoTrader->getCoins();
         $this->tradeCalculator->coins_value = $autoTrader->getCoinsValue();
         $this->tradeCalculator->cfav = $autoTrader->getCfav();
         $this->tradeCalculator->capital = $autoTrader->getCapital();
-        $this->tradeCalculator->portfolio_control = $autoTrader->getPortfolioControl();
+        $this->tradeCalculator->portfolio_control = $autoTrader->getPortafolioControl();
         $this->tradeCalculator->buy_sell_advice = $autoTrader->getBuyOrSellAdvice();
         $this->tradeCalculator->market_order = $autoTrader->getMarketOrder();
         $this->tradeCalculator->coin_market_order = $autoTrader->getCoinMarketOrder();
@@ -150,6 +150,14 @@ class DatabaseManager
 
         $this->tradeCalculator->save();
 
+    }
+
+
+    public function getLastCalculatorRecord()
+    {
+        $lastCalculatorRecord = DB::table('trade_calculators')->orderBy('updated_at', 'desc')->take(1)->get();
+
+        return $lastCalculatorRecord;
     }
 
 
@@ -177,13 +185,13 @@ class DatabaseManager
     {
         $this->dataHistory->user_id = $DBuserId;
         $this->dataHistory->account_id = $DBaccountId;
-        $this->dataHistory->initial_capital = $lastHistoryRecord->initial_capital;
+        $this->dataHistory->initial_capital = $lastHistoryRecord[0]->initial_capital;
         $this->dataHistory->coin_price = $autoTrader->getCoinPrice();
         $this->dataHistory->coins = $autoTrader->getCoins();
         $this->dataHistory->coins_value = $autoTrader->getCoinsValue();
         $this->dataHistory->cfav = $autoTrader->getCfav();
         $this->dataHistory->capital = $autoTrader->getCapital();
-        $this->dataHistory->portfolio_control = $autoTrader->getPortfolioControl();
+        $this->dataHistory->portfolio_control = $autoTrader->getPortafolioControl();
         $this->dataHistory->buy_sell_advice = $autoTrader->getBuyOrSellAdvice();
         $this->dataHistory->market_order = $autoTrader->getMarketOrder();
         $this->dataHistory->coin_market_order = $autoTrader->getCoinMarketOrder();

@@ -163,14 +163,16 @@ class CodeRefactorManager
         $operation = false;
         if($amount > 0)
         {
-            //Buy Coins
-            $operation = $this->coinBaseBuys->buyBitcoins($client, $account, $amount);
+            //TODO IN PRODUCTION - Buy Coins
+            //$operation = $this->coinBaseBuys->buyBitcoins($client, $account, $amount);
+            $operation = true;
 
         } elseif($amount < 0)
         {
-            //Sell Coins
-            $amount = abs($amount);
-            $operation = $this->coinBaseSells->sellBitcoins($client, $account, $amount);
+            //TODO IN PRODUCTION - Sell Coins
+            //$amount = abs($amount);
+            //$operation = $this->coinBaseSells->sellBitcoins($client, $account, $amount);
+            $operation = false;
         }
 
         //dd($operation);

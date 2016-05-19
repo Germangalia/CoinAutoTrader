@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\AccountsCoinBase;
+use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAuthentication;
 use App\CoinBaseAPI\CoinBaseBuys;
+use App\CoinBaseAPI\CoinBaseMarketData;
 use App\CoinBaseAPI\CoinBaseSells;
 use App\Http\Controllers\PartialsAutoTrader\CodeRefactorManager;
 use App\Http\Controllers\PartialsAutoTrader\CoinBaseManager;
@@ -46,18 +48,34 @@ class AutoTraderController extends Controller
 
 
     /**
+     * @var CoinBaseMarketData
+     */
+    private $coinBaseMarketData;
+
+
+    /**
+     * @var CoinBaseAccounts
+     */
+    private $coinBaseAccounts;
+
+
+    /**
      * AutoTraderController constructor.
      * @param GetActiveAccounts $getActiveAccounts
      * @param DatabaseManager $databaseManager
      * @param CoinBaseManager $coinBaseManager
      * @param CodeRefactorManager $codeRefactorManager
+     * @param CoinBaseMarketData $coinBaseMarketData
+     * @param CoinBaseAccounts $coinBaseAccounts
      */
-    public function __construct(GetActiveAccounts $getActiveAccounts, DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, CodeRefactorManager $codeRefactorManager)
+    public function __construct(GetActiveAccounts $getActiveAccounts, DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, CodeRefactorManager $codeRefactorManager, CoinBaseMarketData $coinBaseMarketData, CoinBaseAccounts $coinBaseAccounts)
     {
         $this->getActiveAccounts = $getActiveAccounts;
         $this->databaseManager = $databaseManager;
         $this->coinBaseManager = $coinBaseManager;
         $this->codeRefactorManager = $codeRefactorManager;
+        $this->coinBaseMarketData = $coinBaseMarketData;
+        $this->coinBaseAccounts = $coinBaseAccounts;
     }
 
     /**
@@ -85,17 +103,15 @@ class AutoTraderController extends Controller
 
             //dd($lastHistoryRecord); //OK
 
-//            $capital = $lastHistoryRecord->capital_amount;
-//            $lastPortafolioControl = $lastHistoryRecord->portfolio_control;
-//            $lastMarketOrder = $lastHistoryRecord->market_order;
-
             //Extract data from user
             $userAtributes = $this->databaseManager->getuserAttributes($DBuserId);
 
-            //dd($userAtributes); //OK
+//            dd($userAtributes); //OK
 
-            $apiKey = $userAtributes->coinbase_api_key;
-            $apiSecret = $userAtributes->coinbase_api_secret;
+            $apiKey = $userAtributes[0]->coinbase_api_key;
+            $apiSecret = $userAtributes[0]->coinbase_api_secret;
+
+//            dd($apiSecret); //Ok
 
             //Create client and get account
             $client = $this->coinBaseManager->createClientFromKeys($apiKey, $apiSecret);
@@ -104,11 +120,11 @@ class AutoTraderController extends Controller
             //dd($account); //ok
 
             //Create object AutoTrader
-            $autoTrader = new AutoTrader($client, $account, $lastHistoryRecord);
+            $autoTrader = new AutoTrader($client, $account, $lastHistoryRecord, $this->coinBaseMarketData, $this->coinBaseAccounts);
             $autoTrader->setCoinPrice();
             $autoTrader->setCoinsValue();
             $autoTrader->setCfav();
-            $autoTrader->setPortfolioControl();
+            $autoTrader->setPortafolioControl();
             $autoTrader->setBuyOrSellAdvice();
             $autoTrader->setMarketOrder();
             $autoTrader->setCoinMarketOrder();
@@ -118,10 +134,11 @@ class AutoTraderController extends Controller
             $autoTrader->setTotalAmount();
             $autoTrader->setBenefit();
 
-            dd($autoTrader);
+            //dd($autoTrader);  //OK
 
             //Keep object to Calculator table
-            $this->databaseManager->insertCalculator($DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader);
+            //TODO IN PRODUCTION -> Improve TradeCalculator for multiple coin market providers.
+            //$this->databaseManager->insertCalculator($DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader);
 
             //Create new $autoTrader and $calculatorRecord for another API markets for trade
             //TODO IN PRODUCTION -> Need another API markets for trade with coins
@@ -131,18 +148,24 @@ class AutoTraderController extends Controller
 
             //Buy or sell coins
             //TODO IN PRODUCTION -> Need active bank account (Not available in CoinBase API Sandbox)
-            //TEST
-            $calculatorData = TradeCalculator::find(1);
-            $amount = $calculatorData->coin_market_order;
 
-            //dd($amount);
+            //Get last calculator record
+            //TODO IN PRODUCTION -> Improve TradeCalculator for multiple coin market providers.
+            //$lastCalculatorRecord = $this->databaseManager->getLastCalculatorRecord();
 
+            //dd($lastCalculatorRecord);    //OK
+
+            $amount = $autoTrader->getCoinMarketOrder();
+
+            //TODO IN PRODUCTION -> Activate Buy and Sell in CodeRefactorManager.php
             $this->codeRefactorManager->setTradeOperation($client, $account, $amount, $DBuserId, $DBaccountId,$lastHistoryRecord, $autoTrader);
 
+//            //Keep object to Calculator table
+//            $this->databaseManager->insertHistoryByObject($DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader);
+
             //Erase Record from Calculator table
-            TradeCalculator::destroy(1);
-
+            //TODO IN PRODUCTION -> Improve TradeCalculator for multiple coin market providers.
+            //TradeCalculator::destroy($lastCalculatorRecord[0]->id);
         }
-
     }
 }
