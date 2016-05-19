@@ -15,7 +15,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Benefit Evolution</h3></div>
                     <div class="panel-body">
-                        <button id="loadgraphic" onclick="chargeDropList()" class="btn btn-primary">Upload Accounts</button>
+                        <button id="chargeId" onclick="chargeDropList()" class="btn btn-primary">Upload Accounts</button>
                         <br>
                         <div>
 

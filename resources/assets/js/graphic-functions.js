@@ -4,9 +4,9 @@
 /**
  * Get History record from User
  */
-function getHistory() {
+function getAccounts() {
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', "../api/statistics/getUserHistory", false);   //false for syncronus
+    httpRequest.open('GET', "../api/statistics/getUserAccounts", false);   //false for syncronus
     httpRequest.send();
     return httpRequest.responseText;
 }
@@ -67,4 +67,13 @@ function getContent(id, objects, prop, convert){
 
     }
     return arr;
+}
+
+
+/**
+ * Clean the selection options
+ */
+function disableButton(id){
+    var select = document.getElementById(id);
+    select.disabled = true;
 }

@@ -4,9 +4,9 @@
 /**
  * Get History record from User
  */
-function getHistory() {
+function getAccounts() {
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', "../api/statistics/getUserHistory", false);   //false for syncronus
+    httpRequest.open('GET', "../api/statistics/getUserAccounts", false);   //false for syncronus
     httpRequest.send();
     return httpRequest.responseText;
 }
@@ -68,16 +68,27 @@ function getContent(id, objects, prop, convert){
     }
     return arr;
 }
+
+
+/**
+ * Clean the selection options
+ */
+function disableButton(id){
+    var select = document.getElementById(id);
+    select.disabled = true;
+}
 /**
  * Charge the drop list for select the accounts
  */
 function chargeDropList(){
     //document.getElementById("loadgraphic").addEventListener("click", chargeOnLoad);
 
-    var response = getHistory();
+    disableButton("chargeId");
+
+    var response = getAccounts();
     var objs = parseResponse(response);
 
-    var options= parseAttributes(objs, 'account_id', 'string');
+    var options= parseAttributes(objs, 'id', 'string');
 
     var select = document.getElementById("selectNumber");
 

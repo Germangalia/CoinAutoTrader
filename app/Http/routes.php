@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //API Statistics
     Route::get('api/statistics/totalInitialCapital', 'StatitsticsController@getSumInitialCapital');
-    Route::get('api/statistics/getUserHistory', 'StatitsticsController@getHistory');
+    Route::get('api/statistics/getUserAccounts', 'StatitsticsController@getUserAccounts');
     Route::get('api/statistics/getAccountHistory/{id}', 'StatitsticsController@getHistoryByID');
 
     Route::get('api/statistics/getSumInitialCapital', 'StatitsticsController@getSumInitialCapital');

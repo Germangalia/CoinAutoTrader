@@ -74,13 +74,13 @@ class StatitsticsController extends Controller
      *
      * @return mixed
      */
-    public function getHistory()
+    public function getUserAccounts()
     {
         //Select Authenticated user
         $user = Auth::user();
         $userId = $user->id;
         //Get result
-        $result = DB::table('trade_histories')->where('user_id', $userId)->get();
+        $result = DB::table('accounts_coin_bases')->where('user_id', $userId)->get();
 
         return $result;
     }

@@ -4,10 +4,12 @@
 function chargeDropList(){
     //document.getElementById("loadgraphic").addEventListener("click", chargeOnLoad);
 
-    var response = getHistory();
+    disableButton("chargeId");
+
+    var response = getAccounts();
     var objs = parseResponse(response);
 
-    var options= parseAttributes(objs, 'account_id', 'string');
+    var options= parseAttributes(objs, 'id', 'string');
 
     var select = document.getElementById("selectNumber");
 
