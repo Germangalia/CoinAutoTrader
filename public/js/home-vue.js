@@ -8,7 +8,7 @@ var demo = new Vue({
             "title": "CoinAutoTradeHome",
             "url": "#",
             "image": {
-                "large": "/img//home/home.png",
+                "large": "/img/home/home.png",
                 "small": "/img/home/home-150x150.png"
             }
         },
@@ -16,24 +16,24 @@ var demo = new Vue({
                 "title": "Trade Accounts",
                 "url": "/accounts",
                 "image": {
-                    "large": "/img//home/bank.png",
-                    "small": "/img/home/bank-150x150.png"
+                    "large": "/img/home/accounts.png",
+                    "small": "/img/home/accounts-150x150.png"
                 }
             },
             {
                 "title": "Trade History Records",
                 "url": "/history",
                 "image": {
-                    "large": "/img//home/time.png",
-                    "small": "/img/home/time-150x150.png"
+                    "large": "/img/home/history.png",
+                    "small": "/img/home/history-150x150.png"
                 }
             },
             {
                 "title": "Trade Statistics",
                 "url": "/statistics/index",
                 "image": {
-                    "large": "/img//home/finances.png",
-                    "small": "/img/home/finances-150x150.png"
+                    "large": "/img/home/statistics.png",
+                    "small": "/img/home/statistics-150x150.png"
                 }
             }]
 
