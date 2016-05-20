@@ -1,4 +1,7 @@
 /**
+ * Created by ggalia84 on 19/05/16.
+ */
+/**
  * Charge on load the page
  */
 function chargeOnLoad(){
@@ -17,7 +20,7 @@ function chargeOnLoad(){
         var graphData = {
             labels : labels,
             datasets : [{
-                label: "Benefit (%)",
+                label: "Total Amount (USD)",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: "rgba(75,192,192,0.4)",
@@ -44,7 +47,7 @@ function chargeOnLoad(){
 
         // Instantiate a new chart
         var myLineChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: graphData
             //options: options
         });
@@ -64,8 +67,10 @@ function chargeOnLoad(){
         response = getAccountHistory(id);
         objs = parseResponse(response);
 
+        window.alert(objs);
+
         labels= parseAttributes(objs, 'created_at', 'date');
-        data= parseAttributes(objs, 'benefit', 'number');
+        data= parseAttributes(objs, 'total_amount', 'number');
 
         //window.console.log(response);
         //window.console.log(objs);

@@ -85,16 +85,16 @@ class FirstHistoryRecord
         $commission = 0.0;
 
          //Get coins amount
-        $coinsAmount = $balanceAmount;
+        $coinsAmount = $coins;
 
         //Get capital_amount
         $capitalAmount = $accountCapital - $balanceAmount;
 
         //Get total_amount
-        $totalAmount = $coinsAmount + $capitalAmount;
+        $totalAmount = ($coinsAmount * $coinPrice) + $capitalAmount;
 
         //Get benefit
-        $benefit = $totalAmount / $accountCapital * 100;
+        $benefit = ($totalAmount - $accountCapital) / $accountCapital * 100;
 
         //Create DB record in trade_histories
         $this->databaseManager->insertHistory($userId, $accountId, $accountCapital, $coinPrice, $coins, $balanceAmount, $cfav, $capital, $portafolioControl, $buySellAdvice, $marketOrder, $coinMarketOrder, $commission, $coinsAmount, $capitalAmount, $totalAmount, $benefit);

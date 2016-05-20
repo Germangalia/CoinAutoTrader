@@ -25,13 +25,46 @@ class StatitsticsController extends Controller
     }
 
     /**
-     * Return Statistics Index view
+     * Return Statistics Benefit Evolution Graphic view
      *
      * @return mixed
      */
     public function benefitEvolution()
     {
         return view('layouts/benefit_evolution');
+    }
+
+
+    /**
+     * Return Statistics Capital Evolution Graphic view
+     *
+     * @return mixed
+     */
+    public function capitalEvolution()
+    {
+        return view('layouts/capital_evolution');
+    }
+
+
+    /**
+     * Return Statistics Bitcoins Evolution Graphic view
+     *
+     * @return mixed
+     */
+    public function bitcoinsEvolution()
+    {
+        return view('layouts/bitcoins_evolution');
+    }
+
+
+    /**
+     * Return Statistics Total Evolution Graphic view
+     *
+     * @return mixed
+     */
+    public function totalEvolution()
+    {
+        return view('layouts/total_evolution');
     }
 
 

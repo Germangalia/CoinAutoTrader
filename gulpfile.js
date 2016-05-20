@@ -104,4 +104,22 @@ elixir(function(mix) {
         'statistics-benefit-evolution.js'
     ], 'public/js/statistics-benefit-evolution.js');
 
+    // Compile scripts
+    mix.scripts([
+        'graphic-functions.js',
+        'statistics-capital-evolution.js'
+    ], 'public/js/statistics-capital-evolution.js');
+
+    // Compile scripts
+    mix.scripts([
+        'graphic-functions.js',
+        'statistics-bitcoins-evolution.js'
+    ], 'public/js/statistics-bitcoins-evolution.js');
+
+    // Compile scripts
+    mix.scripts([
+        'graphic-functions.js',
+        'statistics-total-evolution.js'
+    ], 'public/js/statistics-total-evolution.js');
+
 });

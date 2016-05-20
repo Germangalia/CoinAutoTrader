@@ -103,6 +103,10 @@ function chargeDropList(){
     chargeOnLoad();
 }
 /**
+ * Created by ggalia84 on 19/05/16.
+ */
+
+/**
  * Charge on load the page
  */
 function chargeOnLoad(){
@@ -121,7 +125,7 @@ function chargeOnLoad(){
         var graphData = {
             labels : labels,
             datasets : [{
-                label: "Benefit (%)",
+                label: "Capital (USD)",
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: "rgba(75,192,192,0.4)",
@@ -148,7 +152,7 @@ function chargeOnLoad(){
 
         // Instantiate a new chart
         var myLineChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: graphData
             //options: options
         });
@@ -169,7 +173,7 @@ function chargeOnLoad(){
         objs = parseResponse(response);
 
         labels= parseAttributes(objs, 'created_at', 'date');
-        data= parseAttributes(objs, 'benefit', 'number');
+        data= parseAttributes(objs, 'capital_amount', 'number');
 
         //window.console.log(response);
         //window.console.log(objs);
@@ -190,5 +194,5 @@ function chargeOnLoad(){
 }
 
 
-//chargeOnLoad();
-//# sourceMappingURL=statistics-benefit-evolution.js.map
+
+//# sourceMappingURL=statistics-capital-evolution.js.map

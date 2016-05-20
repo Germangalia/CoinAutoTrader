@@ -77,3 +77,28 @@ function disableButton(id){
     var select = document.getElementById(id);
     select.disabled = true;
 }
+
+/**
+ * Charge the drop list for select the accounts
+ */
+function chargeDropList(){
+    //document.getElementById("loadgraphic").addEventListener("click", chargeOnLoad);
+
+    disableButton("chargeId");
+
+    var response = getAccounts();
+    var objs = parseResponse(response);
+
+    var options= parseAttributes(objs, 'id', 'string');
+
+    var select = document.getElementById("selectNumber");
+
+    for(var i = 0; i < options.length; i++) {
+        var opt = document.createElement('option');
+        opt.innerHTML = options[i];
+        opt.value = options[i];
+        select.appendChild(opt);
+    }
+
+    chargeOnLoad();
+}

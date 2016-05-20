@@ -66,8 +66,8 @@
                                     <th>ID</th>
                                     <th>NAME</th>
                                     <th>ACCOUNT</th>
-                                    <th>INITIAL CAPITAL</th>
-                                    <th>BALANCE</th>
+                                    <th>INITIAL CAPITAL ($)</th>
+                                    <th>BALANCE ($)</th>
                                     <th>ACTIVE</th>
                                     <th></th>
                                 </thread>

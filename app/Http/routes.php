@@ -28,6 +28,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('statistics/index', 'StatitsticsController@index');
     Route::get('statistics/benefit-evolution', 'StatitsticsController@benefitEvolution');
 
+    Route::get('statistics/capital-evolution', 'StatitsticsController@capitalEvolution');
+    Route::get('statistics/bitcoins-evolution', 'StatitsticsController@bitcoinsEvolution');
+    Route::get('statistics/total-evolution', 'StatitsticsController@totalEvolution');
+
 
     //Test
     Route::get('test/coinbase', 'TestCoinBase@testing');

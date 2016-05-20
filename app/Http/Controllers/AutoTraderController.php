@@ -96,7 +96,7 @@ class AutoTraderController extends Controller
             $accountId = $activeAccount->account_id;
             $wallet_address = $activeAccount->wallet_address;
 
-            //dd($accountId);     //OK
+            //dd($DBaccountId);     //OK
 
             //Get last history record from account and keep atributes.
             $lastHistoryRecord = $this->databaseManager->getLastHistoryRecord($DBaccountId);
