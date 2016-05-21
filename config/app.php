@@ -189,6 +189,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Vinkla\Alert\AlertServiceProvider::class,
         Chrisbjr\ApiGuard\Providers\ApiGuardServiceProvider::class,
+        Mpociot\LaravelTestFactoryHelper\TestFactoryHelperServiceProvider::class
 
     ],
 
