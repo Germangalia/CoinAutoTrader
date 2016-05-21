@@ -1,3 +1,7 @@
+/**
+ * Create new Vue object
+ * @type {Vue}
+ */
 var demo = new Vue({
     el: '#main',
     data: {

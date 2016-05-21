@@ -16,24 +16,39 @@ var vm = new Vue({
 
     methods: {
 
+        /**
+         * Get user accounts from database
+         */
         fetchAccounts: function(){
             this.$http.get('/api/user-accounts', function(data) {
                 this.$set('accounts', data)
             })
         },
 
+        /**
+         * Add new account to database
+         * @constructor
+         */
         AddNewAccount: function () {
 
 
 
         },
 
+        /**
+         * Activate the user account
+         * @param id
+         */
         activateAccount: function(id) {
             this.$http.get('/api/accounts-active/' + id)
 
             this.fetchAccounts()
         },
 
+        /**
+         * Remove the user account
+         * @param id
+         */
         removeAccount: function(id) {
 
             var ConfirmBox = confirm("Are you sure, you want to delete this Account?")
@@ -47,12 +62,20 @@ var vm = new Vue({
 
     // computed property for form validation state
     computed: {
+        /**
+         * Validate the item
+         * @returns {{name: boolean, initial_capital: *}}
+         */
         validation: function () {
             return {
                 name: !!this.newAccount.name.trim(),
                 initial_capital: this.newAccount.initial_capital.isNumber()
             }
         },
+        /**
+         * Check if the item is valid
+         * @returns {boolean}
+         */
         isValid: function () {
             var validation = this.validation
             return Object.keys(validation).every(function (key) {
@@ -62,6 +85,9 @@ var vm = new Vue({
 
     },
 
+    /**
+     * Execute on load page
+     */
     ready: function() {
         this.fetchAccounts()
 

@@ -1,5 +1,8 @@
 // Let's create a "real-time search" component
-
+/**
+ * Create new REACT.js element
+ * @type {ClassicComponentClass<P>|*}
+ */
 var SearchExample = React.createClass({
 
     getInitialState: function(){
@@ -67,8 +70,9 @@ var libraries = [
 
 ];
 
-// Render the SearchExample component on the page
-
+/**
+ * Render the SearchExample component on the page
+ */
 ReactDOM.render(
     <SearchExample items={ libraries } />,
     document.getElementById('container')

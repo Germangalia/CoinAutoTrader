@@ -1,5 +1,7 @@
 // Define a custom filter called "searchFor".
-
+/**
+ * Create a filter for search
+ */
 Vue.filter('searchFor', function (value, searchString) {
 
     // The first parameter to this function is the data that is to be filtered.
@@ -24,7 +26,10 @@ Vue.filter('searchFor', function (value, searchString) {
     return result;
 })
 
-
+/**
+ * Create new Vue.js object
+ * @type {Vue}
+ */
 var demo = new Vue({
     el: '#main',
     data: {
@@ -80,12 +85,19 @@ var demo = new Vue({
                 }
             ]
         },
-       totalInitialCapital: function(){
+
+        /**
+         * Get the total inital capital from database
+         */
+        totalInitialCapital: function(){
            this.$http.get('/api/statistics/totalInitialCapital', function(data) {
                this.$set('totalInitialCapital', data)
            })
        }
    },
+    /**
+     * Execute on page load
+     */
    ready: function() {
       this.totalInitialCapital();
        this.createData()
