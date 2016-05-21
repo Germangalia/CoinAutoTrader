@@ -104,6 +104,7 @@ a:after {
 #intro {
 	padding-top: 50px;
 	border-top: #bdc3c7 solid 5px;
+    background-color: #ffd700;
 }
 
 #features {
