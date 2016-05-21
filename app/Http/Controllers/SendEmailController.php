@@ -7,6 +7,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\PartialsAutoTrader\EmailManager;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Mail;
@@ -30,20 +31,13 @@ class SendEmailController extends Controller
         //Get data from form
         $name = $requests->name;
         $from = $requests->email;
-        $body = $requests->message;
-        $to = 'germangalia@iesebre.com';
-        $subject = 'Comment Form Message';
         $human = $requests->human;
-
-        $data = [];
 
         if ($name != '' && $from != '') {
             if ($human == '4') {
 
-                Mail::send('layouts/landing', ['from' => $from, 'to' => $to, 'subject' => $subject, 'body' => $body] , function ($message) use ($to){
-                    $message->subject('subject');
-
-                });
+                $message = array('name' => $requests->name, 'email' => $requests->email, 'message' => $requests->message);
+                $this->send($message);
 
                 Alert::success('Your message has been sent!');
             } else if ($human != '4') {
@@ -54,5 +48,10 @@ class SendEmailController extends Controller
         }
 
         return view('layouts/landing');
+    }
+
+    public function send($message)
+    {
+        $this->dispatch(new EmailManager($message));
     }
 }

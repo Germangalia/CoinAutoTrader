@@ -21,9 +21,9 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function testLandingPage()
     {
         $this->visit('/')
-             ->see('Acacha')
-             ->see('adminlte-laravel')
-             ->see('Pratt');
+             ->see('CoinAutoTrader')
+             ->see('German')
+             ->see('GitHub');
     }
 
     /**
@@ -37,9 +37,9 @@ class AcachaAdminLTELaravelTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/')
-            ->see('Acacha')
-            ->see('adminlte-laravel')
-            ->see('Pratt')
+            ->see('CoinAutoTrader')
+            ->see('German')
+            ->see('GitHub')
             ->see($user->name);
     }
 
@@ -165,15 +165,17 @@ class AcachaAdminLTELaravelTest extends TestCase
     public function testNewUserRegistration()
     {
         $this->visit('/register')
-            ->type('Sergi Tur Badenas', 'name')
-            ->type('sergiturbadenas@gmail.com', 'email')
+            ->type('German Galia Beltran', 'name')
+            ->type('ggalia84@gmail.com', 'email')
 //            ->check('terms') TODO
             ->type('passw0RD', 'password')
             ->type('passw0RD', 'password_confirmation')
+            ->type('uh9w88tq10dBqylt', 'key')
+            ->type('a8jJ2QL7p5GgDsf1LYtkR3xmTWa70o9b', 'secret')
             ->press('Register')
             ->seePageIs('/home')
-            ->seeInDatabase('users', ['email' => 'sergiturbadenas@gmail.com',
-                                      'name'  => 'Sergi Tur Badenas']);
+            ->seeInDatabase('users', ['email' => 'ggalia84@gmail.com',
+                                      'name'  => 'German Galia Beltran']);
 
     }
 
