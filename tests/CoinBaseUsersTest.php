@@ -4,11 +4,12 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class TestCoinBaseOrders extends TestCase
+class CoinBaseUsersTest extends TestCase
 {
     /**
      * A basic test example.
      *
+     * @group coinbase
      * @return void
      */
     public function testExample()

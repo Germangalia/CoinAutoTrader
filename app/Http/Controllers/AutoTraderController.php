@@ -22,42 +22,35 @@ use League\Flysystem\Exception;
 
 class AutoTraderController extends Controller
 {
-
     /**
      * @var GetActiveAccounts
      */
     private $getActiveAccounts;
-
 
     /**
      * @var DatabaseManager
      */
     private $databaseManager;
 
-
     /**
      * @var CoinBaseManager
      */
     private $coinBaseManager;
-
 
     /**
      * @var CodeRefactorManager
      */
     private $codeRefactorManager;
 
-
     /**
      * @var CoinBaseMarketData
      */
     private $coinBaseMarketData;
 
-
     /**
      * @var CoinBaseAccounts
      */
     private $coinBaseAccounts;
-
 
     /**
      * AutoTraderController constructor.
@@ -121,20 +114,6 @@ class AutoTraderController extends Controller
 
             //Create object AutoTrader
             $autoTrader = $this->codeRefactorManager->createAutoTrader($client, $account, $lastHistoryRecord);
-
-//            $autoTrader = new AutoTrader($client, $account, $lastHistoryRecord, $this->coinBaseMarketData, $this->coinBaseAccounts);
-//            $autoTrader->setCoinPrice();
-//            $autoTrader->setCoinsValue();
-//            $autoTrader->setCfav();
-//            $autoTrader->setPortafolioControl();
-//            $autoTrader->setBuyOrSellAdvice();
-//            $autoTrader->setMarketOrder();
-//            $autoTrader->setCoinMarketOrder();
-//            $autoTrader->setCommission();
-//            $autoTrader->setCoinsAmount();
-//            $autoTrader->setCapitalAmount();
-//            $autoTrader->setTotalAmount();
-//            $autoTrader->setBenefit();
 
             //dd($autoTrader);  //OK
 

@@ -18,11 +18,16 @@ class CoinBaseAccounts
     //Get balance of acount
     public function balanceAccount($client, $account)
     {
-        // After some time, the transaction should complete and your balance should update
-        $client->refreshAccount($account);
+        if(!is_null($account)) {
+            // After some time, the transaction should complete and your balance should update
+            $client->refreshAccount($account);
 
-        $balance = $account->getBalance();
-        //echo $this->account->getName() . ": " . $this->balance->getAmount() . $this->balance->getCurrency() .  "\r\n";
+            $balance = $account->getBalance();
+            //echo $this->account->getName() . ": " . $this->balance->getAmount() . $this->balance->getCurrency() .  "\r\n";
+
+        }else{
+            $balance = 0.0;
+        }
         return $balance;
     }
 

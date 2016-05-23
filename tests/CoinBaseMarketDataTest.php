@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class TestCoinBaseMarketData extends TestCase
+class CoinBaseMarketDataTest extends TestCase
 {
     private $authentication;
 
@@ -22,19 +22,20 @@ class TestCoinBaseMarketData extends TestCase
     /**
      * TestCoinBaseMarketData constructor.
      */
-    public function __construct( CoinBaseAuthentication $authentication, CoinBaseAccounts $coinBaseAccounts,CoinBaseMarketData $coinBaseMarketData)
+    public function __construct()
     {
-        $this->authentication = $authentication;
-        $this->coinBaseAccounts = $coinBaseAccounts;
-        $this->coinBaseMarketData = $coinBaseMarketData;
+        $this->authentication = new CoinBaseAuthentication();
+        $this->coinBaseAccounts = new CoinBaseAccounts();
+        $this->coinBaseMarketData = new CoinBaseMarketData();
 
-        $this->client = $this->$authentication->apiKeyAuthentication(env('COINBASE_API_KEY'), env('COINBASE_API_SECRET'));
+        $this->client = $this->authentication->apiKeyAuthentication(env('COINBASE_API_KEY'), env('COINBASE_API_SECRET'));
         $this->account = $this->coinBaseAccounts->createAccount($this->client, 'New Test Account');
     }
 
     /**
      * Test for get the buy price of bitcoins.
      *
+     * @group coinbase
      * @return void
      */
     public function testGetBuyPrice()
@@ -46,6 +47,7 @@ class TestCoinBaseMarketData extends TestCase
     /**
      * Test for get the sell price of bitcoins.
      *
+     * @group coinbase
      * @return void
      */
     public function testGetSellPrice()

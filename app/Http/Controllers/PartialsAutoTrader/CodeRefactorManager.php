@@ -49,13 +49,28 @@ class CodeRefactorManager
     private $coinBaseSells;
 
 
+    /**
+     * @var CoinBaseMarketData
+     */
     private $coinBaseMarketData;
 
 
+    /**
+     * @var CoinBaseAccounts
+     */
     private $coinBaseAccounts;
 
 
-
+    /**
+     * CodeRefactorManager constructor.
+     * @param DatabaseManager $databaseManager
+     * @param CoinBaseManager $coinBaseManager
+     * @param FirstHistoryRecord $firstHistoryRecord
+     * @param CoinBaseBuys $coinBaseBuys
+     * @param CoinBaseSells $coinBaseSells
+     * @param CoinBaseMarketData $coinBaseMarketData
+     * @param CoinBaseAccounts $coinBaseAccounts
+     */
     public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, FirstHistoryRecord $firstHistoryRecord, CoinBaseBuys $coinBaseBuys, CoinBaseSells $coinBaseSells, CoinBaseMarketData $coinBaseMarketData, CoinBaseAccounts $coinBaseAccounts)
     {
         $this->coinBaseManager = $coinBaseManager;
@@ -195,6 +210,13 @@ class CodeRefactorManager
     }
 
 
+    /**
+     * Create new AutoTrader object
+     * @param $client
+     * @param $account
+     * @param $lastHistoryRecord
+     * @return AutoTrader
+     */
     public function createAutoTrader($client, $account, $lastHistoryRecord)
     {
         $autoTrader = new AutoTrader($client, $account, $lastHistoryRecord, $this->coinBaseMarketData, $this->coinBaseAccounts);

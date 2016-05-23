@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class TestCoinBaseAuthentication extends TestCase
+class CoinBaseAuthenticationTest extends TestCase
 {
 
     /**
@@ -17,15 +17,16 @@ class TestCoinBaseAuthentication extends TestCase
     /**
      * TestCoinBaseAuthentication constructor.
      */
-    public function __construct(CoinBaseAuthentication $coinBaseAuthentication)
+    public function __construct()
     {
-        $this->coinBaseAuthentication = $coinBaseAuthentication;
+        $this->coinBaseAuthentication = new CoinBaseAuthentication();
     }
 
 
     /**
      * Test to check if the $client is ok
      *
+     * @group coinbase
      * @return void
      */
     public function testAuthenticationCreateClient()

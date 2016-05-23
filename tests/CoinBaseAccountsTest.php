@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class TestCoinBaseAccounts extends TestCase
+class CoinBaseAccountsTest extends TestCase
 {
 
     /**
@@ -32,36 +32,39 @@ class TestCoinBaseAccounts extends TestCase
     /**
      * TestCoinBaseAccounts constructor.
      */
-    public function __construct(CoinBaseAccounts $coinBaseAccounts, CoinBaseAuthentication $authentication)
+    public function __construct()
     {
-        $this->authentication = $authentication;
-        $this->coinBaseAccounts = $coinBaseAccounts;
+        $this->authentication = new CoinBaseAuthentication();
+        $this->coinBaseAccounts = new CoinBaseAccounts();
 
-        $this->client = $this->$authentication->apiKeyAuthentication(env('COINBASE_API_KEY'), env('COINBASE_API_SECRET'));
+        $this->client = $this->authentication->apiKeyAuthentication(env('COINBASE_API_KEY'), env('COINBASE_API_SECRET'));
     }
 
 
     /**
      * Test for create account.
      *
+     * @group coinbase
      * @return void
      */
     public function testCreateAccount()
     {
         $this->account = $this->coinBaseAccounts->createAccount($this->client, 'New test account');
-        $this->assertTrue(is_object($this->account));
+        $object = $this->account;
+        $this->assertTrue(is_object($object));
     }
 
 
     /**
      * Test get blance account.
      *
+     * @group coinbase
      * @return void
      */
-    public function testBalanceAccount()
+    public function testGetBalanceAccount()
     {
         $balance = $this->coinBaseAccounts->balanceAccount($this->client, $this->account);
-        $balanceValue = $balance->getAmount();
+        $balanceValue = $balance;
         $this->assertTrue(is_numeric($balanceValue));
     }
 

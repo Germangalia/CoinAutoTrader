@@ -27,5 +27,7 @@
         <env name="DB_DATABASE" value=":memory:"/>
         <env name="MAIL_DRIVER" value="log"/>
         <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+        <env name="COINBASE_API_KEY" value="kbVahwxTTRU8DGUg"/>
+        <env name="COINBASE_API_SECRET" value="lSXaK0NcKSh00fsQb1DvJcDRk3rjjNGH"/>
     </php>
 </phpunit>
