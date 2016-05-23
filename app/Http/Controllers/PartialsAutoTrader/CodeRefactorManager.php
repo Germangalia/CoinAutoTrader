@@ -10,9 +10,12 @@ namespace App\Http\Controllers\PartialsAutoTrader;
 
 
 use App\AccountsCoinBase;
+use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseBuys;
+use App\CoinBaseAPI\CoinBaseMarketData;
 use App\CoinBaseAPI\CoinBaseSells;
 use App\TradeHistory;
+use App\Trader\AutoTrader;
 use Vinkla\Alert\Alert;
 
 class CodeRefactorManager
@@ -46,19 +49,22 @@ class CodeRefactorManager
     private $coinBaseSells;
 
 
-    /**
-     * CodeRefactorManager constructor.
-     * @param DatabaseManager $databaseManager
-     * @param CoinBaseManager $coinBaseManager
-     * @param FirstHistoryRecord $firstHistoryRecord
-     */
-    public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, FirstHistoryRecord $firstHistoryRecord, CoinBaseBuys $coinBaseBuys, CoinBaseSells $coinBaseSells)
+    private $coinBaseMarketData;
+
+
+    private $coinBaseAccounts;
+
+
+
+    public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, FirstHistoryRecord $firstHistoryRecord, CoinBaseBuys $coinBaseBuys, CoinBaseSells $coinBaseSells, CoinBaseMarketData $coinBaseMarketData, CoinBaseAccounts $coinBaseAccounts)
     {
         $this->coinBaseManager = $coinBaseManager;
         $this->databaseManager = $databaseManager;
         $this->firstHistoryRecord = $firstHistoryRecord;
         $this->coinBaseBuys = $coinBaseBuys;
         $this->coinBaseSells = $coinBaseSells;
+        $this->coinBaseMarketData = $coinBaseMarketData;
+        $this->coinBaseAccounts = $coinBaseAccounts;
     }
 
 
@@ -186,6 +192,26 @@ class CodeRefactorManager
             $this->databaseManager->insertHistoryByObject($DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader);
 
         }
+    }
+
+
+    public function createAutoTrader($client, $account, $lastHistoryRecord)
+    {
+        $autoTrader = new AutoTrader($client, $account, $lastHistoryRecord, $this->coinBaseMarketData, $this->coinBaseAccounts);
+        $autoTrader->setCoinPrice();
+        $autoTrader->setCoinsValue();
+        $autoTrader->setCfav();
+        $autoTrader->setPortafolioControl();
+        $autoTrader->setBuyOrSellAdvice();
+        $autoTrader->setMarketOrder();
+        $autoTrader->setCoinMarketOrder();
+        $autoTrader->setCommission();
+        $autoTrader->setCoinsAmount();
+        $autoTrader->setCapitalAmount();
+        $autoTrader->setTotalAmount();
+        $autoTrader->setBenefit();
+
+        return $autoTrader;
     }
 
 }

@@ -265,9 +265,7 @@ PHPdoc documentation.
 
 * New class to obtain every active account that the data base has.
 
-* To improve the behavior when register the information at the data base from the accounts
-
-formulary.
+* To improve the behavior when register the information at the data base from the accounts formulary.
 
 ### 02/05/2016
 
@@ -277,23 +275,17 @@ formulary.
 
 ### 27/04/2016
 
-* Implementing and testing of the register page and login. Added fields to the register
-
-formulary and saving at the data base.
+* Implementing and testing of the register page and login. Added fields to the register formulary and saving at the data base.
 
 ### 26/04/2016
 
-* Creating the model and preparing the data base for the historical, calculations, users and
-
-accounts.
+* Creating the model and preparing the data base for the historical, calculations, users and accounts.
 
 * Boost of the class to create a trading object.
 
 ### 25/04/2016
 
-* Created and implemented the class that will do the math calculations to make the trading
-
-operations.
+* Created and implemented the class that will do the math calculations to make the trading operations.
 
 ### 22/04/2016
 

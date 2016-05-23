@@ -120,19 +120,21 @@ class AutoTraderController extends Controller
             //dd($account); //ok
 
             //Create object AutoTrader
-            $autoTrader = new AutoTrader($client, $account, $lastHistoryRecord, $this->coinBaseMarketData, $this->coinBaseAccounts);
-            $autoTrader->setCoinPrice();
-            $autoTrader->setCoinsValue();
-            $autoTrader->setCfav();
-            $autoTrader->setPortafolioControl();
-            $autoTrader->setBuyOrSellAdvice();
-            $autoTrader->setMarketOrder();
-            $autoTrader->setCoinMarketOrder();
-            $autoTrader->setCommission();
-            $autoTrader->setCoinsAmount();
-            $autoTrader->setCapitalAmount();
-            $autoTrader->setTotalAmount();
-            $autoTrader->setBenefit();
+            $autoTrader = $this->codeRefactorManager->createAutoTrader($client, $account, $lastHistoryRecord);
+
+//            $autoTrader = new AutoTrader($client, $account, $lastHistoryRecord, $this->coinBaseMarketData, $this->coinBaseAccounts);
+//            $autoTrader->setCoinPrice();
+//            $autoTrader->setCoinsValue();
+//            $autoTrader->setCfav();
+//            $autoTrader->setPortafolioControl();
+//            $autoTrader->setBuyOrSellAdvice();
+//            $autoTrader->setMarketOrder();
+//            $autoTrader->setCoinMarketOrder();
+//            $autoTrader->setCommission();
+//            $autoTrader->setCoinsAmount();
+//            $autoTrader->setCapitalAmount();
+//            $autoTrader->setTotalAmount();
+//            $autoTrader->setBenefit();
 
             //dd($autoTrader);  //OK
 
