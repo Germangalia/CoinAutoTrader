@@ -59,7 +59,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Coin Base Accounts</h3></div>
                     <div class="panel-body">
-                        <div id="AccountsController">
+                        <div class="table-responsive" id="AccountsController">
 
                             <table class="table">
                                 <thread>

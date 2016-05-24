@@ -4,21 +4,24 @@
 table {
     width: 100%;
     border-collapse: collapse;
+
 }
 
 /* Zebra striping */
 tr:nth-of-type(odd) {
     background: #eee;
+    text-align: center;
 }
 th {
-    background: #00ca6d;
-    color: white;
+    background: #ffd700;
+    color: dimgrey;
     font-weight: bold;
+    text-align: center;
 }
 td, th {
     padding: 6px;
     border: 1px solid #ccc;
-    text-align: left;
+    text-align: center;
 }
 
 /*
@@ -26,22 +29,22 @@ td, th {
 */
 @media
 only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px) {
+(min-device-width: 760px) and (max-device-width: 1024px) {
 
     /* Force table to not be like tables anymore */
-    table, thead, tbody, th, td, tr {
-        display: block;
-        width: 100%;
-        -ms-overflow-style: -ms-autohiding-scrollbar;
-        -webkit-overflow-scrolling: touch;
-    }
+    /*table, thead, tbody, th, td, tr {*/
+        /*display: block;*/
+        /*width: 100%;*/
+        /*-ms-overflow-style: -ms-autohiding-scrollbar;*/
+        /*-webkit-overflow-scrolling: touch;*/
+    /*}*/
 
     /* Hide table headers (but not display: none;, for accessibility) */
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
+    /*thead tr {*/
+        /*position: absolute;*/
+        /*top: -9999px;*/
+        /*left: -9999px;*/
+    /*}*/
 
     tr {
         border: 1px solid #ccc;
@@ -50,7 +53,7 @@ only screen and (max-width: 760px),
     td {
         /* Behave  like a "row" */
         border: none;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #ccc;
         position: relative;
         padding-left: 50%;
     }

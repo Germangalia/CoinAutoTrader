@@ -16,7 +16,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Statistics Index</h3></div>
                     <div class="panel-body">
-                        <div id="StatisticsController">
+                        <div class="table-responsive" id="StatisticsController">
 
                             <!-- VUE.js -->
                             {{--<form id="main" v-cloak>--}}

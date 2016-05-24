@@ -19,7 +19,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>Coin Base History</h3></div>
                     <div class="panel-body">
-                        <div id="HystoryController">
+                        <div class="table-responsive" id="HystoryController">
 
                             <form class="form-inline">
                                 <div class="form-group">
