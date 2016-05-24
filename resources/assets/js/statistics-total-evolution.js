@@ -67,8 +67,6 @@ function chargeOnLoad(){
         response = getAccountHistory(id);
         objs = parseResponse(response);
 
-        window.alert(objs);
-
         labels= parseAttributes(objs, 'created_at', 'date');
         data= parseAttributes(objs, 'total_amount', 'number');
 
