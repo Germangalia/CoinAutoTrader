@@ -16,8 +16,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'name' => $faker->name,
         'email' => $faker->safeEmail,
         'password' => bcrypt(str_random(10)),
-        'coinbase_api_key' => str_random(16),
-        'coinbase_api_secret' => str_random(32),
+        'coinbase_api_key' => env('COINBASE_API_KEY'),
+        'coinbase_api_secret' => env('COINBASE_API_SECRET'),
         'remember_token' => str_random(10),
     ];
 });

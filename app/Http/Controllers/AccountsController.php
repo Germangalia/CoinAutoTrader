@@ -126,6 +126,7 @@ class AccountsController extends Controller
         //Check the values
         $this->codeRefactorManager->checkActiveAccount($id, $accountRecord);
 
+        Alert::info('The account is updated.');
         //Return accounts view
         return view('layouts/accounts');
 

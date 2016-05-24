@@ -20,7 +20,7 @@
                         <div>
 
                             <form id="myForm">
-                                <lavel>Select a account: </lavel>
+                                <lavel>Select an account: </lavel>
                                 <select id="selectNumber"></select>
 
                             </form>
