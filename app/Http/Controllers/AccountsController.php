@@ -126,7 +126,6 @@ class AccountsController extends Controller
         //Check the values
         $this->codeRefactorManager->checkActiveAccount($id, $accountRecord);
 
-        Alert::info('The account is updated.');
         //Return accounts view
         return view('layouts/accounts');
 
@@ -143,7 +142,7 @@ class AccountsController extends Controller
         AccountsCoinBase::destroy($id);
 
         //Send alert to view
-        Alert::warming('The account is delete.');
+        Alert::danger('The account is delete.');
 
         //Return accounts view
         return view('layouts/accounts');

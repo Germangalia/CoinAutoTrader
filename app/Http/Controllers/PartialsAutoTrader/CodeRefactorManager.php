@@ -16,7 +16,7 @@ use App\CoinBaseAPI\CoinBaseMarketData;
 use App\CoinBaseAPI\CoinBaseSells;
 use App\TradeHistory;
 use App\Trader\AutoTrader;
-use Vinkla\Alert\Alert;
+use Vinkla\Alert\Facades\Alert;
 
 class CodeRefactorManager
 {
