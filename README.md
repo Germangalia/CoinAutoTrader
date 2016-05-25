@@ -50,7 +50,7 @@ $ phpunit
 
 * MySQL
 
-## Dependency and libraries
+## Dependency, libraries and services
 
 * Admin-LTE
 
@@ -67,6 +67,8 @@ $ phpunit
 * SQLite
 
 * CoinBase (API)
+
+* Travis-CI
 
 * Scrutinizer
 
