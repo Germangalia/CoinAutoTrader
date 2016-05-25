@@ -14,7 +14,6 @@ app/storage/
 _ide_helper.php
 
 # Laravel 5 & Lumen specific
-bootstrap/cache/
 storage/
 .env.*.php
 .env.php
