@@ -113,16 +113,18 @@ class CodeRefactorManager
             $this->databaseManager->updateActive($id, true);
 
             //Send alert to view
-            Alert::success('The account is activate to trade.');
-
+            //Alert::success('The account is activate to trade.');
+            $result = true;
 
         }else{
             //Activate to false
             $this->databaseManager->updateActive($id, false);
 
             //Send alert to view
-            Alert::warming('The account is disable to trade.');
+            //Alert::warning('The account is disable to trade.');
+            $result = false;
         }
+        return $result;
     }
 
 
@@ -140,7 +142,7 @@ class CodeRefactorManager
             $this->databaseManager->updateActive($id, true);
 
             //Make first record in history table
-            $historyRecord =  TradeHistory::find($id);
+            $historyRecord =  $this->databaseManager->getLastHistoryRecord($id);
 
             $this->checkHistoryRecord($historyRecord, $id, $accountCapital, $balanceAmount);
         }
@@ -156,7 +158,7 @@ class CodeRefactorManager
      */
     public function checkHistoryRecord($historyRecord, $id, $accountCapital, $balanceAmount)
     {
-        if(is_null($historyRecord) || empty($historyRecord) ){
+        if(is_null($historyRecord) || empty($historyRecord)){
 
             //Create client Coin Base
             $client = $this->coinBaseManager->createClientFromUser();

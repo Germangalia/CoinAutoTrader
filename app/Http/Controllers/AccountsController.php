@@ -124,7 +124,14 @@ class AccountsController extends Controller
         $accountRecord =  AccountsCoinBase::findOrFail($id);
 
         //Check the values
-        $this->codeRefactorManager->checkActiveAccount($id, $accountRecord);
+        $result = $this->codeRefactorManager->checkActiveAccount($id, $accountRecord);
+
+        //Check result
+        if($result){
+            Alert::success('The account is activate to trade.');
+        }else{
+            Alert::warning('The account is disable to trade.');
+        }
 
         //Return accounts view
         return view('layouts/accounts');
