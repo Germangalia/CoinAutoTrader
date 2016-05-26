@@ -13,5 +13,10 @@
       Both of these plugins are recommended to enhance the
       user experience. Slimscroll is required when using the
       fixed layout.
-      <script src="{{ asset('/js/vendor.js') }}" type="text/javascript"></script>
       -->
+
+<!--Socket.io-->
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+<!--Event update bitcoin price-->
+<script src="{{ asset('/js/event-bitcoin-price.js') }}" type="text/javascript"></script>

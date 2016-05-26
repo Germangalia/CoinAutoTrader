@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('statistics/bitcoins-evolution', 'StatitsticsController@bitcoinsEvolution');
     Route::get('statistics/total-evolution', 'StatitsticsController@totalEvolution');
 
+    //Events
+    Route::get('fire/bitcoin-price', 'EventController@fireBitcoinPrice');
 
     //Test
     Route::get('test/coinbase', 'TestCoinBase@testing');

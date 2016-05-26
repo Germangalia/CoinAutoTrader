@@ -12,6 +12,7 @@ namespace App\Http\Controllers\PartialsAutoTrader;
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAddresses;
 use App\CoinBaseAPI\CoinBaseAuthentication;
+use App\CoinBaseAPI\CoinBaseMarketData;
 use Auth;
 
 class CoinBaseManager
@@ -37,16 +38,23 @@ class CoinBaseManager
 
 
     /**
+     * @var CoinBaseMarketData
+     */
+    private $coinBaseMarketData;
+
+
+    /**
      * CoinBaseManager constructor.
      * @param CoinBaseAuthentication $authentication
      * @param CoinBaseAccounts $coinBaseAccounts
      * @param CoinBaseAddresses $coinBaseAddresses
      */
-    public function __construct(CoinBaseAuthentication $authentication, CoinBaseAccounts $coinBaseAccounts, CoinBaseAddresses $coinBaseAddresses)
+    public function __construct(CoinBaseAuthentication $authentication, CoinBaseAccounts $coinBaseAccounts, CoinBaseAddresses $coinBaseAddresses, CoinBaseMarketData $coinBaseMarketData)
     {
         $this->authentication = $authentication;
         $this->coinBaseAccounts = $coinBaseAccounts;
         $this->coinBaseAddresses = $coinBaseAddresses;
+        $this->coinBaseMarketData = $coinBaseMarketData;
     }
 
 
@@ -123,5 +131,21 @@ class CoinBaseManager
         $address = $this->coinBaseAddresses->createAddress($client, $account);
 
         return $address;
+    }
+
+
+    /**
+     * Get the bitcoins price for user authenticated
+     * @return float
+     */
+    public function getBitcoinPrice()
+    {
+        //Create CoinBase client for user
+        $client = $this->createClientFromUser();
+
+        //Get bitcoin price from API
+        $bitcoinPrice = $this->coinBaseMarketData->getBuyPrice($client);
+
+        return $bitcoinPrice;
     }
 }

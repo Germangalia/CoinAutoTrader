@@ -1,3 +1,4 @@
+@yield('scripts')
 <!-- Main Header -->
 <header class="main-header">
 
@@ -118,6 +119,27 @@
                     <li><a href="{{ url('/login') }}">Login</a></li>
                     <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
+
+                        <!-- User Account Menu -->
+                    <li class="dropdown user user-menu">
+                        <!-- Menu Toggle Button -->
+                        <a href="fire/bitcoin-price" class="dropdown-toggle" data-toggle="dropdown">
+                            <!-- The user image in the navbar-->
+                            <img src="/img/bitcoin-white-50.png" class="user-image" alt="Bitcoin Price"/>
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                            <span class="hidden-xs">Bitcoin Market</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- The user image in the menu -->
+                            <li class="user-header">
+                                <img src="/img/bitcoin-pocket-128x128.png" class="img-circle" alt="Bitcoin Price" />
+                                <p>Bitcoin Actual Prece ($/B)</p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li id="bitcoin-price"class="user-footer"></li>
+                        </ul>
+                    </li>
+
                     <!-- User Account Menu -->
                     <li class="dropdown user user-menu">
                         <!-- Menu Toggle Button -->
@@ -133,7 +155,6 @@
                                 <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
                                 <p>
                                     {{ Auth::user()->name }}
-                                    <small>Member since Nov. 2012</small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -164,9 +185,9 @@
                 @endif
 
                 <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--}}
+                {{--</li>--}}
             </ul>
         </div>
     </nav>

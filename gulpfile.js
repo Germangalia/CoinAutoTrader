@@ -122,4 +122,9 @@ elixir(function(mix) {
         'statistics-total-evolution.js'
     ], 'public/js/statistics-total-evolution.js');
 
+    // Compile scripts
+    mix.scripts([
+        'event-bitcoin-price.js'
+    ], 'public/js/event-bitcoin-price.js');
+
 });
