@@ -44,7 +44,7 @@ class ShouldBroadcastBitcoinPrice extends Event implements ShouldBroadcast
         $this->bitcoinPrice = $this->coinBaseManager->getBitcoinPrice();
 
         $this->data = array(
-            'bitcoin-price'=> $this->bitcoinPrice
+            'bitcoinprice'=> $this->bitcoinPrice
         );
     }
 

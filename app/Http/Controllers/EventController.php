@@ -29,6 +29,6 @@ class EventController extends Controller
     {
         event($this->shouldBroadcastBitcoinPrice);
 
-        return redirect()->back();
+        //return redirect()->back();
     }
 }

@@ -136,7 +136,7 @@
                                 <p>Bitcoin Actual Prece ($/B)</p>
                             </li>
                             <!-- Menu Footer-->
-                            <li id="bitcoin-price"class="user-footer"></li>
+                            <li id="bitcoin-price"class="user-footer" style="text-align: center; background-color: gold; font-size: xx-large"></li>
                         </ul>
                     </li>
 
