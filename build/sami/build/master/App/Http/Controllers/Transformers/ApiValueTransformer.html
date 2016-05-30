@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>App\Http\Controllers\PartialsAutoTrader\GetActiveAccounts | AutoCoinTrader API</title>
+    <title>App\Http\Controllers\Transformers\ApiValueTransformer | AutoCoinTrader API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:App_Http_Controllers_PartialsAutoTrader_GetActiveAccounts" data-root-path="../../../../">
+    <body id="class" data-name="class:App_Http_Controllers_Transformers_ApiValueTransformer" data-root-path="../../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,19 +66,19 @@
                                                             <li><a href="../../../../App.html">App</a></li>
                                         <li><a href="../../../../App/Http.html">Http</a></li>
                                         <li><a href="../../../../App/Http/Controllers.html">Controllers</a></li>
-                                        <li><a href="../../../../App/Http/Controllers/PartialsAutoTrader.html">PartialsAutoTrader</a></li>
+                                        <li><a href="../../../../App/Http/Controllers/Transformers.html">Transformers</a></li>
     
-                <li>GetActiveAccounts</li>
+                <li>ApiValueTransformer</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>GetActiveAccounts</h1>
+        <h1>ApiValueTransformer</h1>
     </div>
 
     <p>    class
-    <strong>GetActiveAccounts</strong>        extends <abbr title="Illuminate\Routing\Controller">Controller</abbr>        (<a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/GetActiveAccounts.php">View source</a>)
+    <strong>ApiValueTransformer</strong>        extends <a href="../../../../App/Http/Controllers/Transformers/Transformer.html"><abbr title="App\Http\Controllers\Transformers\Transformer">Transformer</abbr></a>        (<a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/Transformers/ApiValueTransformer.php">View source</a>)
 </p>
 
     
@@ -91,12 +91,14 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    mixed
+    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getActiveAccounts">getActiveAccounts</a>()
-                                            <p>Get active accounts of the user</p>                </div>
-                <div class="col-md-2"></div>
+                    <a href="#method_transformCollection">transformCollection</a>(
+    array $items)
+                                            <p class="no-description">No description</p>
+                                    </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="../../../../App/Http/Controllers/Transformers/Transformer.html#method_transformCollection"><abbr title="App\Http\Controllers\Transformers\Transformer">Transformer</abbr></a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -104,19 +106,9 @@
     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_setActiveAccounts">setActiveAccounts</a>(
-    mixed $activeAccounts)
-                                            <p>Set active accounts of the user</p>                </div>
-                <div class="col-md-2"></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    
-    mixed
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getAccounts">getAccounts</a>()
-                                            <p>Get all active account from all users and return the array collection</p>                </div>
+                    <a href="#method_transform">transform</a>($object)
+                                            <p class="no-description">No description</p>
+                                    </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -126,52 +118,22 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_getActiveAccounts">
-        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/GetActiveAccounts.php#L21">line 21</a></div>
-        <code>                    
-    mixed
-    <strong>getActiveAccounts</strong>()</code>
-    </h3>
-    <div class="details">
-                    <div class="method-description">
-                                    <p>Get active accounts of the user</p>                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    mixed</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_setActiveAccounts">
-        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/GetActiveAccounts.php#L30">line 30</a></div>
+                    <h3 id="method_transformCollection">
+        <div class="location">in <a href="../../../../App/Http/Controllers/Transformers/Transformer.html#method_transformCollection"><abbr title="App\Http\Controllers\Transformers\Transformer">Transformer</abbr></a> at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/Transformers/Transformer.php#L13">line 13</a></div>
         <code>                    
     
-    <strong>setActiveAccounts</strong>(
-    mixed $activeAccounts)</code>
+    <strong>transformCollection</strong>(
+    array $items)</code>
     </h3>
     <div class="details">
-                    <div class="method-description">
-                                    <p>Set active accounts of the user</p>                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>
-    mixed</td>
-                <td>$activeAccounts</td>
+    array</td>
+                <td>$items</td>
                 <td></td>
             </tr>
             </table>
@@ -184,27 +146,25 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getAccounts">
-        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/GetActiveAccounts.php#L39">line 39</a></div>
+                    <h3 id="method_transform">
+        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/Transformers/ApiValueTransformer.php#L14">line 14</a></div>
         <code>                    
-    mixed
-    <strong>getAccounts</strong>()</code>
+    
+    <strong>transform</strong>($object)</code>
     </h3>
     <div class="details">
-                    <div class="method-description">
-                                    <p>Get all active account from all users and return the array collection</p>                                </div>
                 <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>
-    mixed</td>
-            <td></td>
-        </tr>
-    </table>
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td></td>
+            </tr>
+            </table>
 
+            
             
             
                     </div>

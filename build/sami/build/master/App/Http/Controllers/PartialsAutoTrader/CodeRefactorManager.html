@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>App\Http\Controllers\PartialsAutoTrader\CodeRefactorManager | AutoCoinTrader API</title>
+
+            <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../css/sami.css">
+        <script src="../../../../js/jquery-1.11.1.min.js"></script>
+        <script src="../../../../js/bootstrap.min.js"></script>
+        <script src="../../../../js/typeahead.min.js"></script>
+        <script src="../../../../sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:App_Http_Controllers_PartialsAutoTrader_CodeRefactorManager" data-root-path="../../../../">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <form id="search-form" action="../../../../search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../../../index.html">AutoCoinTrader API</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="../../../../classes.html">Classes</a></li>
+                                            <li><a href="../../../../namespaces.html">Namespaces</a></li>
+                                        <li><a href="../../../../interfaces.html">Interfaces</a></li>
+                    <li><a href="../../../../traits.html">Traits</a></li>
+                    <li><a href="../../../../doc-index.html">Index</a></li>
+                    <li><a href="../../../../search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                                                            <li><a href="../../../../App.html">App</a></li>
+                                        <li><a href="../../../../App/Http.html">Http</a></li>
+                                        <li><a href="../../../../App/Http/Controllers.html">Controllers</a></li>
+                                        <li><a href="../../../../App/Http/Controllers/PartialsAutoTrader.html">PartialsAutoTrader</a></li>
+    
+                <li>CodeRefactorManager</li>
+            </ol>
+        </div>
+                <div id="page-content">
+                
+    <div class="page-header">
+        <h1>CodeRefactorManager</h1>
+    </div>
+
+    <p>    class
+    <strong>CodeRefactorManager</strong>        (<a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/CodeRefactorManager.php">View source</a>)
+</p>
+
+    
+    
+    
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(
+    <a href="../../../../App/Http/Controllers/PartialsAutoTrader/DatabaseManager.html"><abbr title="App\Http\Controllers\PartialsAutoTrader\DatabaseManager">DatabaseManager</abbr></a> $databaseManager, 
+    <a href="../../../../App/Http/Controllers/PartialsAutoTrader/CoinBaseManager.html"><abbr title="App\Http\Controllers\PartialsAutoTrader\CoinBaseManager">CoinBaseManager</abbr></a> $coinBaseManager, 
+    <a href="../../../../App/Http/Controllers/PartialsAutoTrader/FirstHistoryRecord.html"><abbr title="App\Http\Controllers\PartialsAutoTrader\FirstHistoryRecord">FirstHistoryRecord</abbr></a> $firstHistoryRecord, 
+    <a href="../../../../App/CoinBaseAPI/CoinBaseBuys.html"><abbr title="App\CoinBaseAPI\CoinBaseBuys">CoinBaseBuys</abbr></a> $coinBaseBuys, 
+    <a href="../../../../App/CoinBaseAPI/CoinBaseSells.html"><abbr title="App\CoinBaseAPI\CoinBaseSells">CoinBaseSells</abbr></a> $coinBaseSells, 
+    <a href="../../../../App/CoinBaseAPI/CoinBaseMarketData.html"><abbr title="App\CoinBaseAPI\CoinBaseMarketData">CoinBaseMarketData</abbr></a> $coinBaseMarketData, 
+    <a href="../../../../App/CoinBaseAPI/CoinBaseAccounts.html"><abbr title="App\CoinBaseAPI\CoinBaseAccounts">CoinBaseAccounts</abbr></a> $coinBaseAccounts)
+                                            <p>CodeRefactorManager constructor.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkActiveAccount">checkActiveAccount</a>($id, $accountRecord)
+                                            <p>Check if the acount is active</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkBalance">checkBalance</a>($id, $balanceAmount, $accountCapital)
+                                            <p>Check if the balance is correct</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkHistoryRecord">checkHistoryRecord</a>($historyRecord, $id, $accountCapital, $balanceAmount)
+                                            <p>Check the records history of account</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTradeOperation">setTradeOperation</a>($client, $account, $amount, $DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader)
+                                            <p>Execute the trade operation</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+    <abbr title="App\Trader\AutoTrader">AutoTrader</abbr>
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_createAutoTrader">createAutoTrader</a>($client, $account, $lastHistoryRecord)
+                                            <p>Create new AutoTrader object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/CodeRefactorManager.php#L74">line 74</a></div>
+        <code>                    
+    
+    <strong>__construct</strong>(
+    <a href="../../../../App/Http/Controllers/PartialsAutoTrader/DatabaseManager.html"><abbr title="App\Http\Controllers\PartialsAutoTrader\DatabaseManager">DatabaseManager</abbr></a> $databaseManager, 
+    <a href="../../../../App/Http/Controllers/PartialsAutoTrader/CoinBaseManager.html"><abbr title="App\Http\Controllers\PartialsAutoTrader\CoinBaseManager">CoinBaseManager</abbr></a> $coinBaseManager, 
+    <a href="../../../../App/Http/Controllers/PartialsAutoTrader/FirstHistoryRecord.html"><abbr title="App\Http\Controllers\PartialsAutoTrader\FirstHistoryRecord">FirstHistoryRecord</abbr></a> $firstHistoryRecord, 
+    <a href="../../../../App/CoinBaseAPI/CoinBaseBuys.html"><abbr title="App\CoinBaseAPI\CoinBaseBuys">CoinBaseBuys</abbr></a> $coinBaseBuys, 
+    <a href="../../../../App/CoinBaseAPI/CoinBaseSells.html"><abbr title="App\CoinBaseAPI\CoinBaseSells">CoinBaseSells</abbr></a> $coinBaseSells, 
+    <a href="../../../../App/CoinBaseAPI/CoinBaseMarketData.html"><abbr title="App\CoinBaseAPI\CoinBaseMarketData">CoinBaseMarketData</abbr></a> $coinBaseMarketData, 
+    <a href="../../../../App/CoinBaseAPI/CoinBaseAccounts.html"><abbr title="App\CoinBaseAPI\CoinBaseAccounts">CoinBaseAccounts</abbr></a> $coinBaseAccounts)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>CodeRefactorManager constructor.</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>
+    <a href="../../../../App/Http/Controllers/PartialsAutoTrader/DatabaseManager.html"><abbr title="App\Http\Controllers\PartialsAutoTrader\DatabaseManager">DatabaseManager</abbr></a></td>
+                <td>$databaseManager</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+    <a href="../../../../App/Http/Controllers/PartialsAutoTrader/CoinBaseManager.html"><abbr title="App\Http\Controllers\PartialsAutoTrader\CoinBaseManager">CoinBaseManager</abbr></a></td>
+                <td>$coinBaseManager</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+    <a href="../../../../App/Http/Controllers/PartialsAutoTrader/FirstHistoryRecord.html"><abbr title="App\Http\Controllers\PartialsAutoTrader\FirstHistoryRecord">FirstHistoryRecord</abbr></a></td>
+                <td>$firstHistoryRecord</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+    <a href="../../../../App/CoinBaseAPI/CoinBaseBuys.html"><abbr title="App\CoinBaseAPI\CoinBaseBuys">CoinBaseBuys</abbr></a></td>
+                <td>$coinBaseBuys</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+    <a href="../../../../App/CoinBaseAPI/CoinBaseSells.html"><abbr title="App\CoinBaseAPI\CoinBaseSells">CoinBaseSells</abbr></a></td>
+                <td>$coinBaseSells</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+    <a href="../../../../App/CoinBaseAPI/CoinBaseMarketData.html"><abbr title="App\CoinBaseAPI\CoinBaseMarketData">CoinBaseMarketData</abbr></a></td>
+                <td>$coinBaseMarketData</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td>
+    <a href="../../../../App/CoinBaseAPI/CoinBaseAccounts.html"><abbr title="App\CoinBaseAPI\CoinBaseAccounts">CoinBaseAccounts</abbr></a></td>
+                <td>$coinBaseAccounts</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkActiveAccount">
+        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/CodeRefactorManager.php#L91">line 91</a></div>
+        <code>                    
+    
+    <strong>checkActiveAccount</strong>($id, $accountRecord)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Check if the acount is active</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$accountRecord</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkBalance">
+        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/CodeRefactorManager.php#L137">line 137</a></div>
+        <code>                    
+    
+    <strong>checkBalance</strong>($id, $balanceAmount, $accountCapital)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Check if the balance is correct</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$balanceAmount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$accountCapital</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkHistoryRecord">
+        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/CodeRefactorManager.php#L159">line 159</a></div>
+        <code>                    
+    
+    <strong>checkHistoryRecord</strong>($historyRecord, $id, $accountCapital, $balanceAmount)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Check the records history of account</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$historyRecord</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$id</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$accountCapital</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$balanceAmount</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTradeOperation">
+        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/CodeRefactorManager.php#L184">line 184</a></div>
+        <code>                    
+    
+    <strong>setTradeOperation</strong>($client, $account, $amount, $DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Execute the trade operation</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$client</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$account</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$amount</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$DBuserId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$DBaccountId</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$lastHistoryRecord</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$autoTrader</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_createAutoTrader">
+        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/PartialsAutoTrader/CodeRefactorManager.php#L222">line 222</a></div>
+        <code>                    
+    <abbr title="App\Trader\AutoTrader">AutoTrader</abbr>
+    <strong>createAutoTrader</strong>($client, $account, $lastHistoryRecord)</code>
+    </h3>
+    <div class="details">
+                    <div class="method-description">
+                                    <p>Create new AutoTrader object</p>                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$client</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$account</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$lastHistoryRecord</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>
+    <abbr title="App\Trader\AutoTrader">AutoTrader</abbr></td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>App\Http\Controllers\HistoryController | AutoCoinTrader API</title>
+    <title>App\Http\Controllers\EventController | AutoCoinTrader API</title>
 
             <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:App_Http_Controllers_HistoryController" data-root-path="../../../">
+    <body id="class" data-name="class:App_Http_Controllers_EventController" data-root-path="../../../">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -67,21 +67,19 @@
                                         <li><a href="../../../App/Http.html">Http</a></li>
                                         <li><a href="../../../App/Http/Controllers.html">Controllers</a></li>
     
-                <li>HistoryController</li>
+                <li>EventController</li>
             </ol>
         </div>
                 <div id="page-content">
                 
     <div class="page-header">
-        <h1>HistoryController</h1>
+        <h1>EventController</h1>
     </div>
 
     <p>    class
-    <strong>HistoryController</strong>        extends <a href="../../../App/Http/Controllers/Controller.html"><abbr title="App\Http\Controllers\Controller">Controller</abbr></a>        (<a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/HistoryController.php">View source</a>)
+    <strong>EventController</strong>        extends <a href="../../../App/Http/Controllers/Controller.html"><abbr title="App\Http\Controllers\Controller">Controller</abbr></a>        (<a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/EventController.php">View source</a>)
 </p>
 
-            <div class="description">
-            <p>Class HistoryController</p>                    </div>
     
             <h2>Traits</h2>
 
@@ -129,21 +127,22 @@
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    <abbr title="Illuminate\Contracts\View\Factory">Factory</abbr>|<abbr title="Illuminate\View\View">View</abbr>
+    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_index">index</a>()
-                                            <p>Return the history view</p>                </div>
+                    <a href="#method___construct">__construct</a>(
+    <a href="../../../App/Events/ShouldBroadcastBitcoinPrice.html"><abbr title="App\Events\ShouldBroadcastBitcoinPrice">ShouldBroadcastBitcoinPrice</abbr></a> $shouldBroadcastBitcoinPrice)
+                                            <p>EventController constructor.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
-    array|<a href="../../../App/Http/Controllers/HistoryController.html"><abbr title="App\Http\Controllers\HistoryController">HistoryController</abbr></a>[]
+    
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getUserHistory">getUserHistory</a>()
-                                            <p>Get the history records from user</p>                </div>
+                    <a href="#method_fireBitcoinPrice">fireBitcoinPrice</a>()
+                                            <p>Fire bitcoin price</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -153,27 +152,29 @@
 
             <div id="method-details">
                     <div class="method-item">
-                    <h3 id="method_index">
-        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/HistoryController.php#L22">line 22</a></div>
+                    <h3 id="method___construct">
+        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/EventController.php#L20">line 20</a></div>
         <code>                    
-    <abbr title="Illuminate\Contracts\View\Factory">Factory</abbr>|<abbr title="Illuminate\View\View">View</abbr>
-    <strong>index</strong>()</code>
+    
+    <strong>__construct</strong>(
+    <a href="../../../App/Events/ShouldBroadcastBitcoinPrice.html"><abbr title="App\Events\ShouldBroadcastBitcoinPrice">ShouldBroadcastBitcoinPrice</abbr></a> $shouldBroadcastBitcoinPrice)</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Return the history view</p>                                </div>
+                                    <p>EventController constructor.</p>                                </div>
                 <div class="tags">
-            
-                            <h4>Return Value</h4>
+                            <h4>Parameters</h4>
 
                     <table class="table table-condensed">
-        <tr>
-            <td>
-    <abbr title="Illuminate\Contracts\View\Factory">Factory</abbr>|<abbr title="Illuminate\View\View">View</abbr></td>
-            <td></td>
-        </tr>
-    </table>
+                    <tr>
+                <td>
+    <a href="../../../App/Events/ShouldBroadcastBitcoinPrice.html"><abbr title="App\Events\ShouldBroadcastBitcoinPrice">ShouldBroadcastBitcoinPrice</abbr></a></td>
+                <td>$shouldBroadcastBitcoinPrice</td>
+                <td></td>
+            </tr>
+            </table>
 
+            
             
             
                     </div>
@@ -181,27 +182,17 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_getUserHistory">
-        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/HistoryController.php#L32">line 32</a></div>
+                    <h3 id="method_fireBitcoinPrice">
+        <div class="location">at line         <a href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/EventController.php#L28">line 28</a></div>
         <code>                    
-    array|<a href="../../../App/Http/Controllers/HistoryController.html"><abbr title="App\Http\Controllers\HistoryController">HistoryController</abbr></a>[]
-    <strong>getUserHistory</strong>()</code>
+    
+    <strong>fireBitcoinPrice</strong>()</code>
     </h3>
     <div class="details">
                     <div class="method-description">
-                                    <p>Get the history records from user</p>                                </div>
+                                    <p>Fire bitcoin price</p>                                </div>
                 <div class="tags">
             
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>
-    array|<a href="../../../App/Http/Controllers/HistoryController.html"><abbr title="App\Http\Controllers\HistoryController">HistoryController</abbr></a>[]</td>
-            <td></td>
-        </tr>
-    </table>
-
             
             
                     </div>
