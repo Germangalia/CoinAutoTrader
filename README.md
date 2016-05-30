@@ -121,6 +121,43 @@ This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.m
 
 ## Change Log
 
+###30/05/2016
+* Actualize Sami documentation for API.
+
+
+###29/05/2016
+* Improve event bitcoin price and implement first load in javascript.
+
+
+###28/05/2016
+* Create new test for check the backend flow.
+
+
+###27/05/2016
+* Add event for load a bitcoin price in all views with socket.io and redis.
+
+
+###26/05/2016
+* Implement Event with Redis and socket.io for update bitcoin price from API.
+
+
+###25/05/2016
+* Fix issues to save first record to database.
+* Add Travis-CI badget to the readme repository.
+* Configure server to put the project in production.
+* Study events with sockets.
+
+
+###24/05/2016
+* Create tests for all page views.
+* Create some tests to check routes.php and the most important methods of backend.
+* Improve responsive design with css and bootstrap.
+
+
+###23/05/2016
+* Improve Coin Base API Tests
+
+
 ###22/05/2016
 
 * Add new tests to implement necessari methods from CoinBase API.
