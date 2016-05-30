@@ -84,8 +84,8 @@
                                     <td>@{{ account.balance }}</td>
                                    <td>@{{ account.active }}</td>
                                     <td>
-                                        <button v-show="!isActive" class="btn btn-primary btn-block btn-flat" @click="activateAccount(account.id)">Activate/Disable</button>
-                                        <button class="btn btn-danger btn-block btn-flat" @click="removeAccount(account.id)">Remove</button>
+                                        <button v-show="!isActive" name="activate" class="btn btn-primary btn-block btn-flat" @click="activateAccount(account.id)">Activate/Disable</button>
+                                        <button  name="remove" class="btn btn-danger btn-block btn-flat" @click="removeAccount(account.id)">Remove</button>
                                     </td>
                                 </tr>
                                 </tbody>

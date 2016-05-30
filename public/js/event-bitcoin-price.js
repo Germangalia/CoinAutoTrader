@@ -30,7 +30,7 @@ function getBitcoinPrice() {
  * Parser for response of the API and convert in array of objects
  * @param response
  */
-function parseResponse(response){
+function parseResponseBitcoinPrice(response){
     var text = response.split('<',1);
     return text;
 }
@@ -40,13 +40,13 @@ function parseResponse(response){
  * Insert value from object to HTML
  * @param text
  */
-function insertHtml(text){
+function insertHtmlBitcoinPrice(text){
     document.getElementById("bitcoin-price").innerHTML = text;
 }
 
 
 //Ececute functions for first bitcoin price load
 var response = getBitcoinPrice();
-var text = parseResponse(response);
-insertHtml(text);
+var text = parseResponseBitcoinPrice(response);
+insertHtmlBitcoinPrice(text);
 //# sourceMappingURL=event-bitcoin-price.js.map
