@@ -22,6 +22,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class BackendCircuitTest extends TestCase
 {
 
+    use DatabaseMigrations;
+
     /**
      * @var AutoTraderController
      */
@@ -56,14 +58,14 @@ class BackendCircuitTest extends TestCase
 
     /**
      * Test user registration
-     *
+     * @group backend
      * @return void
      */
     public function testNewUserRegistration()
     {
         $this->visit('/register')
             ->type('German Galia', 'name')
-            ->type('user@mail.com', 'email')
+            ->type('example@mail.com', 'email')
 //            ->check('terms') TODO
             ->type('passw0RD', 'password')
             ->type('passw0RD', 'password_confirmation')
@@ -71,8 +73,8 @@ class BackendCircuitTest extends TestCase
             ->type('a8jJ2QL7p5GgDsf1LYtkR3xmTWa70o9b', 'secret')
             ->press('Register')
             ->seePageIs('/home')
-            ->seeInDatabase('users', ['email' => 'ggalia84@gmail.com',
-                'name'  => 'German Galia Beltran']);
+            ->seeInDatabase('users', ['email' => 'example@mail.com',
+                'name'  => 'German Galia']);
 
     }
 
@@ -84,16 +86,15 @@ class BackendCircuitTest extends TestCase
      */
     public function testCreateNewAccountFromAccountsPage()
     {
+        $user = factory(App\User::class)->create();
 
-        $this->testNewUserRegistration();
-
-        $this->visit('/accounts')
+        $this->actingAs($user)
+            ->visit('/accounts')
             ->type('Bitcoin Account', 'title')
             ->type(10500, 'initialCapital')
-            ->press('Create Account')
+            ->press('create-account')
             ->see('Congratulations! Your new account is ready to activate.');
     }
-
 
 
     /**
@@ -105,11 +106,34 @@ class BackendCircuitTest extends TestCase
     public function testActivateAccountFromAccountsPage()
     {
 
+        $user = factory(App\User::class)->create();
+
         $this->testCreateNewAccountFromAccountsPage();
 
-        $this->visit('/accounts')
-            ->press('Activate/Disable')
+        $this->actingAs($user)
+            ->visit('/accounts')
+            ->visit('/api/accounts-active/1')
             ->seeInDatabase('accounts_coin_bases', ['active' => true]);
+    }
+
+
+    /**
+     * Execute Trade
+     *
+     * @group backend
+     * @return void
+     */
+    public function testExecuteAutomaticTradeFromBackend()
+    {
+
+        $user = factory(App\User::class)->create();
+
+        $this->testActivateAccountFromAccountsPage();
+
+        $this->autoTraderController->execute();
+
+        $this->actingAs($user)
+            ->seeInDatabase('trade_histories', ['initial_capital' => 10500]);
     }
 
 
@@ -122,10 +146,13 @@ class BackendCircuitTest extends TestCase
     public function testDesableAccountFromAccountsPage()
     {
 
-        $this->testCreateNewAccountFromAccountsPage();
+        $user = factory(App\User::class)->create();
 
-        $this->visit('/accounts')
-            ->press('Activate/Disable')
+        $this->testActivateAccountFromAccountsPage();
+
+        $this->actingAs($user)
+            ->visit('/accounts')
+            ->visit('/api/accounts-active/1')
             ->seeInDatabase('accounts_coin_bases', ['active' => false]);
     }
 
@@ -139,29 +166,10 @@ class BackendCircuitTest extends TestCase
     public function testRemoveAccountFromAccountsPage()
     {
 
-        $this->testCreateNewAccountFromAccountsPage();
+        $user = factory(App\User::class)->create();
 
-        $this->visit('/accounts')
-            ->press('Remove');
-
-        $this->assertTrue(true);
+        $this->actingAs($user)
+            ->visit('api/accounts-delete/1')
+            ->assertTrue(true);
     }
-
-
-    /**
-     * Execute Trade
-     *
-     * @group backend
-     * @return void
-     */
-    public function testExecuteAutomaticTradeFromBackend()
-    {
-
-        $this->testActivateAccountFromAccountsPage();
-
-        $this->autoTraderController->execute();
-
-        $this->seeInDatabase('trade_histories', ['initial_capital' => 10500]);
-    }
-
 }

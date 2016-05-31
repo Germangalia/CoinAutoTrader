@@ -12,6 +12,8 @@ Trader/
 bootstrap/compiled.php
 app/storage/
 _ide_helper.php
+public/img/diagrams/
+public/img/views/
 
 # Laravel 5 & Lumen specific
 storage/

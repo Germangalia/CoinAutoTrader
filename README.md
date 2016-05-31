@@ -123,6 +123,7 @@ This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.m
 
 ###30/05/2016
 * Actualize Sami documentation for API.
+* Improve the readme.md with change log.
 
 
 ###29/05/2016
