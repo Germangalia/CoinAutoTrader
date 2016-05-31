@@ -121,6 +121,11 @@ This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.m
 
 ## Change Log
 
+###31/05/2016
+* Improve backend tests for check the business logic
+* Add Class Diagrams to the project document.
+* Add E-R Diagrams for see the database estructure.
+
 ###30/05/2016
 * Actualize Sami documentation for API.
 * Improve the readme.md with change log.
