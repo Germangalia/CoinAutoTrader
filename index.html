@@ -24,10 +24,8 @@
 <body>
 <div class="reveal">
 	<div class="slides">
-		<!--TODO-->
-		<section data-markdown data-background="img/image.png">
+		<section data-markdown data-background="public/img/views/portada.png">
 			<script type="text/template">
-				# COINAUTOTRADER
 			</script>
 		</section>
 
@@ -72,7 +70,6 @@
 					- Utilització de controladors per la realització dels càlculs matemàtics que tenen que veure amb el trading.
 				</script>
 			</section>
-			<!--TODO-->
 			<section data-markdown data-background="#2ECCFA">
 				<script type="text/template">
 					## Objectius
@@ -82,6 +79,9 @@
 					- Formulari de registre per a comptes en la zona d'usuari.
 					- Àrea per a donar de baixa un compte.
 					- Pàgina amb una taula de dades amb l'historial del compte i altres dades d'interès.
+					- Mostrar estadístiques.
+					- Mostrar gràfics de les estadístiques.
+					- Realitzar el trade de forma automàtica i "handless".
 				</script>
 			</section>
 		</section>
@@ -109,12 +109,24 @@
 		<section data-background="#2EFE2E">
 			<section data-markdown>
 				<script type="text/template">
-					## Esquema General de l’Aplicació
+					## Esquemes Generals de l’Aplicació
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<img data-src="img/image.png">
+				CoinBase API
+				<img data-src="public/img/diagrams/diagram-CoinBaseAPI.png">
+			</section>
+			<section>
+				AutoTrader
+				<img data-src="public/img/diagrams/diagram-AutoTrader.png">
+			</section>
+			<section>
+				Controllers
+				<img data-src="public/img/diagrams/diagram-Controllers.png">
+			</section>
+			<section>
+				Partials AutoTrader
+				<img data-src="public/img/diagrams/diagram-PartialsAutoTerader.png">
 			</section>
 		</section>
 
@@ -125,8 +137,12 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<img data-src="img/image.png">
+				Database
+				<img data-src="public/img/diagrams/diagram-Database.png">
+			</section>
+			<section>
+				Migrations
+				<img data-src="public/img/diagrams/diagram-Migrations.png">
 			</section>
 		</section>
 
@@ -137,8 +153,22 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="https://github.com/Germangalia/CoinAutoTrader/tree/master/app/CoinBaseAPI"></iframe>
+					Authentication
+				<br>
+				<img data-src="public/img/code/apiKeyAuthentication.png">
+			</section>
+			<section>
+				Accounts
+				<br>
+				<img data-src="public/img/code/createAccounts.png">
+				<img data-src="public/img/code/balanceAccount.png">
+				<img data-src="public/img/code/deleteAccount.png">
+			</section>
+			<section>
+				Market
+				<br>
+				<img data-src="public/img/code/getBuyPrice.png">
+				<img data-src="public/img/code/getSellPrice.png">
 			</section>
 		</section>
 
@@ -149,8 +179,7 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<img data-src="public/img/code/ControllerAutoTrade.png">
 			</section>
 		</section>
 
@@ -161,8 +190,9 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<section>
+					<img data-src="public/img/code/Autotrader.png">
+				</section>
 			</section>
 		</section>
 
@@ -173,8 +203,9 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<section>
+					<img data-src="public/img/views/captura-LandingPage-compress.png">
+				</section>
 			</section>
 		</section>
 
@@ -185,8 +216,7 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<img data-src="public/img/views/captura-RegisterPage.png">
 			</section>
 		</section>
 
@@ -197,8 +227,10 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<img data-src="public/img/views/captura-HomePage.png">
+			</section>
+			<section>
+				<img data-src="public/img/views/captura-HomePage-light.png">
 			</section>
 		</section>
 
@@ -209,8 +241,7 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<img data-src="public/img/views/captura-AccountsPage.png">
 			</section>
 		</section>
 
@@ -221,8 +252,7 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<img data-src="public/img/views/captura-HistoryPage.png">
 			</section>
 		</section>
 
@@ -233,8 +263,7 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<img data-src="public/img/views/captura-StatisticsIndexPage.png">
 			</section>
 		</section>
 
@@ -245,8 +274,16 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<img data-src="public/img/views/captura-StatisticsBitcoinPage.png">
+			</section>
+			<section>
+				<img data-src="public/img/views/captura-StatisticsCapitalPage.png">
+			</section>
+			<section>
+				<img data-src="public/img/views/captura-StatisticsTotalPage.png">
+			</section>
+			<section>
+				<img data-src="public/img/views/captura-StatisticsBenefitPage.png">
 			</section>
 		</section>
 
@@ -257,8 +294,7 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<img data-src="public/img/code/routes-api.png">
 			</section>
 		</section>
 
@@ -291,8 +327,7 @@
 				</script>
 			</section>
 			<section>
-				<!--TODO-->
-				<iframe data-src="http://hakim.se"></iframe>
+				<img data-src="public/img/code/sami.png">
 			</section>
 		</section>
 
@@ -330,11 +365,10 @@
 			<script type="text/template">
 				## Enllaços d’Interès
 				<!--TODO-->
-				- Pàgina del projecte: <a href="http://www.coinautotrader.com">http://www.coinautotrader.com</a>
+				- Pàgina del projecte: <a href="http://http://146.185.179.80/">http://http://146.185.179.80/</a>
 				- Pàgina del GitHub: <a href="https://github.com/Germangalia/CoinAutoTrader">https://github.com/Germangalia/CoinAutoTrader</a>
-				- Presentació: <a href="">Link</a>https://germangalia.github.io/CoinAutoTrader
-				- Documentació: <a href=""></a>
-				- PHPDocs: <a href=""></a>
+				- Presentació: <a href="https://germangalia.github.io/CoinAutoTrader">https://germangalia.github.io/CoinAutoTrader</a>
+				- Documentació: <a href="https://docs.google.com/document/d/1pceA60XtLFfrZsn4msTdTnVOZq3T5Hvvn0unPKczwzk"></a>
 				- Documentació de la API: <a href="http://germangalia.github.io/CoinAutoTrader/build/sami/build/master/">http://germangalia.github.io/CoinAutoTrader/build/sami/build/master/</a>
 
 			</script>
