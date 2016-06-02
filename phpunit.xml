@@ -30,4 +30,7 @@
         <env name="COINBASE_API_KEY" value="kbVahwxTTRU8DGUg"/>
         <env name="COINBASE_API_SECRET" value="lSXaK0NcKSh00fsQb1DvJcDRk3rjjNGH"/>
     </php>
+    <logging>
+        <log type="coverage-clover" target="./clover.xml"/>
+    </logging>
 </phpunit>
