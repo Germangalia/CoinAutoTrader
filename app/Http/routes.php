@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Requests;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -64,7 +64,4 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('api/statistics/getAvgBenefit', 'StatitsticsController@getAvgBenefit');
     Route::get('api/statistics/getAvgTotal', 'StatitsticsController@getAvgTotal');
     Route::get('api/statistics/getBitcoinPrice', 'StatitsticsController@getBitcoinPrice');
-
 });
-
-

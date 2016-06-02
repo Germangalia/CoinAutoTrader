@@ -1,6 +1,6 @@
 <?php
-namespace App\Http\Controllers\PartialsAutoTrader;
 
+namespace App\Http\Controllers\PartialsAutoTrader;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
@@ -8,14 +8,15 @@ use Illuminate\Support\Facades\DB;
 class GetActiveAccounts extends Controller
 {
     /**
-     * Active Accounts Collection
+     * Active Accounts Collection.
+     *
      * @var
      */
     private $activeAccounts;
 
-
     /**
-     * Get active accounts of the user
+     * Get active accounts of the user.
+     *
      * @return mixed
      */
     public function getActiveAccounts()
@@ -24,7 +25,8 @@ class GetActiveAccounts extends Controller
     }
 
     /**
-     * Set active accounts of the user
+     * Set active accounts of the user.
+     *
      * @param mixed $activeAccounts
      */
     public function setActiveAccounts($activeAccounts)
@@ -33,12 +35,14 @@ class GetActiveAccounts extends Controller
     }
 
     /**
-     * Get all active account from all users and return the array collection
+     * Get all active account from all users and return the array collection.
+     *
      * @return mixed
      */
     public function getAccounts()
     {
         $this->activeAccounts = DB::table('accounts_coin_bases')->where('active', true)->get();
+
         return $this->activeAccounts;
     }
 }

@@ -3,11 +3,9 @@
  * Created by PhpStorm.
  * User: ggalia84
  * Date: 18/05/16
- * Time: 16:50
+ * Time: 16:50.
  */
-
 namespace App\Http\Controllers\PartialsAutoTrader;
-
 
 use App\AccountsCoinBase;
 use App\TradeCalculator;
@@ -32,12 +30,12 @@ class DatabaseManager
      */
     private $tradeCalculator;
 
-
     /**
      * DatabaseManager constructor.
-     * @param TradeHistory $dataHistory
+     *
+     * @param TradeHistory     $dataHistory
      * @param AccountsCoinBase $accountsCoinBase
-     * @param TradeCalculator $tradeCalculator
+     * @param TradeCalculator  $tradeCalculator
      */
     public function __construct(TradeHistory $dataHistory, AccountsCoinBase $accountsCoinBase, TradeCalculator $tradeCalculator)
     {
@@ -47,7 +45,8 @@ class DatabaseManager
     }
 
     /**
-     * Insert new record in Acounts database table
+     * Insert new record in Acounts database table.
+     *
      * @param $title
      * @param $id
      * @param $accountId
@@ -69,31 +68,31 @@ class DatabaseManager
         $this->accountsCoinBase->save();
     }
 
-
     /**
      * Update the balance in accounts database table.
+     *
      * @param $accountId
      * @param $totalAmount
      */
     public function updateBalance($accountId, $totalAmount)
     {
-        DB::table('accounts_coin_bases')->where('id', $accountId)->update(array('balance' => $totalAmount));
+        DB::table('accounts_coin_bases')->where('id', $accountId)->update(['balance' => $totalAmount]);
     }
-
 
     /**
      * Update the active in accounts database table.
+     *
      * @param $accountId
      * @param $active
      */
     public function updateActive($accountId, $active)
     {
-        DB::table('accounts_coin_bases')->where('id', $accountId)->update(array('active' => $active));
+        DB::table('accounts_coin_bases')->where('id', $accountId)->update(['active' => $active]);
     }
 
-
     /**
-     * Get user accounts
+     * Get user accounts.
+     *
      * @return array|static[]
      */
     public function getUserAccounts()
@@ -107,9 +106,9 @@ class DatabaseManager
         return $userAccounts;
     }
 
-
     /**
-     * Insert data to database Calculator table
+     * Insert data to database Calculator table.
+     *
      * @param $userId
      * @param $accountId
      * @param $accountCapital
@@ -149,9 +148,7 @@ class DatabaseManager
         $this->tradeCalculator->benefit = $autoTrader->getBenefit();
 
         $this->tradeCalculator->save();
-
     }
-
 
     public function getLastCalculatorRecord()
     {
@@ -160,9 +157,9 @@ class DatabaseManager
         return $lastCalculatorRecord;
     }
 
-
     /**
-     * Insert data to database Calculator table
+     * Insert data to database Calculator table.
+     *
      * @param $userId
      * @param $accountId
      * @param $accountCapital
@@ -202,13 +199,11 @@ class DatabaseManager
         $this->dataHistory->benefit = $autoTrader->getBenefit();
 
         $this->dataHistory->save();
-
     }
 
-
-
     /**
-     * Insert data to database History table
+     * Insert data to database History table.
+     *
      * @param $userId
      * @param $accountId
      * @param $accountCapital
@@ -270,10 +265,11 @@ class DatabaseManager
 //            'benefit' => $benefit));
     }
 
-
     /**
-     * Get the last history record of the account
+     * Get the last history record of the account.
+     *
      * @param $DBaccountId
+     *
      * @return array|static[]
      */
     public function getLastHistoryRecord($DBaccountId)
@@ -283,10 +279,11 @@ class DatabaseManager
         return $lastHistoryRecord;
     }
 
-
     /**
-     * Get the stored user attributes by user_id
+     * Get the stored user attributes by user_id.
+     *
      * @param $DBuserId
+     *
      * @return array|static[]
      */
     public function getuserAttributes($DBuserId)
@@ -295,6 +292,4 @@ class DatabaseManager
 
         return $userAtributes;
     }
-
-
 }

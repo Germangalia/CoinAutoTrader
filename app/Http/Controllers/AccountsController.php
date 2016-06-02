@@ -3,24 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\AccountsCoinBase;
-use App\CoinBaseAPI\CoinBaseAccounts;
-use App\CoinBaseAPI\CoinBaseAddresses;
 use App\Http\Controllers\PartialsAutoTrader\CodeRefactorManager;
 use App\Http\Controllers\PartialsAutoTrader\CoinBaseManager;
 use App\Http\Controllers\PartialsAutoTrader\DatabaseManager;
-use App\Http\Controllers\PartialsAutoTrader\FirstHistoryRecord;
-use App\TradeHistory;
 use Auth;
-use Crypt;
 use Illuminate\Http\Request;
-use App\CoinBaseAPI\CoinBaseAuthentication;
-use Illuminate\Support\Facades\DB;
 use Vinkla\Alert\Facades\Alert;
 
 /**
  * CoinAutotrader accounts controller
- * Class AccountsController
- * @package App\Http\Controllers
+ * Class AccountsController.
  */
 class AccountsController extends Controller
 {
@@ -41,8 +33,9 @@ class AccountsController extends Controller
 
     /**
      * AccountsController constructor.
-     * @param DatabaseManager $databaseManager
-     * @param CoinBaseManager $coinBaseManager
+     *
+     * @param DatabaseManager     $databaseManager
+     * @param CoinBaseManager     $coinBaseManager
      * @param CodeRefactorManager $codeRefactorManager
      */
     public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, CodeRefactorManager $codeRefactorManager)
@@ -53,7 +46,8 @@ class AccountsController extends Controller
     }
 
     /**
-     * View the acounts blade
+     * View the acounts blade.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
@@ -62,14 +56,15 @@ class AccountsController extends Controller
     }
 
     /**
-     * Create new account
+     * Create new account.
+     *
      * @param Request $requests
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function createAccount(Request $requests)
     {
-
-        if($requests->title != '' && is_numeric($requests->initialCapital)){
+        if ($requests->title != '' && is_numeric($requests->initialCapital)) {
             //Select Authenticated user and create client
             $client = $this->coinBaseManager->createClientFromUser();
 
@@ -93,7 +88,6 @@ class AccountsController extends Controller
 
             //Send alert to view
             Alert::info('Congratulations! Your new account is ready to activate.');
-
         } else {
             //Send alert to view
             Alert::danger('Please, insert correct values in the form fields.');
@@ -103,44 +97,49 @@ class AccountsController extends Controller
     }
 
     /**
-     * Get all user accounts
+     * Get all user accounts.
+     *
      * @return mixed
      */
     public function getUserAccounts()
     {
         //Get accounts from database
         $userAccounts = $this->databaseManager->getUserAccounts();
+
         return $userAccounts;
     }
 
     /**
-     * Get the active accounts of the user
+     * Get the active accounts of the user.
+     *
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function activateAccounts($id)
     {
         //Get account details
-        $accountRecord =  AccountsCoinBase::findOrFail($id);
+        $accountRecord = AccountsCoinBase::findOrFail($id);
 
         //Check the values
         $result = $this->codeRefactorManager->checkActiveAccount($id, $accountRecord);
 
         //Check result
-        if($result){
+        if ($result) {
             Alert::success('The account is activate to trade.');
-        }else{
+        } else {
             Alert::warning('The account is disable to trade.');
         }
 
         //Return accounts view
         return view('layouts/accounts');
-
     }
 
     /**
-     * Delete account by id
+     * Delete account by id.
+     *
      * @param $id
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function deleteAccounts($id)
@@ -154,5 +153,4 @@ class AccountsController extends Controller
         //Return accounts view
         return view('layouts/accounts');
     }
-
 }

@@ -3,18 +3,15 @@
  * Created by PhpStorm.
  * User: ggalia84
  * Date: 17/05/16
- * Time: 20:31
+ * Time: 20:31.
  */
-
 namespace App\Http\Controllers\PartialsAutoTrader;
 
-
-class GetApiToken
+class ApiToken
 {
-
-
     /**
-     * Generate the API token of the user
+     * Generate the API token of the user.
+     *
      * @return static
      */
     public function generateApiToken()

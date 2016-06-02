@@ -3,24 +3,19 @@
  * Created by PhpStorm.
  * User: ggalia84
  * Date: 18/05/16
- * Time: 18:16
+ * Time: 18:16.
  */
-
 namespace App\Http\Controllers\PartialsAutoTrader;
 
-
-use App\AccountsCoinBase;
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseBuys;
 use App\CoinBaseAPI\CoinBaseMarketData;
 use App\CoinBaseAPI\CoinBaseSells;
-use App\TradeHistory;
 use App\Trader\AutoTrader;
 use Vinkla\Alert\Facades\Alert;
 
 class CodeRefactorManager
 {
-
     /**
      * @var DatabaseManager
      */
@@ -60,16 +55,16 @@ class CodeRefactorManager
      */
     private $coinBaseAccounts;
 
-
     /**
      * CodeRefactorManager constructor.
-     * @param DatabaseManager $databaseManager
-     * @param CoinBaseManager $coinBaseManager
+     *
+     * @param DatabaseManager    $databaseManager
+     * @param CoinBaseManager    $coinBaseManager
      * @param FirstHistoryRecord $firstHistoryRecord
-     * @param CoinBaseBuys $coinBaseBuys
-     * @param CoinBaseSells $coinBaseSells
+     * @param CoinBaseBuys       $coinBaseBuys
+     * @param CoinBaseSells      $coinBaseSells
      * @param CoinBaseMarketData $coinBaseMarketData
-     * @param CoinBaseAccounts $coinBaseAccounts
+     * @param CoinBaseAccounts   $coinBaseAccounts
      */
     public function __construct(DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, FirstHistoryRecord $firstHistoryRecord, CoinBaseBuys $coinBaseBuys, CoinBaseSells $coinBaseSells, CoinBaseMarketData $coinBaseMarketData, CoinBaseAccounts $coinBaseAccounts)
     {
@@ -82,9 +77,9 @@ class CodeRefactorManager
         $this->coinBaseAccounts = $coinBaseAccounts;
     }
 
-
     /**
-     * Check if the acount is active
+     * Check if the acount is active.
+     *
      * @param $id
      * @param $accountRecord
      */
@@ -96,7 +91,7 @@ class CodeRefactorManager
         $accountCapital = $accountRecord->initial_capital;
 
         //Check active account
-        if($accountActive == 0){
+        if ($accountActive == 0) {
 
             //Coin Base authentication
 
@@ -105,7 +100,7 @@ class CodeRefactorManager
             //$balance = $accounter->balanceAccount($client, $account);
             //$balanceAmount = $balance->getAmount();
             //TEST
-            $balanceAmount = ($accountCapital/2) + 1;
+            $balanceAmount = ($accountCapital / 2) + 1;
 
             $this->checkBalance($id, $balanceAmount, $accountCapital);
 
@@ -115,8 +110,7 @@ class CodeRefactorManager
             //Send alert to view
             //Alert::success('The account is activate to trade.');
             $result = true;
-
-        }else{
+        } else {
             //Activate to false
             $this->databaseManager->updateActive($id, false);
 
@@ -124,33 +118,34 @@ class CodeRefactorManager
             //Alert::warning('The account is disable to trade.');
             $result = false;
         }
+
         return $result;
     }
 
-
     /**
-     * Check if the balance is correct
+     * Check if the balance is correct.
+     *
      * @param $id
      * @param $balanceAmount
      * @param $accountCapital
      */
     public function checkBalance($id, $balanceAmount, $accountCapital)
     {
-        if(($balanceAmount >= ($accountCapital*0.50) && ($balanceAmount <= ($accountCapital*0.8)))){
+        if (($balanceAmount >= ($accountCapital * 0.50) && ($balanceAmount <= ($accountCapital * 0.8)))) {
             //Activate account
             $this->databaseManager->updateBalance($id, $balanceAmount);
             $this->databaseManager->updateActive($id, true);
 
             //Make first record in history table
-            $historyRecord =  $this->databaseManager->getLastHistoryRecord($id);
+            $historyRecord = $this->databaseManager->getLastHistoryRecord($id);
 
             $this->checkHistoryRecord($historyRecord, $id, $accountCapital, $balanceAmount);
         }
     }
 
-
     /**
-     * Check the records history of account
+     * Check the records history of account.
+     *
      * @param $historyRecord
      * @param $id
      * @param $accountCapital
@@ -158,20 +153,19 @@ class CodeRefactorManager
      */
     public function checkHistoryRecord($historyRecord, $id, $accountCapital, $balanceAmount)
     {
-        if(is_null($historyRecord) || empty($historyRecord)){
+        if (is_null($historyRecord) || empty($historyRecord)) {
 
             //Create client Coin Base
             $client = $this->coinBaseManager->createClientFromUser();
 
             //Make the first history table record
             $this->firstHistoryRecord->makeFirstRecord($id, $client, $accountCapital, $balanceAmount);
-
         }
     }
 
-
     /**
-     * Execute the trade operation
+     * Execute the trade operation.
+     *
      * @param $client
      * @param $account
      * @param $amount
@@ -184,14 +178,11 @@ class CodeRefactorManager
     public function setTradeOperation($client, $account, $amount, $DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader)
     {
         $operation = false;
-        if($amount > 0)
-        {
+        if ($amount > 0) {
             //TODO IN PRODUCTION - Buy Coins
             //$operation = $this->coinBaseBuys->buyBitcoins($client, $account, $amount);
             $operation = true;
-
-        } elseif($amount < 0)
-        {
+        } elseif ($amount < 0) {
             //TODO IN PRODUCTION - Sell Coins
             //$amount = abs($amount);
             //$operation = $this->coinBaseSells->sellBitcoins($client, $account, $amount);
@@ -200,23 +191,23 @@ class CodeRefactorManager
 
         //dd($operation);
 
-        if($operation){
+        if ($operation) {
             //Actualize account balance
             $balance = $autoTrader->getTotalAmount();
             $this->databaseManager->updateBalance($DBaccountId, $balance);
 
             //Keep to history table
             $this->databaseManager->insertHistoryByObject($DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader);
-
         }
     }
 
-
     /**
-     * Create new AutoTrader object
+     * Create new AutoTrader object.
+     *
      * @param $client
      * @param $account
      * @param $lastHistoryRecord
+     *
      * @return AutoTrader
      */
     public function createAutoTrader($client, $account, $lastHistoryRecord)
@@ -237,5 +228,4 @@ class CodeRefactorManager
 
         return $autoTrader;
     }
-
 }

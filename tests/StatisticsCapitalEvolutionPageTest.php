@@ -5,11 +5,10 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class StatisticsCapitalEvolutionPageTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
-     * Test statistics capital evolution page view by user
+     * Test statistics capital evolution page view by user.
      */
     public function testCapitalEvolutionPageView()
     {
@@ -20,7 +19,6 @@ class StatisticsCapitalEvolutionPageTest extends TestCase
             ->see('Capital Evolution')
             ->see('Select an account:');
     }
-
 
     /**
      * Test statistics capital evolution page view without user.

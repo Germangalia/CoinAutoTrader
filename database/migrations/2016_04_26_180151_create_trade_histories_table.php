@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateTradeHistoriesTable extends Migration
 {
@@ -44,7 +44,7 @@ class CreateTradeHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::table('trade_histories', function(Blueprint $table) {
+        Schema::table('trade_histories', function (Blueprint $table) {
             $table->dropForeign('trade_histories_user_id_foreign');
             $table->dropForeign('trade_histories_account_id_foreign');
         });

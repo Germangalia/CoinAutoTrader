@@ -3,13 +3,9 @@
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAddresses;
 use App\CoinBaseAPI\CoinBaseAuthentication;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CoinBaseAddressesTest extends TestCase
 {
-
     /**
      * @var CoinBaseAuthentication
      */
@@ -38,7 +34,7 @@ class CoinBaseAddressesTest extends TestCase
     /**
      * TestCoinBaseAddress constructor.
      */
-    public function __construct( )
+    public function __construct()
     {
         $this->authentication = new CoinBaseAuthentication();
         $this->coinBaseAccounts = new CoinBaseAccounts();
@@ -48,11 +44,11 @@ class CoinBaseAddressesTest extends TestCase
         $this->account = $this->coinBaseAccounts->createAccount($this->client, 'New Test Account');
     }
 
-
     /**
      * Test for create address.
      *
      * @group coinbase
+     *
      * @return void
      */
     public function testCreateAddress()
@@ -61,11 +57,11 @@ class CoinBaseAddressesTest extends TestCase
         $this->assertTrue(is_object($address));
     }
 
-
     /**
      * Test get address for account.
      *
      * @group coinbase
+     *
      * @return void
      */
     public function testGetAddressForAccount()
@@ -73,5 +69,4 @@ class CoinBaseAddressesTest extends TestCase
         $address = $this->coinBaseAddresses->getAddressForAccount($this->client, $this->account);
         $this->assertTrue(is_object($address));
     }
-
 }

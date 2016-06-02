@@ -1,27 +1,27 @@
 <?php
+
 namespace App\CoinBaseAPI;
 
-use Coinbase\Wallet\Resource\Sell;
 use Coinbase\Wallet\Enum\Param;
+use Coinbase\Wallet\Resource\Sell;
 
 class CoinBaseSells
 {
-
     //List sells
     public function getSells($client, $account)
     {
         $sells = $client->getAccountSells($account);
+
         return $sells;
     }
-
 
     //Get sell info
     public function getSellInfo($client, $account, $sellId)
     {
         $sell = $client->getAccountSell($account, $sellId);
+
         return $sell;
     }
-
 
     //Sell bitcoins
     public function sellBitcoins($client, $account, $amount)
@@ -37,5 +37,4 @@ class CoinBaseSells
 
         return true;
     }
-
 }

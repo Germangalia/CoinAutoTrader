@@ -2,23 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\AccountsCoinBase;
 use App\CoinBaseAPI\CoinBaseAccounts;
-use App\CoinBaseAPI\CoinBaseAuthentication;
-use App\CoinBaseAPI\CoinBaseBuys;
 use App\CoinBaseAPI\CoinBaseMarketData;
-use App\CoinBaseAPI\CoinBaseSells;
 use App\Http\Controllers\PartialsAutoTrader\CodeRefactorManager;
 use App\Http\Controllers\PartialsAutoTrader\CoinBaseManager;
 use App\Http\Controllers\PartialsAutoTrader\DatabaseManager;
+use App\Http\Controllers\PartialsAutoTrader\GetActiveAccounts;
 use App\TradeCalculator;
 use App\Trader\AutoTrader;
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\PartialsAutoTrader\GetActiveAccounts;
-use Illuminate\Support\Facades\DB;
-use League\Flysystem\Exception;
-
 
 class AutoTraderController extends Controller
 {
@@ -54,12 +45,13 @@ class AutoTraderController extends Controller
 
     /**
      * AutoTraderController constructor.
-     * @param GetActiveAccounts $getActiveAccounts
-     * @param DatabaseManager $databaseManager
-     * @param CoinBaseManager $coinBaseManager
+     *
+     * @param GetActiveAccounts   $getActiveAccounts
+     * @param DatabaseManager     $databaseManager
+     * @param CoinBaseManager     $coinBaseManager
      * @param CodeRefactorManager $codeRefactorManager
-     * @param CoinBaseMarketData $coinBaseMarketData
-     * @param CoinBaseAccounts $coinBaseAccounts
+     * @param CoinBaseMarketData  $coinBaseMarketData
+     * @param CoinBaseAccounts    $coinBaseAccounts
      */
     public function __construct(GetActiveAccounts $getActiveAccounts, DatabaseManager $databaseManager, CoinBaseManager $coinBaseManager, CodeRefactorManager $codeRefactorManager, CoinBaseMarketData $coinBaseMarketData, CoinBaseAccounts $coinBaseAccounts)
     {
@@ -81,8 +73,7 @@ class AutoTraderController extends Controller
 
         //dd($activeAccounts);   //OK
 
-        foreach($activeAccounts as $activeAccount)
-        {
+        foreach ($activeAccounts as $activeAccount) {
             //Get user from account and account atributes
             $DBuserId = $activeAccount->user_id;
             $DBaccountId = $activeAccount->id;
@@ -139,7 +130,7 @@ class AutoTraderController extends Controller
             $amount = $autoTrader->getCoinMarketOrder();
 
             //TODO IN PRODUCTION -> Activate Buy and Sell in CodeRefactorManager.php
-            $this->codeRefactorManager->setTradeOperation($client, $account, $amount, $DBuserId, $DBaccountId,$lastHistoryRecord, $autoTrader);
+            $this->codeRefactorManager->setTradeOperation($client, $account, $amount, $DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader);
 
 //            //Keep object to Calculator table
 //            $this->databaseManager->insertHistoryByObject($DBuserId, $DBaccountId, $lastHistoryRecord, $autoTrader);

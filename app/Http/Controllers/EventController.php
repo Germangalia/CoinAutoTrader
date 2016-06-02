@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Events\ShouldBroadcastBitcoinPrice;
-use Illuminate\Http\Request;
-use App\Http\Requests;
 
 class EventController extends Controller
 {
-
     /**
      * @var ShouldBroadcastBitcoinPrice
      */
@@ -23,7 +20,7 @@ class EventController extends Controller
     }
 
     /**
-     * Fire bitcoin price
+     * Fire bitcoin price.
      */
     public function fireBitcoinPrice()
     {

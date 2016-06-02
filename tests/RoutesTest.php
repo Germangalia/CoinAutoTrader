@@ -8,7 +8,8 @@ class RoutesTest extends TestCase
     //use WithoutMiddleware;
 
     /**
-     * Test the routes.php AccountsController@getUserAccounts
+     * Test the routes.php AccountsController@getUserAccounts.
+     *
      * @group routes
      */
     public function testRoutesAccountsControllerGetUserAccounts()
@@ -18,9 +19,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php AccountsController@activateAccounts
+     * Test the routes.php AccountsController@activateAccounts.
+     *
      * @group routes
      */
     public function testRoutesAccountsControllerActiveAccounts()
@@ -30,9 +31,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php AccountsController@deleteAccounts
+     * Test the routes.php AccountsController@deleteAccounts.
+     *
      * @group routes
      */
     public function testRoutesAccountsControllerDeleteAccounts()
@@ -42,9 +43,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php HistoryController@getUserHistory
+     * Test the routes.php HistoryController@getUserHistory.
+     *
      * @group routes
      */
     public function testRoutesHistoryControllerGetUserHistory()
@@ -54,9 +55,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getSumInitialCapital
+     * Test the routes.php StatitsticsController@getSumInitialCapital.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetSumInitialCapital()
@@ -66,9 +67,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getUserAccounts
+     * Test the routes.php StatitsticsController@getUserAccounts.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetUserAccounts()
@@ -78,9 +79,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getHistoryByID
+     * Test the routes.php StatitsticsController@getHistoryByID.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetHistoryByID()
@@ -90,9 +91,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getCapital
+     * Test the routes.php StatitsticsController@getCapital.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetCapital()
@@ -102,9 +103,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getBitcoins
+     * Test the routes.php StatitsticsController@getBitcoins.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetBitcoins()
@@ -114,9 +115,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getTotal
+     * Test the routes.php StatitsticsController@getTotal.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetTotal()
@@ -126,9 +127,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getAvgInitialCapital
+     * Test the routes.php StatitsticsController@getAvgInitialCapital.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetAvgInitialCapital()
@@ -138,9 +139,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getAvgCapital
+     * Test the routes.php StatitsticsController@getAvgCapital.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetAvgCapital()
@@ -150,9 +151,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getAvgBitcoins
+     * Test the routes.php StatitsticsController@getAvgBitcoins.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetAvgBitcoins()
@@ -162,9 +163,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getAvgBenefit
+     * Test the routes.php StatitsticsController@getAvgBenefit.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetAvgBenefit()
@@ -174,9 +175,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getAvgTotal
+     * Test the routes.php StatitsticsController@getAvgTotal.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetAvgTotal()
@@ -186,9 +187,9 @@ class RoutesTest extends TestCase
         $this->assertTrue(is_object($result));
     }
 
-
     /**
-     * Test the routes.php StatitsticsController@getBitcoinPrice
+     * Test the routes.php StatitsticsController@getBitcoinPrice.
+     *
      * @group routes
      */
     public function testRoutesStatitsticsControllerGetBitcoinPrice()
@@ -197,5 +198,4 @@ class RoutesTest extends TestCase
         $result = $this->visit('api/statistics/getBitcoinPrice');
         $this->assertTrue(is_object($result));
     }
-
 }

@@ -3,11 +3,9 @@
  * Created by PhpStorm.
  * User: ggalia84
  * Date: 18/05/16
- * Time: 17:14
+ * Time: 17:14.
  */
-
 namespace App\Http\Controllers\PartialsAutoTrader;
-
 
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAddresses;
@@ -17,8 +15,6 @@ use Auth;
 
 class CoinBaseManager
 {
-
-
     /**
      * @var CoinBaseAuthentication
      */
@@ -42,12 +38,12 @@ class CoinBaseManager
      */
     private $coinBaseMarketData;
 
-
     /**
      * CoinBaseManager constructor.
+     *
      * @param CoinBaseAuthentication $authentication
-     * @param CoinBaseAccounts $coinBaseAccounts
-     * @param CoinBaseAddresses $coinBaseAddresses
+     * @param CoinBaseAccounts       $coinBaseAccounts
+     * @param CoinBaseAddresses      $coinBaseAddresses
      */
     public function __construct(CoinBaseAuthentication $authentication, CoinBaseAccounts $coinBaseAccounts, CoinBaseAddresses $coinBaseAddresses, CoinBaseMarketData $coinBaseMarketData)
     {
@@ -57,9 +53,9 @@ class CoinBaseManager
         $this->coinBaseMarketData = $coinBaseMarketData;
     }
 
-
     /**
      * Create client CoinBase API for the authenticated user.
+     *
      * @return mixed
      */
     public function createClientFromUser()
@@ -76,11 +72,12 @@ class CoinBaseManager
         return $client;
     }
 
-
     /**
      * Create client CoinBase API with api key and api secret.
+     *
      * @param $apiKey
      * @param $apiSecret
+     *
      * @return \Coinbase\Wallet\Client
      */
     public function createClientFromKeys($apiKey, $apiSecret)
@@ -90,10 +87,11 @@ class CoinBaseManager
         return $client;
     }
 
-
     /**
      * Create account CoinBase API from client.
+     *
      * @param $client
+     *
      * @return $this
      */
     public function createAccount($client, $title)
@@ -104,11 +102,12 @@ class CoinBaseManager
         return $account;
     }
 
-
     /**
-     * Get the account by id
+     * Get the account by id.
+     *
      * @param $client
      * @param $accountId
+     *
      * @return mixed
      */
     public function getAccountById($client, $accountId)
@@ -118,11 +117,12 @@ class CoinBaseManager
         return $account;
     }
 
-
     /**
      * Create address CoinBase API from client and account.
+     *
      * @param $client
      * @param $account
+     *
      * @return \Coinbase\Wallet\Resource\Address
      */
     public function createAddress($client, $account)
@@ -133,9 +133,9 @@ class CoinBaseManager
         return $address;
     }
 
-
     /**
-     * Get the bitcoins price for user authenticated
+     * Get the bitcoins price for user authenticated.
+     *
      * @return float
      */
     public function getBitcoinPrice()
