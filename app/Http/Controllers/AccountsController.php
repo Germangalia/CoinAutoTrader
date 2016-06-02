@@ -134,7 +134,7 @@ class AccountsController extends Controller
 
         //Return accounts view
 //        return view('layouts/accounts');
-        Redirect::back();
+//        Redirect::back();
     }
 
     /**
