@@ -23,6 +23,8 @@ var vm = new Vue({
             this.$http.get('/api/user-accounts', function(data) {
                 this.$set('accounts', data)
             })
+
+            location.reload(true)   //true-> not use cache
         },
 
         /**
@@ -56,7 +58,7 @@ var vm = new Vue({
             if(ConfirmBox) this.$http.get('/api/accounts-delete/' + id)
 
             this.fetchAccounts()
-        }
+        },
 
     },
 

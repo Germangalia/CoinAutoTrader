@@ -133,9 +133,8 @@ class AccountsController extends Controller
         }
 
         //Return accounts view
-//        return view('layouts/accounts');
-        $secondsWait = 1;
-        header("Refresh:$secondsWait");
+        return view('layouts/accounts');
+
     }
 
     /**
