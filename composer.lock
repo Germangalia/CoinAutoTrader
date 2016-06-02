@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ec3885ea60c429cbdd28434ecc228740",
-    "content-hash": "c82e8102e91bf2734a32f9b702bb8742",
+    "hash": "f757264e0b5642d52a7efdd52de8c35a",
+    "content-hash": "55a4cfe9e8ee072ef7ef544bc4e849e0",
     "packages": [
         {
             "name": "acacha/admin-lte-template-laravel",
@@ -2267,7 +2267,7 @@
         },
         {
             "name": "satooshi/php-coveralls",
-            "version": "v1.0.1",
+            "version": "1.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/satooshi/php-coveralls.git",
@@ -4648,7 +4648,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
