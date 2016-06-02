@@ -50,7 +50,6 @@ class Kernel extends ConsoleKernel
          * Execute the trader in backend
          */
         $schedule->call(function () {
-
             $coinBaseBuys = new CoinBaseBuys();
             $coinBaseSells = new CoinBaseSells();
             $dataHistory = new TradeHistory();
@@ -69,7 +68,6 @@ class Kernel extends ConsoleKernel
             $autoTraderController = new AutoTraderController($getActiveAccounts, $databaseManager, $coinBaseManager, $codeRefactorManager, $coinBaseMarketData, $coinBaseAccounts);
 
             $autoTraderController->execute();
-
         })->daily();
 
 
@@ -77,7 +75,6 @@ class Kernel extends ConsoleKernel
          * Event to reload the coin price.
          */
         $schedule->call(function () {
-
             $authentication = new CoinBaseAuthentication();
             $coinBaseAccounts = new CoinBaseAccounts();
             $coinBaseAddresses = new CoinBaseAddresses();
@@ -88,7 +85,6 @@ class Kernel extends ConsoleKernel
             $eventController = new EventController($shouldBroadcastBitcoinPrice);
 
             $eventController->fireBitcoinPrice();
-
         })->everyFiveMinutes();
     }
 }
