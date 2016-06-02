@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: ggalia84
  * Date: 6/05/16
- * Time: 15:40
+ * Time: 15:40.
  */
-
 namespace App\Http\Controllers\PartialsAutoTrader;
 
 use App\CoinBaseAPI\CoinBaseMarketData;
@@ -26,8 +25,9 @@ class FirstHistoryRecord
 
     /**
      * FirstHistoryRecord constructor.
+     *
      * @param CoinBaseMarketData $marketData
-     * @param DatabaseManager $databaseManager
+     * @param DatabaseManager    $databaseManager
      */
     public function __construct(CoinBaseMarketData $marketData, DatabaseManager $databaseManager)
     {
@@ -36,7 +36,8 @@ class FirstHistoryRecord
     }
 
     /**
-     * Make the first record of the account to the database history
+     * Make the first record of the account to the database history.
+     *
      * @param $accountId
      * @param $client
      * @param $accountCapital
@@ -102,5 +103,4 @@ class FirstHistoryRecord
         //Update DB Accounts record
         $this->databaseManager->updateBalance($accountId, $totalAmount);
     }
-
 }

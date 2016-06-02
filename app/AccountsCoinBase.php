@@ -24,9 +24,8 @@ class AccountsCoinBase extends Model
         'wallet_address',
     ];
 
-
     /**
-     * Get the user that owns the account.Return a object
+     * Get the user that owns the account.Return a object.
      */
     public function getUserRecord()
     {
@@ -34,7 +33,7 @@ class AccountsCoinBase extends Model
     }
 
     /**
-     * Get the history record associated with the user. Return a colection
+     * Get the history record associated with the user. Return a colection.
      */
     public function getHistoryRecords()
     {

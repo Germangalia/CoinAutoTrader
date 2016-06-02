@@ -3,9 +3,6 @@
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAuthentication;
 use App\CoinBaseAPI\CoinBaseBuys;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CoinBaseBuysTest extends TestCase
 {
@@ -32,11 +29,11 @@ class CoinBaseBuysTest extends TestCase
         $this->account = $this->coinBaseAccounts->createAccount($this->client, 'New Test Account');
     }
 
-
     /**
      * Test for buy bitcoins.
      *
      * @group coinbase
+     *
      * @return void
      */
     public function testBuyBitcoins()
@@ -46,5 +43,4 @@ class CoinBaseBuysTest extends TestCase
 //        $buy = $this->coinBaseBuys->buyBitcoins($this->client, $this->account, $amount);
 //        $this->assertTrue(is_bool($buy));
     }
-
 }

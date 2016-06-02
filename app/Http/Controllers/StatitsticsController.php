@@ -7,15 +7,11 @@ use App\CoinBaseAPI\CoinBaseMarketData;
 use App\TradeHistory;
 use Auth;
 use DB;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 
 class StatitsticsController extends Controller
 {
-
     /**
-     * Return Statistics Index view
+     * Return Statistics Index view.
      *
      * @return mixed
      */
@@ -25,7 +21,7 @@ class StatitsticsController extends Controller
     }
 
     /**
-     * Return Statistics Benefit Evolution Graphic view
+     * Return Statistics Benefit Evolution Graphic view.
      *
      * @return mixed
      */
@@ -34,9 +30,8 @@ class StatitsticsController extends Controller
         return view('layouts/benefit_evolution');
     }
 
-
     /**
-     * Return Statistics Capital Evolution Graphic view
+     * Return Statistics Capital Evolution Graphic view.
      *
      * @return mixed
      */
@@ -45,9 +40,8 @@ class StatitsticsController extends Controller
         return view('layouts/capital_evolution');
     }
 
-
     /**
-     * Return Statistics Bitcoins Evolution Graphic view
+     * Return Statistics Bitcoins Evolution Graphic view.
      *
      * @return mixed
      */
@@ -56,9 +50,8 @@ class StatitsticsController extends Controller
         return view('layouts/bitcoins_evolution');
     }
 
-
     /**
-     * Return Statistics Total Evolution Graphic view
+     * Return Statistics Total Evolution Graphic view.
      *
      * @return mixed
      */
@@ -67,10 +60,8 @@ class StatitsticsController extends Controller
         return view('layouts/total_evolution');
     }
 
-
-
     /**
-     * Get accounts for user
+     * Get accounts for user.
      *
      * @return mixed
      */
@@ -86,7 +77,7 @@ class StatitsticsController extends Controller
     }
 
     /**
-     * Get accounts for user
+     * Get accounts for user.
      *
      * @return mixed
      */
@@ -101,9 +92,8 @@ class StatitsticsController extends Controller
         return $result;
     }
 
-
     /**
-     * Get history records for user
+     * Get history records for user.
      *
      * @return mixed
      */
@@ -119,7 +109,7 @@ class StatitsticsController extends Controller
     }
 
     /**
-     * Get history records for account
+     * Get history records for account.
      *
      * @return mixed
      */
@@ -131,9 +121,8 @@ class StatitsticsController extends Controller
         return $result;
     }
 
-
     /**
-     * Get Actual Bitcoin Price in $
+     * Get Actual Bitcoin Price in $.
      *
      * @return mixed
      */
@@ -155,9 +144,8 @@ class StatitsticsController extends Controller
         return $result;
     }
 
-
     /**
-     * Get sum of active accounts for user
+     * Get sum of active accounts for user.
      *
      * @return mixed
      */
@@ -172,9 +160,8 @@ class StatitsticsController extends Controller
         return $result;
     }
 
-
     /**
-     * Get sum of initial capital for all accounts
+     * Get sum of initial capital for all accounts.
      *
      * @return mixed
      */
@@ -190,7 +177,7 @@ class StatitsticsController extends Controller
     }
 
     /**
-     * Get capital for all accounts
+     * Get capital for all accounts.
      *
      * @return mixed
      */
@@ -201,22 +188,21 @@ class StatitsticsController extends Controller
         //Select Accounts
         $userAccounts = $this->getAccounts();
 
-        foreach($userAccounts as $userAccount){
+        foreach ($userAccounts as $userAccount) {
             //Get result
             $row = TradeHistory::where('account_id', $userAccount->id)->get()->sort()->last();
 
-            if($row){
+            if ($row) {
                 $value = floatval($row->capital_amount);
                 $result = $result + $value;
             }
-
         }
+
         return $result;
     }
 
-
     /**
-     * Get bitcoins for all accounts
+     * Get bitcoins for all accounts.
      *
      * @return mixed
      */
@@ -227,22 +213,21 @@ class StatitsticsController extends Controller
         //Select Accounts
         $userAccounts = $this->getAccounts();
 
-        foreach($userAccounts as $userAccount){
+        foreach ($userAccounts as $userAccount) {
             //Get result
             $row = TradeHistory::where('account_id', $userAccount->id)->get()->sort()->last();
 
-            if($row){
+            if ($row) {
                 $value = floatval($row->coins_amount);
                 $result = $result + $value;
             }
-
         }
+
         return $result;
     }
 
-
     /**
-     * Get total amount for all accounts
+     * Get total amount for all accounts.
      *
      * @return mixed
      */
@@ -253,22 +238,21 @@ class StatitsticsController extends Controller
         //Select Accounts
         $userAccounts = $this->getAccounts();
 
-        foreach($userAccounts as $userAccount){
+        foreach ($userAccounts as $userAccount) {
             //Get result
             $row = TradeHistory::where('account_id', $userAccount->id)->get()->sort()->last();
 
-            if($row){
+            if ($row) {
                 $value = floatval($row->total_amount);
                 $result = $result + $value;
             }
-
         }
+
         return $result;
     }
 
-
     /**
-     * Get avg of initial capital for all accounts
+     * Get avg of initial capital for all accounts.
      *
      * @return mixed
      */
@@ -283,9 +267,8 @@ class StatitsticsController extends Controller
         return $result;
     }
 
-
     /**
-     * Get avg capital for all accounts
+     * Get avg capital for all accounts.
      *
      * @return mixed
      */
@@ -303,9 +286,8 @@ class StatitsticsController extends Controller
         return $result;
     }
 
-
     /**
-     * Get avg bitcoins for all accounts
+     * Get avg bitcoins for all accounts.
      *
      * @return mixed
      */
@@ -323,9 +305,8 @@ class StatitsticsController extends Controller
         return $result;
     }
 
-
     /**
-     * Get avg total amount for all accounts
+     * Get avg total amount for all accounts.
      *
      * @return mixed
      */
@@ -343,9 +324,8 @@ class StatitsticsController extends Controller
         return $result;
     }
 
-
     /**
-     * Get avg benefit for all accounts
+     * Get avg benefit for all accounts.
      *
      * @return mixed
      */
@@ -363,5 +343,4 @@ class StatitsticsController extends Controller
 
         return $result;
     }
-
 }

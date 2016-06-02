@@ -1,26 +1,27 @@
 <?php
+
 namespace App\CoinBaseAPI;
-use Coinbase\Wallet\Resource\Buy;
+
 use Coinbase\Wallet\Enum\Param;
+use Coinbase\Wallet\Resource\Buy;
 
 class CoinBaseBuys
 {
-
     //List buys
     public function getBuys($client, $account)
     {
         $buys = $client->getAccountBuys($account);
+
         return $buys;
     }
-
 
     //Get buy info
     public function getBuyInfo($client, $account, $buyId)
     {
         $buy = $client->getAccountBuy($account, $buyId);
+
         return $buy;
     }
-
 
     //Buy bitcoins
     public function buyBitcoins($client, $account, $amount)
@@ -37,7 +38,5 @@ class CoinBaseBuys
 
 
         return true;
-
     }
-
 }

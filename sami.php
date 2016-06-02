@@ -1,11 +1,11 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
-use Sami\Sami;
-use Symfony\Component\Finder\Finder;
-use Sami\Version\GitVersionCollection;
 use Sami\RemoteRepository\GitHubRemoteRepository;
+use Sami\Sami;
+use Sami\Version\GitVersionCollection;
+use Symfony\Component\Finder\Finder;
 
 $iterator = Finder::create()
     ->files()
@@ -20,11 +20,11 @@ $versions = GitVersionCollection::create($dir)
 //    ->add('5.2', 'Laravel 5.2')
     ->add('master', 'Laravel Dev');
 
-return new Sami($iterator, array(
-    'title' => 'AutoCoinTrader API',
-    'versions' => $versions,
-    'build_dir' => __DIR__.'/build/%version%',
-    'cache_dir' => __DIR__.'/cache/%version%',
+return new Sami($iterator, [
+    'title'                => 'AutoCoinTrader API',
+    'versions'             => $versions,
+    'build_dir'            => __DIR__.'/build/%version%',
+    'cache_dir'            => __DIR__.'/cache/%version%',
     'default_opened_level' => 2,
-    'remote_repository' => new GitHubRemoteRepository('Germangalia/CoinAutoTrader', dirname($dir)),
-));
+    'remote_repository'    => new GitHubRemoteRepository('Germangalia/CoinAutoTrader', dirname($dir)),
+]);

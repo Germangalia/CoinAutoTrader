@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateAccountsCoinBasesTable extends Migration
 {
@@ -13,7 +13,7 @@ class CreateAccountsCoinBasesTable extends Migration
     public function up()
     {
         Schema::create('accounts_coin_bases', function (Blueprint $table) {
-            $table->increments('id')->unsigned();;
+            $table->increments('id')->unsigned();
             $table->string('name');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
@@ -33,7 +33,7 @@ class CreateAccountsCoinBasesTable extends Migration
      */
     public function down()
     {
-        Schema::table('accounts_coin_bases', function(Blueprint $table) {
+        Schema::table('accounts_coin_bases', function (Blueprint $table) {
             $table->dropForeign('accounts_coin_bases_user_id_foreign');
         });
         Schema::drop('accounts_coin_bases');

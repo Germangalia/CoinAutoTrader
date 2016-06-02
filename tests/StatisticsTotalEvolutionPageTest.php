@@ -5,11 +5,10 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class StatisticsTotalEvolutionPageTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
-     * Test statistics total evolution page view by user
+     * Test statistics total evolution page view by user.
      */
     public function testTotalEvolutionPageView()
     {
@@ -22,7 +21,6 @@ class StatisticsTotalEvolutionPageTest extends TestCase
             ->see('Load Graphic');
     }
 
-
     /**
      * Test statistics total evolution page view without user.
      */
@@ -31,5 +29,4 @@ class StatisticsTotalEvolutionPageTest extends TestCase
         $this->visit('/statistics/total-evolution')
             ->seePageIs('login');
     }
-
 }

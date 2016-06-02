@@ -1,4 +1,5 @@
 <?php
+
 namespace App\CoinBaseAPI;
 
 use Coinbase\Wallet\Client;
@@ -9,7 +10,6 @@ use Coinbase\Wallet\Resource\Transaction;
 
 class CoinBaseAuthentication
 {
-
     public function apiKeyAuthentication($apiKey, $apiSecret)
     {
         //Authentication with API key and API Secret
@@ -17,33 +17,32 @@ class CoinBaseAuthentication
         //Using sandbox CoinBase
         $configuration->setApiUrl(Configuration::SANDBOX_API_URL);
         $client = Client::create($configuration);
+
         return $client;
     }
-
 
     public function oAuth2Authentication($accessToken, $refreshToken)
     {
         //Authentication with OAuth2 Token
-        if($refreshToken != null)
-        {
+        if ($refreshToken != null) {
             // with a refresh token
             $configuration = Configuration::oauth($accessToken, $refreshToken);
-        } else{
+        } else {
             // without a refresh token
             $configuration = Configuration::oauth($accessToken);
         }
 
         $client = Client::create($configuration);
+
         return $client;
     }
-
 
     public function twoFactorAuthentication($client)
     {
         //Authentication in tho factors
         $transaction = Transaction::send([
-            'toEmail' => 'test@test.com',
-            'bitcoinAmount' => 1
+            'toEmail'       => 'test@test.com',
+            'bitcoinAmount' => 1,
         ]);
 
         $account = $client->getPrimaryAccount();
@@ -57,6 +56,7 @@ class CoinBaseAuthentication
                 Param::TWO_FACTOR_TOKEN => '123456',
             ]);
         }
+
         return $client;
     }
 }

@@ -24,23 +24,19 @@ class User extends Authenticatable
         'password', 'remember_token', 'coinbase_api_key', 'coinbase_api_secret',
     ];
 
-
     /**
-     * Get the account record associated with the user. Return a colection
+     * Get the account record associated with the user. Return a colection.
      */
     public function getAccountRecords()
     {
         return $this->hasMany('App\AccountsCoinBase');
     }
 
-
     /**
-     * Get the history record associated with the user. Return a colection
+     * Get the history record associated with the user. Return a colection.
      */
     public function getHistoryRecords()
     {
         return $this->hasMany('App\Tradehistory');
     }
-
-
 }

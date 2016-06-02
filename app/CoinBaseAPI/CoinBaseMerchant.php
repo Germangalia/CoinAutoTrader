@@ -1,16 +1,16 @@
 <?php
+
 namespace App\CoinBaseAPI;
 
 class CoinBaseMerchant
 {
-
     //Get merchant
     public function getMerchant($client, $merchantId)
     {
         $merchant = $client->getMerchant($merchantId);
+
         return $merchant;
     }
-
 
     //Verifying merchant callbacks
     //Note: Only production callbacks can be verified. Callbacks issued by the sandbox will always return false below.
@@ -21,5 +21,4 @@ class CoinBaseMerchant
         $authenticity = $client->verifyCallback($raw_body, $signature); // boolean
         return $authenticity;
     }
-
 }
