@@ -133,7 +133,7 @@ class CodeRefactorManager
     {
         if (($balanceAmount >= ($accountCapital * 0.50) && ($balanceAmount <= ($accountCapital * 0.8)))) {
             //Activate account
-            $this->databaseManager->updateBalance($id, $balanceAmount);
+            $this->databaseManager->updateBalance($id, $accountCapital);
             $this->databaseManager->updateActive($id, true);
 
             //Make first record in history table

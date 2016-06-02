@@ -125,7 +125,7 @@ class AccountsController extends Controller
         $result = $this->codeRefactorManager->checkActiveAccount($id, $accountRecord);
 
         //Check result
-        if ($result) {
+        if ($result == true) {
             Alert::success('The account is activate to trade.');
         } else {
             Alert::warning('The account is disable to trade.');
