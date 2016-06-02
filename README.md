@@ -121,6 +121,13 @@ This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.m
 
 ## Change Log
 
+###02/06/2016
+* Improve the project's document.
+* Create package of the project with Composer and Packagist.
+
+###01/06/2016
+* Improve the presentation with Reveal.js
+
 ###31/05/2016
 * Improve backend tests for check the business logic
 * Add Class Diagrams to the project document.
