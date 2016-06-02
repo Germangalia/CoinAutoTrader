@@ -132,7 +132,7 @@ class AccountsController extends Controller
         }
 
         //Return accounts view
-        return view('layouts/accounts');
+        return redirect('layouts/accounts');
     }
 
     /**
