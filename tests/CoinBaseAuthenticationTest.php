@@ -1,18 +1,13 @@
 <?php
 
 use App\CoinBaseAPI\CoinBaseAuthentication;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CoinBaseAuthenticationTest extends TestCase
 {
-
     /**
      * @var CoinBaseAuthentication
      */
     private $coinBaseAuthentication;
-
 
     /**
      * TestCoinBaseAuthentication constructor.
@@ -22,11 +17,11 @@ class CoinBaseAuthenticationTest extends TestCase
         $this->coinBaseAuthentication = new CoinBaseAuthentication();
     }
 
-
     /**
-     * Test to check if the $client is ok
+     * Test to check if the $client is ok.
      *
      * @group coinbase
+     *
      * @return void
      */
     public function testAuthenticationCreateClient()

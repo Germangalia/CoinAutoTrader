@@ -1,14 +1,13 @@
 <?php
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class StatisticsBenefitEvolutionPageTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
-     * Test statistics benefit evolution page view by user
+     * Test statistics benefit evolution page view by user.
      */
     public function testBenefitEvolutionPageView()
     {
@@ -19,7 +18,6 @@ class StatisticsBenefitEvolutionPageTest extends TestCase
             ->see('Benefit Evolution')
             ->see('Select an account:');
     }
-
 
     /**
      * Test statistics benefit evolution page view without user.

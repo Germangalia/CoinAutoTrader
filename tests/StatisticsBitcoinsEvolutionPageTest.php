@@ -5,11 +5,10 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class StatisticsBitcoinsPageEvolutionTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
-     * Test statistics bitcoins evolution page view by user
+     * Test statistics bitcoins evolution page view by user.
      */
     public function testBitcoinsEvolutionPageView()
     {
@@ -20,7 +19,6 @@ class StatisticsBitcoinsPageEvolutionTest extends TestCase
             ->see('Bitcoins Evolution')
             ->see('Select an account:');
     }
-
 
     /**
      * Test statistics bitcoins evolution page view without user.

@@ -4,11 +4,10 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class AccountsPageTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
-     * Test accounts page view by user
+     * Test accounts page view by user.
      */
     public function testAccountsPageView()
     {
@@ -20,7 +19,6 @@ class AccountsPageTest extends TestCase
             ->see('Initial capital');
     }
 
-
     /**
      * Test accounts page view without user.
      */
@@ -29,7 +27,6 @@ class AccountsPageTest extends TestCase
         $this->visit('/accounts')
             ->seePageIs('login');
     }
-
 
     /**
      * Test accounts page view make account in form.
@@ -46,13 +43,12 @@ class AccountsPageTest extends TestCase
             ->see('Congratulations! Your new account is ready to activate.');
     }
 
-
     /**
-     * Test accounts page view activate button
+     * Test accounts page view activate button.
      */
     public function testActivateAccountInAccountsPage()
     {
-//        $user = factory(App\User::class)->create();
+        //        $user = factory(App\User::class)->create();
 //
 //        $this->actingAs($user)
 //            ->visit('/accounts')
@@ -60,13 +56,12 @@ class AccountsPageTest extends TestCase
 //            ->see('1');
     }
 
-
     /**
-     * Test accounts page view delete button
+     * Test accounts page view delete button.
      */
     public function testDelateAccountInAccountsPage()
     {
-//        $user = factory(App\User::class)->create();
+        //        $user = factory(App\User::class)->create();
 //
 //        $this->actingAs($user)
 //            ->visit('/accounts')
@@ -74,5 +69,4 @@ class AccountsPageTest extends TestCase
 //            ->press('Aceptar')
 //            ->see('Congratulations! Your new account is ready to activate.');
     }
-
 }

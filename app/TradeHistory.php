@@ -24,24 +24,19 @@ class TradeHistory extends Model
 
     ];
 
-
     /**
-     * Get the user that owns the history record.Return a object
+     * Get the user that owns the history record.Return a object.
      */
     public function getUserRecord()
     {
         return $this->belongsTo('App\User');
     }
 
-
     /**
-     * Get the account that owns the history record.Return a object
+     * Get the account that owns the history record.Return a object.
      */
     public function getAccountRecord()
     {
         return $this->belongsTo('App\AccountsCoinBase');
     }
-
-
-
 }

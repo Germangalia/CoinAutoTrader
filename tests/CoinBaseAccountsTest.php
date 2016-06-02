@@ -2,13 +2,9 @@
 
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAuthentication;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CoinBaseAccountsTest extends TestCase
 {
-
     /**
      * @var CoinBaseAuthentication
      */
@@ -40,11 +36,11 @@ class CoinBaseAccountsTest extends TestCase
         $this->client = $this->authentication->apiKeyAuthentication(env('COINBASE_API_KEY'), env('COINBASE_API_SECRET'));
     }
 
-
     /**
      * Test for create account.
      *
      * @group coinbase
+     *
      * @return void
      */
     public function testCreateAccount()
@@ -54,11 +50,11 @@ class CoinBaseAccountsTest extends TestCase
         $this->assertTrue(is_object($object));
     }
 
-
     /**
      * Test get blance account.
      *
      * @group coinbase
+     *
      * @return void
      */
     public function testGetBalanceAccount()
@@ -67,5 +63,4 @@ class CoinBaseAccountsTest extends TestCase
         $balanceValue = $balance;
         $this->assertTrue(is_numeric($balanceValue));
     }
-
 }

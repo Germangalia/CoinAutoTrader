@@ -2,8 +2,6 @@
 
 namespace App\Console;
 
-use App\Http\Controllers\AutoTraderController;
-use App\Http\Controllers\EventController;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -22,7 +20,8 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
+     *
      * @return void
      */
     protected function schedule(Schedule $schedule)
@@ -30,21 +29,20 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-        /**
+        /*
          * Execute the trader in backend
          */
         $schedule->call(function () {
-//            \App\Http\Controllers\AutoTraderController::class->execute();
+            //            \App\Http\Controllers\AutoTraderController::class->execute();
         })->daily();
 
 
 
-        /**
+        /*
          * Event to actulize the coin price.
          */
         $schedule->call(function () {
-//            \App\Http\Controllers\EventController::class->fireBitcoinPrice();
+            //            \App\Http\Controllers\EventController::class->fireBitcoinPrice();
         })->everyFiveMinutes();
-
     }
 }

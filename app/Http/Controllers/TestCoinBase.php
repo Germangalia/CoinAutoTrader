@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAddresses;
-use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\CoinBaseAPI\CoinBaseAuthentication;
 
 class TestCoinBase extends Controller
 {
     /**
-     * Manual test
+     * Manual test.
      */
     public function testing()
     {

@@ -4,11 +4,10 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class HomePageTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
-     * Test home page view by user
+     * Test home page view by user.
      */
     public function testHomePageView()
     {
@@ -19,7 +18,6 @@ class HomePageTest extends TestCase
             ->see('You are logged in CoinAutoTrader!');
     }
 
-
     /**
      * Test home page view without user.
      */
@@ -28,5 +26,4 @@ class HomePageTest extends TestCase
         $this->visit('/home')
             ->seePageIs('login');
     }
-
 }

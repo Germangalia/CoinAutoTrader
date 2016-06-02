@@ -15,13 +15,10 @@ use App\Http\Controllers\PartialsAutoTrader\FirstHistoryRecord;
 use App\Http\Controllers\PartialsAutoTrader\GetActiveAccounts;
 use App\TradeCalculator;
 use App\TradeHistory;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class BackendCircuitTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
@@ -29,19 +26,18 @@ class BackendCircuitTest extends TestCase
      */
     private $autoTraderController;
 
-
     /**
      * BackendCircuitTest constructor.
+     *
      * @param AutoTraderController $autoTraderController
      */
     public function __construct()
     {
-
         $coinBaseBuys = new CoinBaseBuys();
         $coinBaseSells = new CoinBaseSells();
         $dataHistory = new TradeHistory();
         $accountsCoinBase = new AccountsCoinBase();
-        $tradeCalculator = new TradeCalculator;
+        $tradeCalculator = new TradeCalculator();
         $authentication = new CoinBaseAuthentication();
         $coinBaseAccounts = new CoinBaseAccounts();
         $coinBaseAddresses = new CoinBaseAddresses();
@@ -55,10 +51,11 @@ class BackendCircuitTest extends TestCase
         $this->autoTraderController = new AutoTraderController($getActiveAccounts, $databaseManager, $coinBaseManager, $codeRefactorManager, $coinBaseMarketData, $coinBaseAccounts);
     }
 
-
     /**
-     * Test user registration
+     * Test user registration.
+     *
      * @group backend
+     *
      * @return void
      */
     public function testNewUserRegistration()
@@ -74,14 +71,14 @@ class BackendCircuitTest extends TestCase
             ->press('Register')
             ->seePageIs('/home')
             ->seeInDatabase('users', ['email' => 'example@mail.com',
-                'name'  => 'German Galia']);
-
+                'name'                        => 'German Galia', ]);
     }
 
     /**
-     * Create Account
+     * Create Account.
      *
      * @group backend
+     *
      * @return void
      */
     public function testCreateNewAccountFromAccountsPage()
@@ -96,16 +93,15 @@ class BackendCircuitTest extends TestCase
             ->see('Congratulations! Your new account is ready to activate.');
     }
 
-
     /**
-     * Activate Account
+     * Activate Account.
      *
      * @group backend
+     *
      * @return void
      */
     public function testActivateAccountFromAccountsPage()
     {
-
         $user = factory(App\User::class)->create();
 
         $this->testCreateNewAccountFromAccountsPage();
@@ -116,16 +112,15 @@ class BackendCircuitTest extends TestCase
             ->seeInDatabase('accounts_coin_bases', ['active' => true]);
     }
 
-
     /**
-     * Execute Trade
+     * Execute Trade.
      *
      * @group backend
+     *
      * @return void
      */
     public function testExecuteAutomaticTradeFromBackend()
     {
-
         $user = factory(App\User::class)->create();
 
         $this->testActivateAccountFromAccountsPage();
@@ -136,16 +131,15 @@ class BackendCircuitTest extends TestCase
             ->seeInDatabase('trade_histories', ['initial_capital' => 10500]);
     }
 
-
     /**
-     * Dessable Account
+     * Dessable Account.
      *
      * @group backend
+     *
      * @return void
      */
     public function testDesableAccountFromAccountsPage()
     {
-
         $user = factory(App\User::class)->create();
 
         $this->testActivateAccountFromAccountsPage();
@@ -156,16 +150,15 @@ class BackendCircuitTest extends TestCase
             ->seeInDatabase('accounts_coin_bases', ['active' => false]);
     }
 
-
     /**
-     * Remove Account
+     * Remove Account.
      *
      * @group backend
+     *
      * @return void
      */
     public function testRemoveAccountFromAccountsPage()
     {
-
         $user = factory(App\User::class)->create();
 
         $this->actingAs($user)

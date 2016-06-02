@@ -3,9 +3,6 @@
 use App\CoinBaseAPI\CoinBaseAccounts;
 use App\CoinBaseAPI\CoinBaseAuthentication;
 use App\CoinBaseAPI\CoinBaseMarketData;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CoinBaseMarketDataTest extends TestCase
 {
@@ -36,6 +33,7 @@ class CoinBaseMarketDataTest extends TestCase
      * Test for get the buy price of bitcoins.
      *
      * @group coinbase
+     *
      * @return void
      */
     public function testGetBuyPrice()
@@ -48,6 +46,7 @@ class CoinBaseMarketDataTest extends TestCase
      * Test for get the sell price of bitcoins.
      *
      * @group coinbase
+     *
      * @return void
      */
     public function testGetSellPrice()

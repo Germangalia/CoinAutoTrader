@@ -5,11 +5,10 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class HistoryControllerTest extends TestCase
 {
-
     use DatabaseMigrations;
 
     /**
-     * Test history page view by user
+     * Test history page view by user.
      */
     public function testHistoryPageView()
     {
@@ -20,7 +19,6 @@ class HistoryControllerTest extends TestCase
             ->see('Search')
             ->see('Coin Price');
     }
-
 
     /**
      * Test history page view without user.
