@@ -134,7 +134,8 @@ class AccountsController extends Controller
 
         //Return accounts view
 //        return view('layouts/accounts');
-//        Redirect::back();
+        $secondsWait = 1;
+        header("Refresh:$secondsWait");
     }
 
     /**
