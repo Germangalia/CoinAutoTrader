@@ -53,8 +53,8 @@ class AuthController extends Controller
             'name'     => 'required|max:255',
             'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-            'key'      => 'required|min:16|max:16|unique:users',
-            'secret'   => 'required|min:32|max:32|unique:users',
+            'key'      => 'required|min:16|max:16',
+            'secret'   => 'required|min:32|max:32',
         ]);
     }
 
