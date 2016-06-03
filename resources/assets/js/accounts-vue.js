@@ -42,11 +42,11 @@ var vm = new Vue({
         activateAccount: function(id) {
             this.$http.get('/api/accounts-active/' + id)
 
-            setTimeout( this.fetchAccounts(), 1000)
+            this.fetchAccounts();
 
 
             //Reload page
-            //location.reload(true)   //true-> not use cache
+            location.href="/accounts";
         },
 
         /**
@@ -59,11 +59,11 @@ var vm = new Vue({
 
             if(ConfirmBox) this.$http.get('/api/accounts-delete/' + id)
 
-            setTimeout( this.fetchAccounts(), 1000)
+            this.fetchAccounts();
 
             //Reload page
-            //location.reload(true)   //true-> not use cache
-        },
+            location.href="/accounts";
+        }
 
     },
 
