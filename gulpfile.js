@@ -52,6 +52,7 @@ elixir(function(mix) {
 
     // Compile scripts
     mix.scripts([
+        'dirPagination.js',
         'history-angular.js'
     ], 'public/js/history-angular.js');
 

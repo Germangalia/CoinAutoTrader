@@ -83,7 +83,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr ng-repeat="history in historyData|orderBy:sortKey:reverse|filter:search">
+                                    <tr dir-paginate="history in historyData|orderBy:sortKey:reverse|filter:search|itemsPerPage:10">
                                        <td>@{{history.account_id}}</td>
                                         <td>@{{history.initial_capital}}</td>
                                         <td>@{{history.coin_price}}</td>
@@ -99,6 +99,11 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                <dir-pagination-controls
+                                        max-size="5"
+                                        direction-links="true"
+                                        boundary-links="true" >
+                                </dir-pagination-controls>
                             </div>
 
                         </div>

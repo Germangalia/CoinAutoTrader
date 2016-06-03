@@ -1,4 +1,4 @@
-var app = angular.module('angularTable', []);
+var app = angular.module('angularTable', ['angularUtils.directives.dirPagination']);
 
 app.controller('listdata',function($scope, $http){
     //declare an empty array

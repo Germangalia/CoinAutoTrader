@@ -116,7 +116,7 @@ See also the list of [contributors] ( https://github.com/Germangalia/CoinAutoTra
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.md) file for details.
 
 
 ## Change Log
@@ -124,6 +124,8 @@ This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.m
 ###03/05/2016
 * Fix some issues in account's view production.
 * Add button to Coin Base Sandbox in Register view.
+* Improve email sender in production with Mailgun configuration.
+* Improve pagination table in History view.
 
 ###02/06/2016
 * Improve the project's document.
@@ -131,7 +133,6 @@ This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.m
 * Improve Scheduler and Cron to put in production the backend trader and events.
 * Fix some isues in Travis-CI. Put badget in green.
 * Implement StyleCI. Put badget in green.
-
 
 ###01/06/2016
 * Improve the presentation with Reveal.js
