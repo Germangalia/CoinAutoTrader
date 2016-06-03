@@ -74,13 +74,13 @@ class FirstHistoryRecord
         $portafolioControl = $balanceAmount;
 
         //Get buy_sell_advice
-        $buySellAdvice = 0.0;
+        $buySellAdvice = $coins;
 
         //Get market_order
-        $marketOrder = 0.0;
+        $marketOrder = $coins;
 
         //Get coin_market_order
-        $coinMarketOrder = 0.0;
+        $coinMarketOrder = $coins;
 
         //Get commission
         $commission = 0.0;

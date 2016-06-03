@@ -56,7 +56,7 @@
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                <input type="checkbox"> I agree to the <a href="#">terms</a>
+                                <input type="checkbox"> I agree to the <a href="https://github.com/Germangalia/CoinAutoTrader#license">terms</a>
                             </label>
                         </div>
                     </div><!-- /.col -->
@@ -71,6 +71,14 @@
             <a href="{{ url('/login') }}" class="text-center">I already have a membership</a>
         </div><!-- /.form-box -->
     </div><!-- /.register-box -->
+
+    <div class="register-box">
+        <div class="register-box-body">
+            <h4>If you haven't got CoinBase's Account, please become one before: </h4>
+            <input onclick="window.open('https://sandbox.coinbase.com/')" type="button" class="btn btn-success btn-block btn-flat" value="Coin Base Sandbox" />
+
+        </div>
+    </div>
 
     @include('layouts.partials.scripts_auth')
 

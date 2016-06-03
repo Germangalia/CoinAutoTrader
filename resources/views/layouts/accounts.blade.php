@@ -60,7 +60,7 @@
                 -->
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><h3>Coin Base Accounts</h3><p id="bitcoin-price">Preu</p></div>
+                    <div class="panel-heading"><h3>Coin Base Accounts</h3></div>
                     <div class="panel-body">
                         <div class="table-responsive" id="AccountsController">
 

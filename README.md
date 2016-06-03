@@ -121,9 +121,16 @@ This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.m
 
 ## Change Log
 
+###03/05/2016
+* Fix some issues in account's view production.
+
 ###02/06/2016
 * Improve the project's document.
-* Create package of the project with Composer and Packagist.
+* Create package of the project with Composer and Packagist. It's not possible becouse the repository hasn't got private files.
+* Improve Scheduler and Cron to put in production the backend trader and events.
+* Fix some isues in Travis-CI. Put badget in green.
+* Implement StyleCI. Put badget in green.
+
 
 ###01/06/2016
 * Improve the presentation with Reveal.js
