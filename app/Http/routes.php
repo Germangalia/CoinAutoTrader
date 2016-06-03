@@ -16,9 +16,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//Landing page
+Route::post('send-email', 'SendEmailController@sendEmail');
+
+
 Route::group(['middleware' => 'auth'], function () {
-    //Landing page
-    Route::post('send-email', 'SendEmailController@sendEmail');
+
     //Accounts
     Route::get('accounts', 'AccountsController@index');
     Route::post('accounts', 'AccountsController@createAccount');

@@ -123,6 +123,7 @@ This project is licensed under the MIT License - see the [LICENSE.md] (LICENSE.m
 
 ###03/05/2016
 * Fix some issues in account's view production.
+* Add button to Coin Base Sandbox in Register view.
 
 ###02/06/2016
 * Improve the project's document.
