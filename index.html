@@ -39,7 +39,16 @@
 				## Introducció
 
 				- CoinAutoTrader és un projecte per a la gestió de comptes de bitcoins que incorpora un trader virtual automatitzat per tal de incrementar-ne el capital.
-				- Aquest projecte web està basat en Laravel tot i que incorpora en algun dels seus apartats altres frameworks com Vue.js, Angular.js o Chart.js per tal de millorar la experiència de l’usuari.
+				- Aquest projecte web està basat en Laravel tot i que incorpora en algún dels seus apartats altres frameworks com Vue.js, Angular.js o Chart.js per tal de millorar la experiència de l’usuari.
+			</script>
+		</section>
+		
+		<section data-markdown data-background="#ff0000">
+			<script type="text/template">
+				## Desenvolupador
+
+				- Nom: German Galià Beltran
+				- Natural de Ulldecona a la provincia de Tarragona soc Programador multiplataforma especialitzat en PHP, JAVA, SQL, HTML, CSS, Javascript, XML, etc. En el desenvolupament del meu treball realitzo tasques de progrmació, reds, manteniment d'equips i moltes altres coses relacionades amb la programació i la informàtica.
 			</script>
 		</section>
 
@@ -49,7 +58,7 @@
 					## Funcionalitats Principals
 
 					- La aplicació conta amb una interfície gràfica d'usuari on es podrà registrar per mitjà d'un formulari .
-					- Una vegada tinguem el compte preparat, es comprovarà la capacitat econòmica del mateix i s'iniciaran les funcions de trading, que continuaran de forma automatitzada mitjançant controladors, bases de dades i disparadors temporals amb schedule.
+					- Una vegada tinguem el compte preparat, s'ativarà i s'iniciaran les funcions de trading, que continuaran de forma automatitzada mitjançant controladors, bases de dades i disparadors temporals amb scheduler i cron.
 					- El mètode de trading es basa en una sèrie de càlculs matemàtics que provenen de consultes a les bases de dades de l'historial del compte i de les entrades de dades procedents de les diferents APIs com el saldo en el moneder i els preus de compra i venta de monedes.
 				</script>
 			</section>
@@ -107,7 +116,7 @@
 			<script type="text/template">
 				## Dependències i Llibreries
 
-				Admin-LTE, Llum, Bootstrap, jQuery, ChartJS, Cron / Schedule, SQLite, CoinBase (API), Scrutinizer, Coverall, StyleCI, Vue.js, Angular.js, Elixir, Gulp, Laravel-IDE-Helper, PHPDocumentor, Sweet Alert, Mailgun, ApiGuard, Api-Response...
+				Admin-LTE, Llum, Bootstrap, jQuery, ChartJS, Cron / Scheduler, SQLite, CoinBase (API), Scrutinizer, Coverall, StyleCI, Vue.js, Angular.js, Elixir, Gulp, Laravel-IDE-Helper, Sweet Alert, Mailgun, ApiGuard...
 			</script>
 		</section>
 
@@ -184,7 +193,7 @@
 				</script>
 			</section>
 			<section>
-				<img data-src="public/img/code/ControllerAutoTrade.png">
+					<img href="https://github.com/Germangalia/CoinAutoTrader/blob/master/app/Http/Controllers/AutoTraderController.php" data-src="public/img/code/ControllerAutoTrade.png">
 			</section>
 		</section>
 
@@ -209,7 +218,7 @@
 			</section>
 			<section>
 				<section>
-					<img data-src="public/img/views/captura-LandingPage-compress.png">
+						<img href="http://146.185.179.80/" data-src="public/img/views/captura-LandingPage-compress.png">
 				</section>
 			</section>
 		</section>
@@ -350,8 +359,10 @@
 			<script type="text/template">
 				## Explotació
 
-				- Publicar conjunt de carpetes i arxius al servidor mitjançant FTP.
-				- Crear base de dades amb MySQL i vincular-la al projecte.
+				- Publicar conjunt de carpetes i arxius al servidor mitjançant Git Clone. 
+				- Afegir els documents privats.
+				- Instal·lar dependències amb Composer Install.
+				- Crear base de dades amb MySQL al servidor i vincular-la al projecte.
 				- Test de funcionament a nivell usuari.
 			</script>
 		</section>
