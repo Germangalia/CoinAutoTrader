@@ -8,7 +8,6 @@ use App\Http\Controllers\PartialsAutoTrader\CoinBaseManager;
 use App\Http\Controllers\PartialsAutoTrader\DatabaseManager;
 use Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Vinkla\Alert\Facades\Alert;
 
 /**
@@ -134,7 +133,6 @@ class AccountsController extends Controller
 
         //Return accounts view
         return view('layouts/accounts');
-
     }
 
     /**

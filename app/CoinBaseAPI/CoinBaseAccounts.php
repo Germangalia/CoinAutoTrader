@@ -27,7 +27,7 @@ class CoinBaseAccounts
 
             $balance = $account->getBalance();
             //echo $this->account->getName() . ": " . $this->balance->getAmount() . $this->balance->getCurrency() .  "\r\n";
-        } 
+        }
 
         return $balance;
     }
