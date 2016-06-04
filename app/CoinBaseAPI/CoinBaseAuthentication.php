@@ -23,13 +23,12 @@ class CoinBaseAuthentication
 
     public function oAuth2Authentication($accessToken, $refreshToken)
     {
+        // without a refresh token
+            $configuration = Configuration::oauth($accessToken);
         //Authentication with OAuth2 Token
         if ($refreshToken != null) {
             // with a refresh token
             $configuration = Configuration::oauth($accessToken, $refreshToken);
-        } else {
-            // without a refresh token
-            $configuration = Configuration::oauth($accessToken);
         }
 
         $client = Client::create($configuration);
